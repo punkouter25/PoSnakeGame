@@ -11,25 +11,9 @@
         <button class="retro-button" @onclick="ViewHighScores">HIGH SCORES</button>
         <button class="retro-button" @onclick="ViewStatistics">STATISTICS</button>
     </div>
-
-    @if (_showTutorial)
-    {
-        <div class="tutorial-overlay">
-            <div class="tutorial-content">
-                <h2>HOW TO PLAY</h2>
-                <p>Use arrow keys or WASD on desktop</p>
-                <p>Use virtual joystick on mobile</p>
-                <p>Collect food to grow and score points</p>
-                <p>Survive for 30 seconds!</p>
-                <button class="retro-button" @onclick="CloseTutorial">GOT IT!</button>
-            </div>
-        </div>
-    }
 </div>
 
-@code {
-    private bool _showTutorial = true;
-    
+@code {    
     private void StartGame()
     {
         NavigationManager.NavigateTo("/game");
@@ -45,11 +29,5 @@
         NavigationManager.NavigateTo("/statistics");
     }
 
-    private void CloseTutorial()
-    {
-        _showTutorial = false;
-    }
-
     [Inject]
     private NavigationManager NavigationManager { get; set; } = default!;
-}
