@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+
+<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Not found</PageTitle>
+        <LayoutView Layout="@typeof(Layout.MainLayout)">
+            <div class="not-found">
+                <h1>GAME OVER...</h1>
+                <p>Page not found. <a href="/">Return to Main Menu</a></p>
+            </div>
+            <style>
+                .not-found {
+                    text-align: center;
+                    padding: 50px;
+                    color: #ff0000;
+                    font-family: 'Press Start 2P', monospace;
+                }
+                .not-found h1 {
+                    font-family: 'Press Start 2P', monospace;
+                    margin-bottom: 20px;
+                }
+                .not-found a {
+                    color: #39ff14;
+                    text-decoration: none;
+                }
+                .not-found a:hover {
+                    text-decoration: underline;
+                }
+            </style>
+        </LayoutView>
+    </NotFound>
+</Router>
