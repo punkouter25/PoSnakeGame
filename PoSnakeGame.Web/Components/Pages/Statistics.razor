@@ -6,12 +6,19 @@
 
 <PageTitle>Snake Battle Royale - Statistics</PageTitle>
 
+<link href="css/statistics.css" rel="stylesheet" />
+
 <div class="statistics-container">
     <h1 class="retro-title">GAME STATISTICS</h1>
     
     @if (_loading)
     {
-        <div class="loading">Loading statistics...</div>
+        <div class="loading-container">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Loading statistics...</div>
+            </div>
+        </div>
     }
     else if (_error)
     {
@@ -56,88 +63,6 @@
     </div>
 </div>
 
-<style>
-    .statistics-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-    
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        width: 100%;
-        margin: 30px 0;
-    }
-    
-    .stat-card {
-        background-color: #000;
-        border: 2px solid #39ff14;
-        box-shadow: 0 0 10px #39ff14;
-        padding: 20px;
-        text-align: center;
-        transition: transform 0.3s;
-    }
-    
-    .stat-card:hover {
-        transform: scale(1.05);
-    }
-    
-    .stat-title {
-        font-family: 'Press Start 2P', monospace;
-        color: #39ff14;
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
-    
-    .stat-value {
-        font-size: 24px;
-        color: #fff;
-        font-weight: bold;
-    }
-    
-    .loading, .error {
-        padding: 20px;
-        text-align: center;
-        margin: 20px 0;
-        font-family: 'Press Start 2P', monospace;
-    }
-    
-    .loading {
-        color: #39ff14;
-    }
-    
-    .error {
-        color: #ff0000;
-    }
-    
-    .buttons {
-        display: flex;
-        gap: 20px;
-        margin-top: 20px;
-    }
-    
-    @@media (max-width: 768px) {
-        .stats-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    
-    @@media (max-width: 500px) {
-        .stats-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .buttons {
-            flex-direction: column;
-        }
-    }
-</style>
-
 @code {
     private bool _loading = true;
     private bool _error = false;
@@ -153,9 +78,46 @@
     [Inject]
     private NavigationManager NavigationManager { get; set; } = default!;
     
+    // Load statistics on component initialization
     protected override async Task OnInitializedAsync()
     {
-        await LoadStatistics();
+        // Pre-populate with data to avoid flashing
+        _totalGames = 42;
+        _averageScore = 78;
+        _highestScore = 217;
+        _totalFoodEaten = 326;
+        _longestSnake = 18;
+        _totalPlaytime = 104;
+        
+        // Still load data but don't show loading indicator
+        await LoadStatisticsQuietly();
+    }
+    
+    private async Task LoadStatisticsQuietly()
+    {
+        try
+        {
+            // Don't set _loading to true here to avoid UI flash
+            Console.WriteLine("Loading game statistics");
+            
+            // In a real app, we would load stats from Azure Table Storage
+            await Task.Delay(500);
+            
+            // Sample data updates would happen here
+            // In this demo, we're keeping the pre-populated values
+            
+            Console.WriteLine("Statistics loaded successfully");
+        }
+        catch (Exception ex)
+        {
+            _error = true;
+            Console.WriteLine($"Error loading statistics: {ex.Message}");
+        }
+        finally
+        {
+            _loading = false;
+            StateHasChanged();
+        }
     }
     
     private async Task LoadStatistics()
@@ -166,10 +128,9 @@
             _error = false;
             StateHasChanged();
             
-            Console.WriteLine("Loading game statistics");
+            Console.WriteLine("Reloading game statistics");
             
             // In a real app, we would load stats from Azure Table Storage
-            // For now, we'll simulate a delay and generate sample data
             await Task.Delay(500);
             
             // Sample data for demonstration
@@ -180,7 +141,7 @@
             _longestSnake = 18;
             _totalPlaytime = 104;
             
-            Console.WriteLine("Statistics loaded successfully");
+            Console.WriteLine("Statistics reloaded successfully");
         }
         catch (Exception ex)
         {

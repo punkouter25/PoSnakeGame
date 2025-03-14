@@ -78,28 +78,24 @@ namespace PoSnakeGame.Core.Services
             IsCountdownActive = true;
             CountdownValue = 3;
             _countdownTimer = 0f;
+            _logger.LogInformation("Countdown initialized: Active={IsActive}, Value={Value}", IsCountdownActive, CountdownValue);
 
-            // Create player snake
-            var playerSnake = CreateSnake(SnakeType.Human, Color.Green);
+            // Create player snake (in red)
+            var playerSnake = CreateSnake(SnakeType.Human, Color.Red);
             Snakes.Add(playerSnake);
 
-            // Create CPU snakes with different personalities and colors
-            Color[] cpuColors = {
-                Color.Red, Color.Blue, Color.Yellow,
-                Color.Purple, Color.Orange, Color.Cyan,
-                Color.Pink, Color.Brown, Color.Gray
-            };
+            // Create CPU snakes (all in green)
             string[] personalities = {
                 "Aggressive", "Cautious", "Foodie",
                 "Random", "Hunter", "Survivor", "Speedy"
             };
 
-            for (int i = 0; i < cpuCount && i < cpuColors.Length; i++)
+            for (int i = 0; i < cpuCount; i++)
             {
                 var personality = personalities[i % personalities.Length];
                 var cpuSnake = CreateSnake(
                     SnakeType.CPU,
-                    cpuColors[i],
+                    Color.Green,
                     personality
                 );
                 Snakes.Add(cpuSnake);
@@ -143,7 +139,14 @@ namespace PoSnakeGame.Core.Services
 
             IsGameRunning = true;
             IsGameOver = false;
-            _logger.LogInformation("Game started");
+            _logger.LogInformation("Game started. Countdown status: Active={IsActive}, Value={Value}", IsCountdownActive, CountdownValue);
+
+            // Reset the countdown timer to ensure it continues correctly when resuming from pause
+            if (IsCountdownActive)
+            {
+                _countdownTimer = 0f;
+                _logger.LogInformation("Countdown timer reset during game resume");
+            }
 
             // Initial game state notification
             if (OnGameStateChanged != null)
@@ -159,6 +162,12 @@ namespace PoSnakeGame.Core.Services
             IsGameRunning = false;
             _logger.LogInformation("Game paused");
 
+            // Save the countdown state if paused during countdown
+            if (IsCountdownActive)
+            {
+                _logger.LogInformation("Game paused during active countdown. Value={Value}", CountdownValue);
+            }
+
             if (OnGameStateChanged != null)
             {
                 SafeInvokeOnUiThread(() => OnGameStateChanged.Invoke());
@@ -169,7 +178,7 @@ namespace PoSnakeGame.Core.Services
         {
             IsGameRunning = false;
             IsGameOver = true;
-            _logger.LogInformation("Game over");
+            _logger.LogInformation("Game over. Final countdown state: Active={IsActive}, Value={Value}", IsCountdownActive, CountdownValue);
 
             if (OnGameOver != null)
             {
@@ -185,14 +194,18 @@ namespace PoSnakeGame.Core.Services
             if (IsCountdownActive)
             {
                 _countdownTimer += deltaTime;
+                _logger.LogDebug("Countdown timer updated: CurrentTimer={Timer:0.00}, CountdownValue={Value}", _countdownTimer, CountdownValue);
+                
                 if (_countdownTimer >= 1.0f) // Every second
                 {
                     _countdownTimer = 0f;
                     CountdownValue--;
+                    _logger.LogInformation("Countdown decremented to {Value}", CountdownValue);
 
                     if (CountdownValue <= 0)
                     {
                         IsCountdownActive = false;
+                        _logger.LogInformation("Countdown completed. Game starting properly now.");
 
                         // Notify of countdown end
                         if (OnCountdownChanged != null)
@@ -202,6 +215,7 @@ namespace PoSnakeGame.Core.Services
                     }
                     else
                     {
+                        _logger.LogInformation("Countdown in progress: {Value} seconds remaining", CountdownValue);
                         // Notify of countdown change
                         if (OnCountdownChanged != null)
                         {

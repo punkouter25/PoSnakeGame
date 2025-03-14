@@ -93,13 +93,6 @@
             </div>
         </div>
     }
-    
-    <div class="game-controls">
-        <button class="retro-button" @onclick="PauseResumeGame">
-            @(GameService.IsGameRunning ? "PAUSE" : "RESUME")
-        </button>
-        <button class="retro-button" @onclick="NavigateToMainMenu">EXIT</button>
-    </div>
 </div>
 
 @code {
@@ -170,6 +163,9 @@
             
             // Start the game
             GameEngine.Start();
+            
+            // Ensure the game is running
+            GameService.StartGame();
         }
     }
 
@@ -198,9 +194,6 @@
             case "D":
                 GameService.ChangeHumanSnakeDirection(Direction.Right);
                 break;
-            case " ": // Space bar
-                PauseResumeGame();
-                break;
         }
     }
 
@@ -220,23 +213,23 @@
         GameService.ChangeHumanSnakeDirection(snakeDirection);
     }
 
-    private void PauseResumeGame()
+    private async Task RestartGame()
     {
-        if (GameService.IsGameRunning)
-        {
-            GameService.PauseGame();
-        }
-        else if (!GameService.IsGameOver)
-        {
-            GameService.StartGame();
-        }
-    }
-
-    private void RestartGame()
-    {
-        GameEngine.Stop();
+        // Stop the engine and wait for it to complete
+        await GameEngine.StopAsync();
+        
+        // Reset the game
         GameService.InitializeGame();
+        
+        // Ensure game is in the correct state
+        _showingHighScoreSubmission = false;
+        
+        // Start the engine again
         GameEngine.Start();
+        
+        // Ensure the game starts running after initialization
+        // This is needed to make the countdown work
+        GameService.StartGame();
     }
 
     private void NavigateToMainMenu()
@@ -247,20 +240,12 @@
 
     private void FocusIn()
     {
-        // Resume game when focus returns to the container
-        if (!GameService.IsGameRunning && !GameService.IsGameOver)
-        {
-            GameService.StartGame();
-        }
+        // No need to handle focus events since we removed pause/resume functionality
     }
 
     private void FocusOut()
     {
-        // Pause game when focus leaves the container
-        if (GameService.IsGameRunning)
-        {
-            GameService.PauseGame();
-        }
+        // No need to handle focus events since we removed pause/resume functionality
     }
 
     public void Dispose()

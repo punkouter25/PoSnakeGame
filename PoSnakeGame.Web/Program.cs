@@ -1,10 +1,22 @@
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Extensions.Logging;
 using PoSnakeGame.Core.Services;
 using PoSnakeGame.Infrastructure.Configuration;
 using PoSnakeGame.Infrastructure.Services;
 using PoSnakeGame.Web.Components;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Create logs directory if it doesn't exist
+var logPath = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
+Directory.CreateDirectory(logPath);
+
+// Configure logging with file provider
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+builder.Logging.AddFile(Path.Combine(logPath, "game-{Date}.log"));
 
 // Configure Azure Table Storage
 var tableConfig = new TableStorageConfig
