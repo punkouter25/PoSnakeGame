@@ -2,40 +2,35 @@ using Azure.Data.Tables;
 using Microsoft.Extensions.Logging;
 using PoSnakeGame.Core.Models;
 using PoSnakeGame.Infrastructure.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PoSnakeGame.Infrastructure.Services;
 
-public class TableStorageService
+public class TableStorageService : ITableStorageService
 {
-    private readonly TableServiceClient _tableServiceClient;
     private readonly TableStorageConfig _config;
     private readonly ILogger<TableStorageService> _logger;
+    private readonly TableClient _highScoresTable;
 
     public TableStorageService(TableStorageConfig config, ILogger<TableStorageService> logger)
     {
         _config = config;
         _logger = logger;
-        _tableServiceClient = new TableServiceClient(_config.ConnectionString);
         
-        // Ensure tables exist
-        var highScoresTable = _tableServiceClient.GetTableClient(_config.HighScoresTableName);
-        var statsTable = _tableServiceClient.GetTableClient(_config.GameStatisticsTableName);
-        
-        highScoresTable.CreateIfNotExists();
-        statsTable.CreateIfNotExists();
-    }
-
-    public async Task SaveHighScoreAsync(HighScore score)
-    {
         try
         {
-            var table = _tableServiceClient.GetTableClient(_config.HighScoresTableName);
-            await table.AddEntityAsync(score);
-            _logger.LogInformation("Saved high score for {Initials}: {Score}", score.Initials, score.Score);
+            var tableServiceClient = new TableServiceClient(_config.ConnectionString);
+            _highScoresTable = tableServiceClient.GetTableClient(_config.HighScoresTableName);
+            
+            // Create table if it doesn't exist
+            _highScoresTable.CreateIfNotExists();
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error saving high score");
+            _logger.LogError(ex, "Error initializing table storage");
             throw;
         }
     }
@@ -44,27 +39,68 @@ public class TableStorageService
     {
         try
         {
-            var table = _tableServiceClient.GetTableClient(_config.HighScoresTableName);
-            var scores = table.QueryAsync<HighScore>(score => score.PartitionKey == "HighScore");
+            _logger.LogInformation("Getting top {Count} scores", count);
             
-            var topScores = new List<HighScore>();
-            await foreach (var score in scores)
+            // Query all records with PartitionKey = "HighScore"
+            var query = _highScoresTable.QueryAsync<HighScore>(filter: $"PartitionKey eq 'HighScore'");
+            
+            var scores = new List<HighScore>();
+            await foreach (var score in query)
             {
-                topScores.Add(score);
+                scores.Add(score);
             }
-
-            return topScores.OrderByDescending(s => s.Score).Take(count).ToList();
+            
+            // Order by score descending and take the specified count
+            return scores.OrderByDescending(s => s.Score).Take(count).ToList();
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error retrieving high scores");
+            _logger.LogError(ex, "Error getting high scores");
             throw;
         }
     }
 
     public async Task<bool> IsHighScore(int score)
     {
-        var topScores = await GetTopScoresAsync();
-        return topScores.Count < 10 || score > topScores.Min(s => s.Score);
+        try
+        {
+            var scores = await GetTopScoresAsync();
+            
+            // If we have fewer than 10 scores, it's automatically a high score
+            if (scores.Count < 10)
+            {
+                return true;
+            }
+            
+            // Otherwise, check if it's higher than the lowest score
+            var lowestHighScore = scores.Min(s => s.Score);
+            return score > lowestHighScore;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error checking if {Score} is a high score", score);
+            return true; // Assume it's a high score on error to allow submission
+        }
+    }
+
+    public async Task SaveHighScoreAsync(HighScore highScore)
+    {
+        try
+        {
+            _logger.LogInformation("Saving high score for {Initials} with score {Score}", 
+                highScore.Initials, highScore.Score);
+            
+            // Ensure we have a partition key and row key
+            highScore.PartitionKey = "HighScore";
+            highScore.RowKey = highScore.RowKey ?? Guid.NewGuid().ToString();
+            
+            // Add the entity to the table
+            await _highScoresTable.AddEntityAsync(highScore);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error saving high score");
+            throw;
+        }
     }
 }

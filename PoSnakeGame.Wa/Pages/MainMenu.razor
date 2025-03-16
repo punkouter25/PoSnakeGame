@@ -1,0 +1,33 @@
+@page "/"
+
+<PageTitle>Snake Battle Royale</PageTitle>
+
+<div class="main-menu">
+    <h1 class="retro-title">SNAKE BATTLE ROYALE</h1>
+    
+    <div class="menu-buttons">
+        <button class="retro-button" @onclick="StartGame">START GAME</button>
+        <button class="retro-button" @onclick="ViewHighScores">HIGH SCORES</button>
+        <button class="retro-button" @onclick="ViewStatistics">STATISTICS</button>
+    </div>
+</div>
+
+@code {    
+    private void StartGame()
+    {
+        NavigationManager.NavigateTo("/game");
+    }
+
+    private void ViewHighScores()
+    {
+        NavigationManager.NavigateTo("/highscores");
+    }
+
+    private void ViewStatistics()
+    {
+        NavigationManager.NavigateTo("/statistics");
+    }
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; } = default!;
+} 
