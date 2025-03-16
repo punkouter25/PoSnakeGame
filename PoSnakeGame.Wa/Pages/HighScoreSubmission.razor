@@ -32,7 +32,6 @@
 @code {
     [Parameter] public int Score { get; set; }
     [Parameter] public EventCallback<bool> OnSubmitted { get; set; }
-    [Parameter] public EventCallback<bool> OnSubmitted { get; set; }
 
     private string[] _initials = new string[3] { "", "", "" };
     private bool _error;
@@ -44,18 +43,26 @@
     {
         if (firstRender)
         {
-            // Focus first input on load
             await _inputRefs[0].FocusAsync();
         }
     }
 
-    private void HandleInput(ChangeEventArgs e, int index)
+    private async Task HandleInput(ChangeEventArgs e, int index)
     {
         var value = e.Value?.ToString() ?? "";
         if (value.Length > 0 && char.IsLetter(value[0]))
         {
             _initials[index] = value[0].ToString().ToUpper();
             StateHasChanged();
+
+            if (index < 2)
+            {
+                await _inputRefs[index + 1].FocusAsync();
+            }
+            else if (index == 2 && IsValid)
+            {
+                await Submit();
+            }
         }
     }
 
@@ -63,7 +70,6 @@
     {
         if (e.Key == "Backspace" && string.IsNullOrEmpty(_initials[index]) && index > 0)
         {
-            // Move to previous input on backspace if current is empty
             await _inputRefs[index - 1].FocusAsync();
         }
         else if (e.Key.Length == 1 && char.IsLetter(e.Key[0]))
@@ -71,10 +77,13 @@
             _initials[index] = e.Key.ToUpper();
             StateHasChanged();
             
-            // Move to next input after entering a letter
             if (index < 2)
             {
                 await _inputRefs[index + 1].FocusAsync();
+            }
+            else if (index == 2 && IsValid)
+            {
+                await Submit();
             }
         }
     }
@@ -90,9 +99,9 @@
                 Initials = string.Join("", _initials).ToUpper(),
                 Score = Score,
                 Date = DateTime.UtcNow,
-                GameDuration = 30.0f, // TODO: Get actual duration
-                SnakeLength = 1, // TODO: Get actual length
-                FoodEaten = 0 // TODO: Get actual food eaten
+                GameDuration = 30.0f,
+                SnakeLength = 1,
+                FoodEaten = 0
             };
 
             await TableStorageService.SaveHighScoreAsync(highScore);
