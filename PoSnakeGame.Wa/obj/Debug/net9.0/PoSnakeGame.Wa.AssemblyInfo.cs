@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PoSnakeGame.Wa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c18ab7803bfbcc96b08b8af6cd8c2cf5c58377e9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac341fd048507d88e9aec48959ee011f7ea9cabf")]
 [assembly: System.Reflection.AssemblyProductAttribute("PoSnakeGame.Wa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PoSnakeGame.Wa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

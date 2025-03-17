@@ -1,37 +1,68 @@
-# Binaries
-/**/*.dll
-/**/*.exe
-
-# Build results
-/bin
-/obj
-/publish
+# Binaries and build output
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
 
 # Visual Studio files
-/.vs
-/*.suo
-/*.user
-/*.userosscache
-/*.sln.docstates
+.vs/
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+
+# Unity specific
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+.consulo/
+
+# Game development specific
+[Aa]ssets/[Ss]treamingAssets/
+*.apk
+*.unitypackage
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Backup & temporary files
+*~
+*.bak
+*.swp
+*.tmp
 
 # NuGet packages
-/packages
+*.nupkg
+packages/
+*.nuget.props
+*.nuget.targets
 
-# Other
-deploy.zip
-__blobstorage__/
-__queuestorage__/
-PoSnakeGame.Wa/__blobstorage__/
-PoSnakeGame.Wa/__queuestorage__/
-PoSnakeGame.Wa/AzuriteConfig
-PoSnakeGame.Wa/__azurite_db_blob__.json
-PoSnakeGame.Wa/__azurite_db_blob_extent__.json
-PoSnakeGame.Wa/__azurite_db_queue__.json
-PoSnakeGame.Wa/__azurite_db_queue_extent__.json
-PoSnakeGame.Wa/__azurite_db_table__.json
-AzuriteConfig
-__azurite_db_blob__.json
-__azurite_db_blob_extent__.json
-__azurite_db_queue__.json
-__azurite_db_queue_extent__.json
-__azurite_db_table__.json
+# Logs
+*.log
+logs/
+
+# IDE specific files
+.idea/
+.vscode/
+*.code-workspace
