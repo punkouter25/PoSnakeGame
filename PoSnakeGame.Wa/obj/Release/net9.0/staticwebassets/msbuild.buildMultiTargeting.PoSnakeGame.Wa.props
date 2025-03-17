@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PoSnakeGame.Wa.props" />
+</Project>

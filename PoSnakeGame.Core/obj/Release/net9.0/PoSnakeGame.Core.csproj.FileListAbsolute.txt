@@ -1,0 +1,13 @@
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\bin\Release\net9.0\PoSnakeGame.Core.deps.json
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\bin\Release\net9.0\PoSnakeGame.Core.dll
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\bin\Release\net9.0\PoSnakeGame.Core.pdb
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\obj\Release\net9.0\PoSnakeGame.Core.csproj.AssemblyReference.cache
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\obj\Release\net9.0\PoSnakeGame.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\obj\Release\net9.0\PoSnakeGame.Core.AssemblyInfoInputs.cache
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\obj\Release\net9.0\PoSnakeGame.Core.AssemblyInfo.cs
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\obj\Release\net9.0\PoSnakeGame.Core.csproj.CoreCompileInputs.cache
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\obj\Release\net9.0\PoSnakeGame.Core.sourcelink.json
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\obj\Release\net9.0\PoSnakeGame.Core.dll
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\obj\Release\net9.0\refint\PoSnakeGame.Core.dll
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\obj\Release\net9.0\PoSnakeGame.Core.pdb
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Core\obj\Release\net9.0\ref\PoSnakeGame.Core.dll

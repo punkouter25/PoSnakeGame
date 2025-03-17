@@ -1,44 +1,37 @@
-# .NET Core
-*.swp
-*.*~
-project.lock.json
-.DS_Store
-*.pyc
-nupkg/
-
-# Visual Studio Code
-.vscode
-
-# User-specific files
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
+# Binaries
+/**/*.dll
+/**/*.exe
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-build/
-bld/
-[Bb]in/
-[Oo]bj/
-[Oo]ut/
-msbuild.log
-msbuild.err
-msbuild.wrn
+/bin
+/obj
+/publish
 
-# Visual Studio
-.vs/
+# Visual Studio files
+/.vs
+/*.suo
+/*.user
+/*.userosscache
+/*.sln.docstates
 
-# Azure
-*.publishsettings
-PublishProfiles/
-*.pubxml
+# NuGet packages
+/packages
 
-# Logs
-logs/
-*.log
+# Other
+deploy.zip
+__blobstorage__/
+__queuestorage__/
+PoSnakeGame.Wa/__blobstorage__/
+PoSnakeGame.Wa/__queuestorage__/
+PoSnakeGame.Wa/AzuriteConfig
+PoSnakeGame.Wa/__azurite_db_blob__.json
+PoSnakeGame.Wa/__azurite_db_blob_extent__.json
+PoSnakeGame.Wa/__azurite_db_queue__.json
+PoSnakeGame.Wa/__azurite_db_queue_extent__.json
+PoSnakeGame.Wa/__azurite_db_table__.json
+AzuriteConfig
+__azurite_db_blob__.json
+__azurite_db_blob_extent__.json
+__azurite_db_queue__.json
+__azurite_db_queue_extent__.json
+__azurite_db_table__.json

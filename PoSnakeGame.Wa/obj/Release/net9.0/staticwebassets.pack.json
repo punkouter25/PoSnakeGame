@@ -1,0 +1,53 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Release\\net9.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\wwwroot\\css\\game.css",
+      "PackagePath": "staticwebassets\\css\\game.css"
+    },
+    {
+      "Id": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\wwwroot\\css\\statistics.css",
+      "PackagePath": "staticwebassets\\css\\statistics.css"
+    },
+    {
+      "Id": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\wwwroot\\js\\game.js",
+      "PackagePath": "staticwebassets\\js\\game.js"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.PoSnakeGame.Wa.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.PoSnakeGame.Wa.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.build.PoSnakeGame.Wa.props",
+      "PackagePath": "build\\PoSnakeGame.Wa.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.PoSnakeGame.Wa.props",
+      "PackagePath": "buildMultiTargeting\\PoSnakeGame.Wa.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.buildTransitive.PoSnakeGame.Wa.props",
+      "PackagePath": "buildTransitive\\PoSnakeGame.Wa.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
