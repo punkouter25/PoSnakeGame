@@ -9769,13 +9769,250 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm.br",
+      "Route": "_framework/PoSnakeGame.Core.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000082960013"
+          "Quality": "0.000083028894"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12043"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"l1sKZdEVTEz9Wm5RWLCIHqqC9kMeSdC8n61NUbj2y/0=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Core.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000071341942"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14016"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F6ClQmeZUiE016zvwHJknRQNjPBbgEPnJ4sWo5dkA3g=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Core.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31509"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Core.wasm.br",
+      "AssetFile": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm.br",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12043"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"l1sKZdEVTEz9Wm5RWLCIHqqC9kMeSdC8n61NUbj2y/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-l1sKZdEVTEz9Wm5RWLCIHqqC9kMeSdC8n61NUbj2y/0="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Core.wasm.gz",
+      "AssetFile": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14016"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F6ClQmeZUiE016zvwHJknRQNjPBbgEPnJ4sWo5dkA3g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-F6ClQmeZUiE016zvwHJknRQNjPBbgEPnJ4sWo5dkA3g="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm.br",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "br",
+          "Quality": "0.000083028894"
         }
       ],
       "ResponseHeaders": [
@@ -9793,7 +10030,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12053"
+          "Value": "12043"
         },
         {
           "Name": "Content-Type",
@@ -9801,15 +10038,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"F7BIMjElWfzFVm1rCMhwV17rjfiiauYt+J6oCDIKSkQ=\""
+          "Value": "\"l1sKZdEVTEz9Wm5RWLCIHqqC9kMeSdC8n61NUbj2y/0=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I=\""
+          "Value": "W/\"WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -9819,11 +10056,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "nyq9tco52j"
+          "Value": "yivv7qty4c"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I="
+          "Value": "sha256-WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ="
         },
         {
           "Name": "label",
@@ -9832,13 +10069,13 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm.gz",
+      "Route": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000071357214"
+          "Quality": "0.000071341942"
         }
       ],
       "ResponseHeaders": [
@@ -9856,7 +10093,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14013"
+          "Value": "14016"
         },
         {
           "Name": "Content-Type",
@@ -9864,15 +10101,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"gjMm/J7dJsYI1eZJACSUcQkP+L4WrmE4ibH4C1AnPNY=\""
+          "Value": "\"F6ClQmeZUiE016zvwHJknRQNjPBbgEPnJ4sWo5dkA3g=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I=\""
+          "Value": "W/\"WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -9882,11 +10119,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "nyq9tco52j"
+          "Value": "yivv7qty4c"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I="
+          "Value": "sha256-WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ="
         },
         {
           "Name": "label",
@@ -9895,8 +10132,8 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm",
+      "Route": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9917,21 +10154,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I=\""
+          "Value": "\"WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "nyq9tco52j"
+          "Value": "yivv7qty4c"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I="
+          "Value": "sha256-WhBc1R4OkNMZDgYb7fuMjw3gQvija2YmdTdbq7RwRNQ="
         },
         {
           "Name": "label",
@@ -9940,8 +10177,8 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm.br",
-      "AssetFile": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm.br",
+      "Route": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm.br",
+      "AssetFile": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9958,7 +10195,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12053"
+          "Value": "12043"
         },
         {
           "Name": "Content-Type",
@@ -9966,11 +10203,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"F7BIMjElWfzFVm1rCMhwV17rjfiiauYt+J6oCDIKSkQ=\""
+          "Value": "\"l1sKZdEVTEz9Wm5RWLCIHqqC9kMeSdC8n61NUbj2y/0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -9980,11 +10217,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "nyq9tco52j"
+          "Value": "yivv7qty4c"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-F7BIMjElWfzFVm1rCMhwV17rjfiiauYt+J6oCDIKSkQ="
+          "Value": "sha256-l1sKZdEVTEz9Wm5RWLCIHqqC9kMeSdC8n61NUbj2y/0="
         },
         {
           "Name": "label",
@@ -9993,8 +10230,8 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm.gz",
-      "AssetFile": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm.gz",
+      "Route": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm.gz",
+      "AssetFile": "_framework/PoSnakeGame.Core.yivv7qty4c.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10011,7 +10248,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14013"
+          "Value": "14016"
         },
         {
           "Name": "Content-Type",
@@ -10019,11 +10256,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"gjMm/J7dJsYI1eZJACSUcQkP+L4WrmE4ibH4C1AnPNY=\""
+          "Value": "\"F6ClQmeZUiE016zvwHJknRQNjPBbgEPnJ4sWo5dkA3g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10033,11 +10270,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "nyq9tco52j"
+          "Value": "yivv7qty4c"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-gjMm/J7dJsYI1eZJACSUcQkP+L4WrmE4ibH4C1AnPNY="
+          "Value": "sha256-F6ClQmeZUiE016zvwHJknRQNjPBbgEPnJ4sWo5dkA3g="
         },
         {
           "Name": "label",
@@ -10046,13 +10283,13 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm.br",
+      "Route": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000082960013"
+          "Quality": "0.000206143063"
         }
       ],
       "ResponseHeaders": [
@@ -10062,7 +10299,7 @@
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -10070,7 +10307,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12053"
+          "Value": "4850"
         },
         {
           "Name": "Content-Type",
@@ -10078,15 +10315,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"F7BIMjElWfzFVm1rCMhwV17rjfiiauYt+J6oCDIKSkQ=\""
+          "Value": "\"z5pKQGny9+jg2MxArqKEnDuivDRXqgzhJqXO/dvO/68=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I=\""
+          "Value": "W/\"lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10095,264 +10332,27 @@
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "ea6zhqvjy8"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I="
+          "Value": "sha256-lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE="
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/PoSnakeGame.Infrastructure.wasm"
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm.gz",
+      "Route": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000071357214"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "14013"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"gjMm/J7dJsYI1eZJACSUcQkP+L4WrmE4ibH4C1AnPNY=\""
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Core.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "31509"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-v53s0M7o548YNdsZs2X2uftmH9fT9z5uLf4hVWJSt+I="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Core.wasm.br",
-      "AssetFile": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm.br",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "12053"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"F7BIMjElWfzFVm1rCMhwV17rjfiiauYt+J6oCDIKSkQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-F7BIMjElWfzFVm1rCMhwV17rjfiiauYt+J6oCDIKSkQ="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Core.wasm.gz",
-      "AssetFile": "_framework/PoSnakeGame.Core.nyq9tco52j.wasm.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "14013"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"gjMm/J7dJsYI1eZJACSUcQkP+L4WrmE4ibH4C1AnPNY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-gjMm/J7dJsYI1eZJACSUcQkP+L4WrmE4ibH4C1AnPNY="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm.br",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "br",
-          "Quality": "0.000206015657"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4853"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"shvyM6n/G6DU/vHLYHT3Fy/rROs7ESQPFzDuRwFZg8s=\""
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "cv1gainjn5"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA="
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/PoSnakeGame.Infrastructure.wasm"
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000183755972"
+          "Quality": "0.000183789745"
         }
       ],
       "ResponseHeaders": [
@@ -10370,7 +10370,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5441"
+          "Value": "5440"
         },
         {
           "Name": "Content-Type",
@@ -10378,15 +10378,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"t8NeFigjsROqYemoqYJ+UIGE/H1yCMexOEk3GzT5tOo=\""
+          "Value": "\"Ws8kAN/bD43MkHTttfF6w4bpdO/1qLXSHq/5/S1S5k8=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA=\""
+          "Value": "W/\"lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10396,11 +10396,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "cv1gainjn5"
+          "Value": "ea6zhqvjy8"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA="
+          "Value": "sha256-lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE="
         },
         {
           "Name": "label",
@@ -10409,8 +10409,8 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm",
+      "Route": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10431,21 +10431,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA=\""
+          "Value": "\"lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "cv1gainjn5"
+          "Value": "ea6zhqvjy8"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA="
+          "Value": "sha256-lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE="
         },
         {
           "Name": "label",
@@ -10454,8 +10454,8 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm.br",
-      "AssetFile": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm.br",
+      "Route": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm.br",
+      "AssetFile": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10472,7 +10472,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4853"
+          "Value": "4850"
         },
         {
           "Name": "Content-Type",
@@ -10480,11 +10480,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"shvyM6n/G6DU/vHLYHT3Fy/rROs7ESQPFzDuRwFZg8s=\""
+          "Value": "\"z5pKQGny9+jg2MxArqKEnDuivDRXqgzhJqXO/dvO/68=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10494,11 +10494,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "cv1gainjn5"
+          "Value": "ea6zhqvjy8"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-shvyM6n/G6DU/vHLYHT3Fy/rROs7ESQPFzDuRwFZg8s="
+          "Value": "sha256-z5pKQGny9+jg2MxArqKEnDuivDRXqgzhJqXO/dvO/68="
         },
         {
           "Name": "label",
@@ -10507,8 +10507,8 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm.gz",
-      "AssetFile": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm.gz",
+      "Route": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm.gz",
+      "AssetFile": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10525,7 +10525,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5441"
+          "Value": "5440"
         },
         {
           "Name": "Content-Type",
@@ -10533,11 +10533,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"t8NeFigjsROqYemoqYJ+UIGE/H1yCMexOEk3GzT5tOo=\""
+          "Value": "\"Ws8kAN/bD43MkHTttfF6w4bpdO/1qLXSHq/5/S1S5k8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10547,11 +10547,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "cv1gainjn5"
+          "Value": "ea6zhqvjy8"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-t8NeFigjsROqYemoqYJ+UIGE/H1yCMexOEk3GzT5tOo="
+          "Value": "sha256-Ws8kAN/bD43MkHTttfF6w4bpdO/1qLXSHq/5/S1S5k8="
         },
         {
           "Name": "label",
@@ -10561,12 +10561,12 @@
     },
     {
       "Route": "_framework/PoSnakeGame.Infrastructure.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm.br",
+      "AssetFile": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000206015657"
+          "Quality": "0.000206143063"
         }
       ],
       "ResponseHeaders": [
@@ -10584,7 +10584,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4853"
+          "Value": "4850"
         },
         {
           "Name": "Content-Type",
@@ -10592,15 +10592,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"shvyM6n/G6DU/vHLYHT3Fy/rROs7ESQPFzDuRwFZg8s=\""
+          "Value": "\"z5pKQGny9+jg2MxArqKEnDuivDRXqgzhJqXO/dvO/68=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA=\""
+          "Value": "W/\"lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10610,18 +10610,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA="
+          "Value": "sha256-lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Infrastructure.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm.gz",
+      "AssetFile": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000183755972"
+          "Quality": "0.000183789745"
         }
       ],
       "ResponseHeaders": [
@@ -10639,7 +10639,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5441"
+          "Value": "5440"
         },
         {
           "Name": "Content-Type",
@@ -10647,15 +10647,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"t8NeFigjsROqYemoqYJ+UIGE/H1yCMexOEk3GzT5tOo=\""
+          "Value": "\"Ws8kAN/bD43MkHTttfF6w4bpdO/1qLXSHq/5/S1S5k8=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA=\""
+          "Value": "W/\"lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10665,13 +10665,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA="
+          "Value": "sha256-lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Infrastructure.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10692,23 +10692,23 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA=\""
+          "Value": "\"lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-iJBg1bjuwkzu94v/bwdkk9mNoV1oscsVKj1GFIL9WsA="
+          "Value": "sha256-lhMlRsIMmO1M423AV4EIjRnzby7W53LZ7xGQV43e4hE="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Infrastructure.wasm.br",
-      "AssetFile": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm.br",
+      "AssetFile": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10725,7 +10725,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4853"
+          "Value": "4850"
         },
         {
           "Name": "Content-Type",
@@ -10733,11 +10733,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"shvyM6n/G6DU/vHLYHT3Fy/rROs7ESQPFzDuRwFZg8s=\""
+          "Value": "\"z5pKQGny9+jg2MxArqKEnDuivDRXqgzhJqXO/dvO/68=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10747,13 +10747,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-shvyM6n/G6DU/vHLYHT3Fy/rROs7ESQPFzDuRwFZg8s="
+          "Value": "sha256-z5pKQGny9+jg2MxArqKEnDuivDRXqgzhJqXO/dvO/68="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Infrastructure.wasm.gz",
-      "AssetFile": "_framework/PoSnakeGame.Infrastructure.cv1gainjn5.wasm.gz",
+      "AssetFile": "_framework/PoSnakeGame.Infrastructure.ea6zhqvjy8.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10770,7 +10770,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5441"
+          "Value": "5440"
         },
         {
           "Name": "Content-Type",
@@ -10778,11 +10778,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"t8NeFigjsROqYemoqYJ+UIGE/H1yCMexOEk3GzT5tOo=\""
+          "Value": "\"Ws8kAN/bD43MkHTttfF6w4bpdO/1qLXSHq/5/S1S5k8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10792,18 +10792,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-t8NeFigjsROqYemoqYJ+UIGE/H1yCMexOEk3GzT5tOo="
+          "Value": "sha256-Ws8kAN/bD43MkHTttfF6w4bpdO/1qLXSHq/5/S1S5k8="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm.br",
+      "Route": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000061954030"
+          "Quality": "0.000062061689"
         }
       ],
       "ResponseHeaders": [
@@ -10821,7 +10821,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "16140"
+          "Value": "16112"
         },
         {
           "Name": "Content-Type",
@@ -10829,15 +10829,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lm6VNmQNEafZLfv0rnnXhC6EEs6ZcPpucCQy1R89yjw=\""
+          "Value": "\"RUB/QKC6R74CsngsFWMtwb9CusDp001n+WQ5nv2I4j4=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg=\""
+          "Value": "W/\"ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10847,11 +10847,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ulwg8kyaup"
+          "Value": "hzemf71cne"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg="
+          "Value": "sha256-ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI="
         },
         {
           "Name": "label",
@@ -10860,8 +10860,8 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm.gz",
+      "Route": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -10892,15 +10892,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dGdkGH8vEJrr8p8AYz8tUFvKHY8Ql1avP8CSXvud8aU=\""
+          "Value": "\"VungnhRCzahMk+RDVFVnwIQmUKSu/Rt/DX7ZO3MKJzk=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg=\""
+          "Value": "W/\"ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -10910,11 +10910,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ulwg8kyaup"
+          "Value": "hzemf71cne"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg="
+          "Value": "sha256-ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI="
         },
         {
           "Name": "label",
@@ -10923,8 +10923,8 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm",
+      "Route": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10945,21 +10945,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg=\""
+          "Value": "\"ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ulwg8kyaup"
+          "Value": "hzemf71cne"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg="
+          "Value": "sha256-ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI="
         },
         {
           "Name": "label",
@@ -10968,8 +10968,8 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm.br",
-      "AssetFile": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm.br",
+      "Route": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm.br",
+      "AssetFile": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10986,7 +10986,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "16140"
+          "Value": "16112"
         },
         {
           "Name": "Content-Type",
@@ -10994,11 +10994,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lm6VNmQNEafZLfv0rnnXhC6EEs6ZcPpucCQy1R89yjw=\""
+          "Value": "\"RUB/QKC6R74CsngsFWMtwb9CusDp001n+WQ5nv2I4j4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -11008,11 +11008,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ulwg8kyaup"
+          "Value": "hzemf71cne"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-lm6VNmQNEafZLfv0rnnXhC6EEs6ZcPpucCQy1R89yjw="
+          "Value": "sha256-RUB/QKC6R74CsngsFWMtwb9CusDp001n+WQ5nv2I4j4="
         },
         {
           "Name": "label",
@@ -11021,8 +11021,8 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm.gz",
-      "AssetFile": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm.gz",
+      "Route": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm.gz",
+      "AssetFile": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11047,11 +11047,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dGdkGH8vEJrr8p8AYz8tUFvKHY8Ql1avP8CSXvud8aU=\""
+          "Value": "\"VungnhRCzahMk+RDVFVnwIQmUKSu/Rt/DX7ZO3MKJzk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -11061,11 +11061,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ulwg8kyaup"
+          "Value": "hzemf71cne"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-dGdkGH8vEJrr8p8AYz8tUFvKHY8Ql1avP8CSXvud8aU="
+          "Value": "sha256-VungnhRCzahMk+RDVFVnwIQmUKSu/Rt/DX7ZO3MKJzk="
         },
         {
           "Name": "label",
@@ -11075,12 +11075,12 @@
     },
     {
       "Route": "_framework/PoSnakeGame.Wa.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm.br",
+      "AssetFile": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000061954030"
+          "Quality": "0.000062061689"
         }
       ],
       "ResponseHeaders": [
@@ -11098,7 +11098,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "16140"
+          "Value": "16112"
         },
         {
           "Name": "Content-Type",
@@ -11106,15 +11106,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lm6VNmQNEafZLfv0rnnXhC6EEs6ZcPpucCQy1R89yjw=\""
+          "Value": "\"RUB/QKC6R74CsngsFWMtwb9CusDp001n+WQ5nv2I4j4=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg=\""
+          "Value": "W/\"ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -11124,13 +11124,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg="
+          "Value": "sha256-ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Wa.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm.gz",
+      "AssetFile": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -11161,15 +11161,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dGdkGH8vEJrr8p8AYz8tUFvKHY8Ql1avP8CSXvud8aU=\""
+          "Value": "\"VungnhRCzahMk+RDVFVnwIQmUKSu/Rt/DX7ZO3MKJzk=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg=\""
+          "Value": "W/\"ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -11179,13 +11179,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg="
+          "Value": "sha256-ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Wa.wasm",
-      "AssetFile": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm",
+      "AssetFile": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11206,23 +11206,23 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg=\""
+          "Value": "\"ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-EoF+RuLfYlQoaqnJiyduPoiDs53U9Q5yAErdAsYGncg="
+          "Value": "sha256-ow8Mr0PqwIuaEKnVSXf7UpuINquUX0AgD2dkZaoG5jI="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Wa.wasm.br",
-      "AssetFile": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm.br",
+      "AssetFile": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11239,7 +11239,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "16140"
+          "Value": "16112"
         },
         {
           "Name": "Content-Type",
@@ -11247,11 +11247,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lm6VNmQNEafZLfv0rnnXhC6EEs6ZcPpucCQy1R89yjw=\""
+          "Value": "\"RUB/QKC6R74CsngsFWMtwb9CusDp001n+WQ5nv2I4j4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -11261,13 +11261,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-lm6VNmQNEafZLfv0rnnXhC6EEs6ZcPpucCQy1R89yjw="
+          "Value": "sha256-RUB/QKC6R74CsngsFWMtwb9CusDp001n+WQ5nv2I4j4="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Wa.wasm.gz",
-      "AssetFile": "_framework/PoSnakeGame.Wa.ulwg8kyaup.wasm.gz",
+      "AssetFile": "_framework/PoSnakeGame.Wa.hzemf71cne.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11292,11 +11292,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dGdkGH8vEJrr8p8AYz8tUFvKHY8Ql1avP8CSXvud8aU=\""
+          "Value": "\"VungnhRCzahMk+RDVFVnwIQmUKSu/Rt/DX7ZO3MKJzk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:12 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:48 GMT"
         },
         {
           "Name": "Vary",
@@ -11306,7 +11306,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-dGdkGH8vEJrr8p8AYz8tUFvKHY8Ql1avP8CSXvud8aU="
+          "Value": "sha256-VungnhRCzahMk+RDVFVnwIQmUKSu/Rt/DX7ZO3MKJzk="
         }
       ]
     },
@@ -34977,17 +34977,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qc4BGNKoR7Ngzm+BklLICajCPNvF1ChfB8kiW8pUjLc=\""
+          "Value": "\"ltp8LnsEF54OTWg/4HdNJoEzZ0LiM9rPoMaBJ9qMNqM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:13 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:49 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qc4BGNKoR7Ngzm+BklLICajCPNvF1ChfB8kiW8pUjLc="
+          "Value": "sha256-ltp8LnsEF54OTWg/4HdNJoEzZ0LiM9rPoMaBJ9qMNqM="
         }
       ]
     },
@@ -34998,7 +34998,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000225886605"
+          "Quality": "0.000226039783"
         }
       ],
       "ResponseHeaders": [
@@ -35016,7 +35016,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4426"
+          "Value": "4423"
         },
         {
           "Name": "Content-Type",
@@ -35024,15 +35024,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AMLbrURv/AU6qWPkCNDgAoMzvo5aHl8TbIUizEA5C0o=\""
+          "Value": "\"9Rk7M4TqzvNY5EJwlNLgDqFBaCjCUfS06pW1B8dm9OU=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"qc4BGNKoR7Ngzm+BklLICajCPNvF1ChfB8kiW8pUjLc=\""
+          "Value": "W/\"ltp8LnsEF54OTWg/4HdNJoEzZ0LiM9rPoMaBJ9qMNqM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:13 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:49 GMT"
         },
         {
           "Name": "Vary",
@@ -35042,7 +35042,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qc4BGNKoR7Ngzm+BklLICajCPNvF1ChfB8kiW8pUjLc="
+          "Value": "sha256-ltp8LnsEF54OTWg/4HdNJoEzZ0LiM9rPoMaBJ9qMNqM="
         }
       ]
     },
@@ -35053,7 +35053,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000205634382"
+          "Quality": "0.000205676676"
         }
       ],
       "ResponseHeaders": [
@@ -35071,7 +35071,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4862"
+          "Value": "4861"
         },
         {
           "Name": "Content-Type",
@@ -35079,15 +35079,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"MUKpTXUh66yvLEyy4xpLIfPTkA9mGkR/6URR2DcV0D0=\""
+          "Value": "\"0KTfO4AEDOTHLdS2wpcWdM43SUUzaOr8View9qHzYFA=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"qc4BGNKoR7Ngzm+BklLICajCPNvF1ChfB8kiW8pUjLc=\""
+          "Value": "W/\"ltp8LnsEF54OTWg/4HdNJoEzZ0LiM9rPoMaBJ9qMNqM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:13 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:49 GMT"
         },
         {
           "Name": "Vary",
@@ -35097,7 +35097,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qc4BGNKoR7Ngzm+BklLICajCPNvF1ChfB8kiW8pUjLc="
+          "Value": "sha256-ltp8LnsEF54OTWg/4HdNJoEzZ0LiM9rPoMaBJ9qMNqM="
         }
       ]
     },
@@ -35120,7 +35120,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4426"
+          "Value": "4423"
         },
         {
           "Name": "Content-Type",
@@ -35128,11 +35128,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AMLbrURv/AU6qWPkCNDgAoMzvo5aHl8TbIUizEA5C0o=\""
+          "Value": "\"9Rk7M4TqzvNY5EJwlNLgDqFBaCjCUfS06pW1B8dm9OU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:13 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:49 GMT"
         },
         {
           "Name": "Vary",
@@ -35142,7 +35142,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-AMLbrURv/AU6qWPkCNDgAoMzvo5aHl8TbIUizEA5C0o="
+          "Value": "sha256-9Rk7M4TqzvNY5EJwlNLgDqFBaCjCUfS06pW1B8dm9OU="
         }
       ]
     },
@@ -35165,7 +35165,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4862"
+          "Value": "4861"
         },
         {
           "Name": "Content-Type",
@@ -35173,11 +35173,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"MUKpTXUh66yvLEyy4xpLIfPTkA9mGkR/6URR2DcV0D0=\""
+          "Value": "\"0KTfO4AEDOTHLdS2wpcWdM43SUUzaOr8View9qHzYFA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:19:13 GMT"
+          "Value": "Mon, 17 Mar 2025 20:56:49 GMT"
         },
         {
           "Name": "Vary",
@@ -35187,7 +35187,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-MUKpTXUh66yvLEyy4xpLIfPTkA9mGkR/6URR2DcV0D0="
+          "Value": "sha256-0KTfO4AEDOTHLdS2wpcWdM43SUUzaOr8View9qHzYFA="
         }
       ]
     },

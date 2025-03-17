@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "PoSnakeGame.Wa",
   "resources": {
-    "hash": "sha256-qJ5ooXNu/bSniA2Fa9NTsv5qFQbkWVGbbsz75yvCI7Q=",
+    "hash": "sha256-PWmIplykyo09PhQ8kO+lco58DJdU03zADGpvwFunRXM=",
     "fingerprinting": {
       "Azure.Core.ltf0pljmuu.wasm": "Azure.Core.wasm",
       "Azure.Data.Tables.tgevb437th.wasm": "Azure.Data.Tables.wasm",
@@ -209,12 +209,12 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "PoSnakeGame.Core.kfhjtl20s9.wasm": "PoSnakeGame.Core.wasm",
-      "PoSnakeGame.Infrastructure.fqlzpioh7v.wasm": "PoSnakeGame.Infrastructure.wasm",
-      "PoSnakeGame.Core.dogxinijyh.pdb": "PoSnakeGame.Core.pdb",
-      "PoSnakeGame.Infrastructure.abdnrsl7kz.pdb": "PoSnakeGame.Infrastructure.pdb",
-      "PoSnakeGame.Wa.9eo76xyzba.wasm": "PoSnakeGame.Wa.wasm",
-      "PoSnakeGame.Wa.6aqgpjh0ae.pdb": "PoSnakeGame.Wa.pdb"
+      "PoSnakeGame.Core.6ko9vbp4gq.wasm": "PoSnakeGame.Core.wasm",
+      "PoSnakeGame.Infrastructure.0huuxy9xcj.wasm": "PoSnakeGame.Infrastructure.wasm",
+      "PoSnakeGame.Core.1i0a8yi8m0.pdb": "PoSnakeGame.Core.pdb",
+      "PoSnakeGame.Infrastructure.3cz90v89fd.pdb": "PoSnakeGame.Infrastructure.pdb",
+      "PoSnakeGame.Wa.m3kf0o5j2y.wasm": "PoSnakeGame.Wa.wasm",
+      "PoSnakeGame.Wa.xlecdv3t2e.pdb": "PoSnakeGame.Wa.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.8bti36lthm.js": "sha256-HFADmT26AarHu4tMjFaTPxINmQjBJGtdPN+CKjtNMFE="
@@ -432,14 +432,14 @@
       "WindowsBase.tuf34ieu7y.wasm": "sha256-Bd+l972cOS1eVeLzrQNlgD6LPWV1QXBSzJhv8Tx1WGI=",
       "mscorlib.5q5u0swn6q.wasm": "sha256-g9cI1sECkF7bxMqOSB+W0a4utdDsqTrqZzyiAEeA65g=",
       "netstandard.w8gk1pigg1.wasm": "sha256-QFR5QNPfvyZTexW3IA/AFx6ZmIF/TecvOUsSK4gM4po=",
-      "PoSnakeGame.Core.kfhjtl20s9.wasm": "sha256-ALBygkV7SZwfeSl2AO/RufXe1sikEBVgrocrXIRZR9k=",
-      "PoSnakeGame.Infrastructure.fqlzpioh7v.wasm": "sha256-x1n4p8w83r9y9dHEGyTtL7fTk8/8kLEWT2Ekpu1uIFc=",
-      "PoSnakeGame.Wa.9eo76xyzba.wasm": "sha256-QUEEQbiHPQA/tZ4zy73dVk63pd04MANwTnlQfZXBqqQ="
+      "PoSnakeGame.Core.6ko9vbp4gq.wasm": "sha256-agCwd4QCcqbmPukBQljnXYKq/JK2pEW+BU8H4j/3gyE=",
+      "PoSnakeGame.Infrastructure.0huuxy9xcj.wasm": "sha256-PLHsOrrSRBnBs03/MyVuhql422qvrJFoFXBxD1Ymvuo=",
+      "PoSnakeGame.Wa.m3kf0o5j2y.wasm": "sha256-goPeqZreDi1pidvrvt9PSKoNQ5mpIu8d6SRgkQ+exWY="
     },
     "pdb": {
-      "PoSnakeGame.Core.dogxinijyh.pdb": "sha256-rcBdF5P5O/g+1NyJWS4y7XfoAYd8sZCR2Zwv44SOjlU=",
-      "PoSnakeGame.Infrastructure.abdnrsl7kz.pdb": "sha256-Jp5u/TobQ51jvP2pU0WrIFxUvowf7i40D07QHUawYxE=",
-      "PoSnakeGame.Wa.6aqgpjh0ae.pdb": "sha256-Dt64iL66ypxvxxp+H933PRE6M+Z6eAaNrPAc4Gx++yU="
+      "PoSnakeGame.Core.1i0a8yi8m0.pdb": "sha256-9+66/XQ8BR2cvI6t1DHW2HLkHFP71bJNL+UtjgPdEs4=",
+      "PoSnakeGame.Infrastructure.3cz90v89fd.pdb": "sha256-I7c8KwT9l09rob33jfUCHCdVEVG/yPYR6AGU7CXpQH0=",
+      "PoSnakeGame.Wa.xlecdv3t2e.pdb": "sha256-9U1E0KW51Txy+qpPnD4hrggMBMitCtw05d3cZjAINfw="
     }
   },
   "cacheBootResources": true,

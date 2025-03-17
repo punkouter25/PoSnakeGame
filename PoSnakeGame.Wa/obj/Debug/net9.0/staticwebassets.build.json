@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BHV1XXmB3yvvCqVEoIvsVUdlLOqIEm+81nDvhGd/YHM=",
+  "Hash": "6GLUZOS6LFxWr9yySeQLNvlp9cBRxrNluwUUh8sYev4=",
   "Source": "PoSnakeGame.Wa",
   "BasePath": "/",
   "Mode": "Root",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "90yrqwx1hs",
-      "Integrity": "F/GMkBhFw5GvSf0ig6Y2+0nKflpyeFPSxQVB8PxBwKA=",
+      "Fingerprint": "mqaft2l2c0",
+      "Integrity": "HjkcZZCIubtLu0YLctESV2g+Ceh1FnxMG2ynWvXSLzk=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\blazor.boot.json"
@@ -997,8 +997,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "dogxinijyh",
-      "Integrity": "rcBdF5P5O/g+1NyJWS4y7XfoAYd8sZCR2Zwv44SOjlU=",
+      "Fingerprint": "1i0a8yi8m0",
+      "Integrity": "9+66/XQ8BR2cvI6t1DHW2HLkHFP71bJNL+UtjgPdEs4=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Core\\bin\\Debug\\net9.0\\PoSnakeGame.Core.pdb"
@@ -1018,8 +1018,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "kfhjtl20s9",
-      "Integrity": "ALBygkV7SZwfeSl2AO/RufXe1sikEBVgrocrXIRZR9k=",
+      "Fingerprint": "6ko9vbp4gq",
+      "Integrity": "agCwd4QCcqbmPukBQljnXYKq/JK2pEW+BU8H4j/3gyE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\webcil\\PoSnakeGame.Core.wasm"
@@ -1039,8 +1039,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "abdnrsl7kz",
-      "Integrity": "Jp5u/TobQ51jvP2pU0WrIFxUvowf7i40D07QHUawYxE=",
+      "Fingerprint": "3cz90v89fd",
+      "Integrity": "I7c8KwT9l09rob33jfUCHCdVEVG/yPYR6AGU7CXpQH0=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Infrastructure\\bin\\Debug\\net9.0\\PoSnakeGame.Infrastructure.pdb"
@@ -1060,8 +1060,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "fqlzpioh7v",
-      "Integrity": "x1n4p8w83r9y9dHEGyTtL7fTk8/8kLEWT2Ekpu1uIFc=",
+      "Fingerprint": "0huuxy9xcj",
+      "Integrity": "PLHsOrrSRBnBs03/MyVuhql422qvrJFoFXBxD1Ymvuo=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\webcil\\PoSnakeGame.Infrastructure.wasm"
@@ -1081,8 +1081,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "6aqgpjh0ae",
-      "Integrity": "Dt64iL66ypxvxxp+H933PRE6M+Z6eAaNrPAc4Gx++yU=",
+      "Fingerprint": "xlecdv3t2e",
+      "Integrity": "9U1E0KW51Txy+qpPnD4hrggMBMitCtw05d3cZjAINfw=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\PoSnakeGame.Wa.pdb"
@@ -1102,8 +1102,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "9eo76xyzba",
-      "Integrity": "QUEEQbiHPQA/tZ4zy73dVk63pd04MANwTnlQfZXBqqQ=",
+      "Fingerprint": "m3kf0o5j2y",
+      "Integrity": "goPeqZreDi1pidvrvt9PSKoNQ5mpIu8d6SRgkQ+exWY=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\webcil\\PoSnakeGame.Wa.wasm"
@@ -4658,12 +4658,12 @@
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Security.AccessControl.wasm"
     },
     {
-      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0sluas4v9m-9eo76xyzba.gz",
+      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0sluas4v9m-m3kf0o5j2y.gz",
       "SourceId": "PoSnakeGame.Wa",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/PoSnakeGame.Wa#[.{fingerprint=9eo76xyzba}]!.wasm.gz",
+      "RelativePath": "_framework/PoSnakeGame.Wa#[.{fingerprint=m3kf0o5j2y}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -4672,19 +4672,19 @@
       "RelatedAsset": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Wa.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "usuf8co8z3",
-      "Integrity": "Un6dbZaBXqnmmU5CMA816ecfddUcdE0r9d6wD+8mCqA=",
+      "Fingerprint": "fvaihn4k7a",
+      "Integrity": "dUvi/bee2KurcKupnqdpKUJp+sxOFOYOv1/XrPFZS8U=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Wa.wasm"
     },
     {
-      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0v7cos92tb-abdnrsl7kz.gz",
+      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0v7cos92tb-3cz90v89fd.gz",
       "SourceId": "PoSnakeGame.Wa",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/PoSnakeGame.Infrastructure#[.{fingerprint=abdnrsl7kz}]!.pdb.gz",
+      "RelativePath": "_framework/PoSnakeGame.Infrastructure#[.{fingerprint=3cz90v89fd}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -4693,8 +4693,8 @@
       "RelatedAsset": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Infrastructure.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "uzlnn5nssc",
-      "Integrity": "GuoYcPbnzGFcoyX5d/HHguVvypLIIixVrrs/mDHvwi4=",
+      "Fingerprint": "hynkt2i9vc",
+      "Integrity": "SZsZZo70selR8kkz93B2jZ1x0E69lml0uKs+AhsOF5Y=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Infrastructure.pdb"
@@ -5750,12 +5750,12 @@
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Xml.XmlDocument.wasm"
     },
     {
-      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\dicjjynda1-dogxinijyh.gz",
+      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\dicjjynda1-1i0a8yi8m0.gz",
       "SourceId": "PoSnakeGame.Wa",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/PoSnakeGame.Core#[.{fingerprint=dogxinijyh}]!.pdb.gz",
+      "RelativePath": "_framework/PoSnakeGame.Core#[.{fingerprint=1i0a8yi8m0}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -5764,8 +5764,8 @@
       "RelatedAsset": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Core.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "i1qf6kdq50",
-      "Integrity": "lhdldPFVUG0oJ3Z6s10gYGmCyyMH5h0dB0FTR6L8QmE=",
+      "Fingerprint": "2n1diw0qt1",
+      "Integrity": "jpteu5vhkeFOaePW5qSkbC5rxS+8+vEqEqTCAJsW7U4=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Core.pdb"
@@ -7031,12 +7031,12 @@
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
     },
     {
-      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\l1wvndalqy-kfhjtl20s9.gz",
+      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\l1wvndalqy-6ko9vbp4gq.gz",
       "SourceId": "PoSnakeGame.Wa",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/PoSnakeGame.Core#[.{fingerprint=kfhjtl20s9}]!.wasm.gz",
+      "RelativePath": "_framework/PoSnakeGame.Core#[.{fingerprint=6ko9vbp4gq}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -7045,8 +7045,8 @@
       "RelatedAsset": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Core.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "nnn673gpuo",
-      "Integrity": "va/UnSz7cWSEnlrMDfO0uALoWc8XI2RxUpgF37/nTPw=",
+      "Fingerprint": "yz58quck99",
+      "Integrity": "XiLOM+PdOD9d+Utc1+lvl/7/7HgfMwnBcRAA+7e0lyE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Core.wasm"
@@ -7199,12 +7199,12 @@
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Xml.Linq.wasm"
     },
     {
-      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\lz82w5vboz-fqlzpioh7v.gz",
+      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\lz82w5vboz-0huuxy9xcj.gz",
       "SourceId": "PoSnakeGame.Wa",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/PoSnakeGame.Infrastructure#[.{fingerprint=fqlzpioh7v}]!.wasm.gz",
+      "RelativePath": "_framework/PoSnakeGame.Infrastructure#[.{fingerprint=0huuxy9xcj}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -7213,8 +7213,8 @@
       "RelatedAsset": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Infrastructure.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "ecpg948sca",
-      "Integrity": "Tp3439lrFOMzHWg5du7JXQ/9D+pQUCBupIEEQKYG2jo=",
+      "Fingerprint": "j7zd229ivs",
+      "Integrity": "gXKmb8tAOcfHZMo6NnY+Y9/pylgF+cJCJdnAXkv+b+4=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Infrastructure.wasm"
@@ -8144,7 +8144,7 @@
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Net.HttpListener.wasm"
     },
     {
-      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\tgc6w7klp8-90yrqwx1hs.gz",
+      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\tgc6w7klp8-mqaft2l2c0.gz",
       "SourceId": "PoSnakeGame.Wa",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\",
@@ -8158,8 +8158,8 @@
       "RelatedAsset": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "qpa5s5ifaq",
-      "Integrity": "goqCfu2iKgn/PEw+i8EL12v6sJ488yLZXtgqdJPWpUk=",
+      "Fingerprint": "ch4e4qs48j",
+      "Integrity": "MPr3Yt+03TNB6LxeAitwIhDPz6/PSzSdzllc7jjQ4FQ=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -8963,12 +8963,12 @@
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Reflection.Primitives.wasm"
     },
     {
-      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\y7x1zlzj2p-6aqgpjh0ae.gz",
+      "Identity": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\y7x1zlzj2p-xlecdv3t2e.gz",
       "SourceId": "PoSnakeGame.Wa",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/PoSnakeGame.Wa#[.{fingerprint=6aqgpjh0ae}]!.pdb.gz",
+      "RelativePath": "_framework/PoSnakeGame.Wa#[.{fingerprint=xlecdv3t2e}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -8977,8 +8977,8 @@
       "RelatedAsset": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Wa.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "4u5chpgm9v",
-      "Integrity": "dCJqf1us27XcJgejuC9fKEWvALfZHqDlf9Q1ZAlM83E=",
+      "Fingerprint": "zbh0mp1clk",
+      "Integrity": "Qb5inxArNXq98K7p4zgWh73GLWoGEbrDqChyo2Kuwqo=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Wa.pdb"
@@ -9936,7 +9936,46 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"F/GMkBhFw5GvSf0ig6Y2+0nKflpyeFPSxQVB8PxBwKA=\""
+          "Value": "\"HjkcZZCIubtLu0YLctESV2g+Ceh1FnxMG2ynWvXSLzk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HjkcZZCIubtLu0YLctESV2g+Ceh1FnxMG2ynWvXSLzk="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/blazor.boot.json",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\tgc6w7klp8-mqaft2l2c0.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000076429227"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13083"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MPr3Yt+03TNB6LxeAitwIhDPz6/PSzSdzllc7jjQ4FQ=\""
         },
         {
           "Name": "Last-Modified",
@@ -9945,45 +9984,6 @@
         {
           "Name": "Cache-Control",
           "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-F/GMkBhFw5GvSf0ig6Y2+0nKflpyeFPSxQVB8PxBwKA="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\tgc6w7klp8-90yrqwx1hs.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000076645972"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "13046"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"goqCfu2iKgn/PEw+i8EL12v6sJ488yLZXtgqdJPWpUk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:37:27 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -9999,19 +9999,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"F/GMkBhFw5GvSf0ig6Y2+0nKflpyeFPSxQVB8PxBwKA=\""
+          "Value": "W/\"HjkcZZCIubtLu0YLctESV2g+Ceh1FnxMG2ynWvXSLzk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-F/GMkBhFw5GvSf0ig6Y2+0nKflpyeFPSxQVB8PxBwKA="
+          "Value": "sha256-HjkcZZCIubtLu0YLctESV2g+Ceh1FnxMG2ynWvXSLzk="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\tgc6w7klp8-90yrqwx1hs.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\tgc6w7klp8-mqaft2l2c0.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10020,7 +10020,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "13046"
+          "Value": "13083"
         },
         {
           "Name": "Content-Type",
@@ -10028,11 +10028,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"goqCfu2iKgn/PEw+i8EL12v6sJ488yLZXtgqdJPWpUk=\""
+          "Value": "\"MPr3Yt+03TNB6LxeAitwIhDPz6/PSzSdzllc7jjQ4FQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:37:27 GMT"
+          "Value": "Mon, 17 Mar 2025 09:41:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10050,7 +10050,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-goqCfu2iKgn/PEw+i8EL12v6sJ488yLZXtgqdJPWpUk="
+          "Value": "sha256-MPr3Yt+03TNB6LxeAitwIhDPz6/PSzSdzllc7jjQ4FQ="
         }
       ]
     },
@@ -22708,7 +22708,7 @@
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.dogxinijyh.pdb",
+      "Route": "_framework/PoSnakeGame.Core.1i0a8yi8m0.pdb",
       "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Core.pdb",
       "Selectors": [],
       "ResponseHeaders": [
@@ -22718,7 +22718,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "22452"
+          "Value": "22364"
         },
         {
           "Name": "Content-Type",
@@ -22726,11 +22726,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rcBdF5P5O/g+1NyJWS4y7XfoAYd8sZCR2Zwv44SOjlU=\""
+          "Value": "\"9+66/XQ8BR2cvI6t1DHW2HLkHFP71bJNL+UtjgPdEs4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:19 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22740,7 +22740,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "dogxinijyh"
+          "Value": "1i0a8yi8m0"
         },
         {
           "Name": "label",
@@ -22748,18 +22748,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-rcBdF5P5O/g+1NyJWS4y7XfoAYd8sZCR2Zwv44SOjlU="
+          "Value": "sha256-9+66/XQ8BR2cvI6t1DHW2HLkHFP71bJNL+UtjgPdEs4="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.dogxinijyh.pdb",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\dicjjynda1-dogxinijyh.gz",
+      "Route": "_framework/PoSnakeGame.Core.1i0a8yi8m0.pdb",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\dicjjynda1-1i0a8yi8m0.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000078764965"
+          "Quality": "0.000080547725"
         }
       ],
       "ResponseHeaders": [
@@ -22769,15 +22769,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12695"
+          "Value": "12414"
         },
         {
           "Name": "ETag",
-          "Value": "\"lhdldPFVUG0oJ3Z6s10gYGmCyyMH5h0dB0FTR6L8QmE=\""
+          "Value": "\"jpteu5vhkeFOaePW5qSkbC5rxS+8+vEqEqTCAJsW7U4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22797,13 +22797,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"rcBdF5P5O/g+1NyJWS4y7XfoAYd8sZCR2Zwv44SOjlU=\""
+          "Value": "W/\"9+66/XQ8BR2cvI6t1DHW2HLkHFP71bJNL+UtjgPdEs4=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "dogxinijyh"
+          "Value": "1i0a8yi8m0"
         },
         {
           "Name": "label",
@@ -22811,13 +22811,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-rcBdF5P5O/g+1NyJWS4y7XfoAYd8sZCR2Zwv44SOjlU="
+          "Value": "sha256-9+66/XQ8BR2cvI6t1DHW2HLkHFP71bJNL+UtjgPdEs4="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.dogxinijyh.pdb.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\dicjjynda1-dogxinijyh.gz",
+      "Route": "_framework/PoSnakeGame.Core.1i0a8yi8m0.pdb.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\dicjjynda1-1i0a8yi8m0.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -22826,7 +22826,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12695"
+          "Value": "12414"
         },
         {
           "Name": "Content-Type",
@@ -22834,11 +22834,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lhdldPFVUG0oJ3Z6s10gYGmCyyMH5h0dB0FTR6L8QmE=\""
+          "Value": "\"jpteu5vhkeFOaePW5qSkbC5rxS+8+vEqEqTCAJsW7U4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22856,7 +22856,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "dogxinijyh"
+          "Value": "1i0a8yi8m0"
         },
         {
           "Name": "label",
@@ -22864,12 +22864,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-lhdldPFVUG0oJ3Z6s10gYGmCyyMH5h0dB0FTR6L8QmE="
+          "Value": "sha256-jpteu5vhkeFOaePW5qSkbC5rxS+8+vEqEqTCAJsW7U4="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.kfhjtl20s9.wasm",
+      "Route": "_framework/PoSnakeGame.Core.6ko9vbp4gq.wasm",
       "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Core.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -22887,11 +22887,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ALBygkV7SZwfeSl2AO/RufXe1sikEBVgrocrXIRZR9k=\""
+          "Value": "\"agCwd4QCcqbmPukBQljnXYKq/JK2pEW+BU8H4j/3gyE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22901,7 +22901,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "kfhjtl20s9"
+          "Value": "6ko9vbp4gq"
         },
         {
           "Name": "label",
@@ -22909,18 +22909,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ALBygkV7SZwfeSl2AO/RufXe1sikEBVgrocrXIRZR9k="
+          "Value": "sha256-agCwd4QCcqbmPukBQljnXYKq/JK2pEW+BU8H4j/3gyE="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.kfhjtl20s9.wasm",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\l1wvndalqy-kfhjtl20s9.gz",
+      "Route": "_framework/PoSnakeGame.Core.6ko9vbp4gq.wasm",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\l1wvndalqy-6ko9vbp4gq.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000067681895"
+          "Quality": "0.000069444444"
         }
       ],
       "ResponseHeaders": [
@@ -22930,15 +22930,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14774"
+          "Value": "14399"
         },
         {
           "Name": "ETag",
-          "Value": "\"va/UnSz7cWSEnlrMDfO0uALoWc8XI2RxUpgF37/nTPw=\""
+          "Value": "\"XiLOM+PdOD9d+Utc1+lvl/7/7HgfMwnBcRAA+7e0lyE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22958,13 +22958,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ALBygkV7SZwfeSl2AO/RufXe1sikEBVgrocrXIRZR9k=\""
+          "Value": "W/\"agCwd4QCcqbmPukBQljnXYKq/JK2pEW+BU8H4j/3gyE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "kfhjtl20s9"
+          "Value": "6ko9vbp4gq"
         },
         {
           "Name": "label",
@@ -22972,13 +22972,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ALBygkV7SZwfeSl2AO/RufXe1sikEBVgrocrXIRZR9k="
+          "Value": "sha256-agCwd4QCcqbmPukBQljnXYKq/JK2pEW+BU8H4j/3gyE="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Core.kfhjtl20s9.wasm.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\l1wvndalqy-kfhjtl20s9.gz",
+      "Route": "_framework/PoSnakeGame.Core.6ko9vbp4gq.wasm.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\l1wvndalqy-6ko9vbp4gq.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -22987,7 +22987,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14774"
+          "Value": "14399"
         },
         {
           "Name": "Content-Type",
@@ -22995,11 +22995,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"va/UnSz7cWSEnlrMDfO0uALoWc8XI2RxUpgF37/nTPw=\""
+          "Value": "\"XiLOM+PdOD9d+Utc1+lvl/7/7HgfMwnBcRAA+7e0lyE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23017,7 +23017,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "kfhjtl20s9"
+          "Value": "6ko9vbp4gq"
         },
         {
           "Name": "label",
@@ -23025,7 +23025,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-va/UnSz7cWSEnlrMDfO0uALoWc8XI2RxUpgF37/nTPw="
+          "Value": "sha256-XiLOM+PdOD9d+Utc1+lvl/7/7HgfMwnBcRAA+7e0lyE="
         }
       ]
     },
@@ -23040,7 +23040,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "22452"
+          "Value": "22364"
         },
         {
           "Name": "Content-Type",
@@ -23048,11 +23048,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rcBdF5P5O/g+1NyJWS4y7XfoAYd8sZCR2Zwv44SOjlU=\""
+          "Value": "\"9+66/XQ8BR2cvI6t1DHW2HLkHFP71bJNL+UtjgPdEs4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:19 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23062,18 +23062,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-rcBdF5P5O/g+1NyJWS4y7XfoAYd8sZCR2Zwv44SOjlU="
+          "Value": "sha256-9+66/XQ8BR2cvI6t1DHW2HLkHFP71bJNL+UtjgPdEs4="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Core.pdb",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\dicjjynda1-dogxinijyh.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\dicjjynda1-1i0a8yi8m0.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000078764965"
+          "Quality": "0.000080547725"
         }
       ],
       "ResponseHeaders": [
@@ -23083,15 +23083,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12695"
+          "Value": "12414"
         },
         {
           "Name": "ETag",
-          "Value": "\"lhdldPFVUG0oJ3Z6s10gYGmCyyMH5h0dB0FTR6L8QmE=\""
+          "Value": "\"jpteu5vhkeFOaePW5qSkbC5rxS+8+vEqEqTCAJsW7U4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23111,19 +23111,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"rcBdF5P5O/g+1NyJWS4y7XfoAYd8sZCR2Zwv44SOjlU=\""
+          "Value": "W/\"9+66/XQ8BR2cvI6t1DHW2HLkHFP71bJNL+UtjgPdEs4=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-rcBdF5P5O/g+1NyJWS4y7XfoAYd8sZCR2Zwv44SOjlU="
+          "Value": "sha256-9+66/XQ8BR2cvI6t1DHW2HLkHFP71bJNL+UtjgPdEs4="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Core.pdb.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\dicjjynda1-dogxinijyh.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\dicjjynda1-1i0a8yi8m0.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23132,7 +23132,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12695"
+          "Value": "12414"
         },
         {
           "Name": "Content-Type",
@@ -23140,11 +23140,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lhdldPFVUG0oJ3Z6s10gYGmCyyMH5h0dB0FTR6L8QmE=\""
+          "Value": "\"jpteu5vhkeFOaePW5qSkbC5rxS+8+vEqEqTCAJsW7U4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23162,7 +23162,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-lhdldPFVUG0oJ3Z6s10gYGmCyyMH5h0dB0FTR6L8QmE="
+          "Value": "sha256-jpteu5vhkeFOaePW5qSkbC5rxS+8+vEqEqTCAJsW7U4="
         }
       ]
     },
@@ -23185,11 +23185,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ALBygkV7SZwfeSl2AO/RufXe1sikEBVgrocrXIRZR9k=\""
+          "Value": "\"agCwd4QCcqbmPukBQljnXYKq/JK2pEW+BU8H4j/3gyE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23199,18 +23199,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ALBygkV7SZwfeSl2AO/RufXe1sikEBVgrocrXIRZR9k="
+          "Value": "sha256-agCwd4QCcqbmPukBQljnXYKq/JK2pEW+BU8H4j/3gyE="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Core.wasm",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\l1wvndalqy-kfhjtl20s9.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\l1wvndalqy-6ko9vbp4gq.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000067681895"
+          "Quality": "0.000069444444"
         }
       ],
       "ResponseHeaders": [
@@ -23220,15 +23220,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14774"
+          "Value": "14399"
         },
         {
           "Name": "ETag",
-          "Value": "\"va/UnSz7cWSEnlrMDfO0uALoWc8XI2RxUpgF37/nTPw=\""
+          "Value": "\"XiLOM+PdOD9d+Utc1+lvl/7/7HgfMwnBcRAA+7e0lyE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23248,19 +23248,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ALBygkV7SZwfeSl2AO/RufXe1sikEBVgrocrXIRZR9k=\""
+          "Value": "W/\"agCwd4QCcqbmPukBQljnXYKq/JK2pEW+BU8H4j/3gyE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ALBygkV7SZwfeSl2AO/RufXe1sikEBVgrocrXIRZR9k="
+          "Value": "sha256-agCwd4QCcqbmPukBQljnXYKq/JK2pEW+BU8H4j/3gyE="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Core.wasm.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\l1wvndalqy-kfhjtl20s9.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\l1wvndalqy-6ko9vbp4gq.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23269,7 +23269,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14774"
+          "Value": "14399"
         },
         {
           "Name": "Content-Type",
@@ -23277,11 +23277,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"va/UnSz7cWSEnlrMDfO0uALoWc8XI2RxUpgF37/nTPw=\""
+          "Value": "\"XiLOM+PdOD9d+Utc1+lvl/7/7HgfMwnBcRAA+7e0lyE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23299,173 +23299,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-va/UnSz7cWSEnlrMDfO0uALoWc8XI2RxUpgF37/nTPw="
+          "Value": "sha256-XiLOM+PdOD9d+Utc1+lvl/7/7HgfMwnBcRAA+7e0lyE="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Infrastructure.abdnrsl7kz.pdb",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Infrastructure.pdb",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "14268"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Jp5u/TobQ51jvP2pU0WrIFxUvowf7i40D07QHUawYxE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:19 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "abdnrsl7kz"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/PoSnakeGame.Infrastructure.pdb"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Jp5u/TobQ51jvP2pU0WrIFxUvowf7i40D07QHUawYxE="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Infrastructure.abdnrsl7kz.pdb",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0v7cos92tb-abdnrsl7kz.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000117109732"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "8538"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"GuoYcPbnzGFcoyX5d/HHguVvypLIIixVrrs/mDHvwi4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Jp5u/TobQ51jvP2pU0WrIFxUvowf7i40D07QHUawYxE=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "abdnrsl7kz"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/PoSnakeGame.Infrastructure.pdb"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Jp5u/TobQ51jvP2pU0WrIFxUvowf7i40D07QHUawYxE="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Infrastructure.abdnrsl7kz.pdb.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0v7cos92tb-abdnrsl7kz.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "8538"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"GuoYcPbnzGFcoyX5d/HHguVvypLIIixVrrs/mDHvwi4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "abdnrsl7kz"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/PoSnakeGame.Infrastructure.pdb.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-GuoYcPbnzGFcoyX5d/HHguVvypLIIixVrrs/mDHvwi4="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Infrastructure.fqlzpioh7v.wasm",
+      "Route": "_framework/PoSnakeGame.Infrastructure.0huuxy9xcj.wasm",
       "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Infrastructure.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -23483,11 +23322,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"x1n4p8w83r9y9dHEGyTtL7fTk8/8kLEWT2Ekpu1uIFc=\""
+          "Value": "\"PLHsOrrSRBnBs03/MyVuhql422qvrJFoFXBxD1Ymvuo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23497,7 +23336,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "fqlzpioh7v"
+          "Value": "0huuxy9xcj"
         },
         {
           "Name": "label",
@@ -23505,18 +23344,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-x1n4p8w83r9y9dHEGyTtL7fTk8/8kLEWT2Ekpu1uIFc="
+          "Value": "sha256-PLHsOrrSRBnBs03/MyVuhql422qvrJFoFXBxD1Ymvuo="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Infrastructure.fqlzpioh7v.wasm",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\lz82w5vboz-fqlzpioh7v.gz",
+      "Route": "_framework/PoSnakeGame.Infrastructure.0huuxy9xcj.wasm",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\lz82w5vboz-0huuxy9xcj.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000176647235"
+          "Quality": "0.000180864532"
         }
       ],
       "ResponseHeaders": [
@@ -23526,15 +23365,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5660"
+          "Value": "5528"
         },
         {
           "Name": "ETag",
-          "Value": "\"Tp3439lrFOMzHWg5du7JXQ/9D+pQUCBupIEEQKYG2jo=\""
+          "Value": "\"gXKmb8tAOcfHZMo6NnY+Y9/pylgF+cJCJdnAXkv+b+4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23554,13 +23393,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"x1n4p8w83r9y9dHEGyTtL7fTk8/8kLEWT2Ekpu1uIFc=\""
+          "Value": "W/\"PLHsOrrSRBnBs03/MyVuhql422qvrJFoFXBxD1Ymvuo=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "fqlzpioh7v"
+          "Value": "0huuxy9xcj"
         },
         {
           "Name": "label",
@@ -23568,13 +23407,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-x1n4p8w83r9y9dHEGyTtL7fTk8/8kLEWT2Ekpu1uIFc="
+          "Value": "sha256-PLHsOrrSRBnBs03/MyVuhql422qvrJFoFXBxD1Ymvuo="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Infrastructure.fqlzpioh7v.wasm.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\lz82w5vboz-fqlzpioh7v.gz",
+      "Route": "_framework/PoSnakeGame.Infrastructure.0huuxy9xcj.wasm.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\lz82w5vboz-0huuxy9xcj.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23583,7 +23422,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5660"
+          "Value": "5528"
         },
         {
           "Name": "Content-Type",
@@ -23591,11 +23430,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Tp3439lrFOMzHWg5du7JXQ/9D+pQUCBupIEEQKYG2jo=\""
+          "Value": "\"gXKmb8tAOcfHZMo6NnY+Y9/pylgF+cJCJdnAXkv+b+4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23613,7 +23452,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "fqlzpioh7v"
+          "Value": "0huuxy9xcj"
         },
         {
           "Name": "label",
@@ -23621,7 +23460,168 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Tp3439lrFOMzHWg5du7JXQ/9D+pQUCBupIEEQKYG2jo="
+          "Value": "sha256-gXKmb8tAOcfHZMo6NnY+Y9/pylgF+cJCJdnAXkv+b+4="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Infrastructure.3cz90v89fd.pdb",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Infrastructure.pdb",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"I7c8KwT9l09rob33jfUCHCdVEVG/yPYR6AGU7CXpQH0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 21:06:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3cz90v89fd"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/PoSnakeGame.Infrastructure.pdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-I7c8KwT9l09rob33jfUCHCdVEVG/yPYR6AGU7CXpQH0="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Infrastructure.3cz90v89fd.pdb",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0v7cos92tb-3cz90v89fd.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000118609892"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8430"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SZsZZo70selR8kkz93B2jZ1x0E69lml0uKs+AhsOF5Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"I7c8KwT9l09rob33jfUCHCdVEVG/yPYR6AGU7CXpQH0=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3cz90v89fd"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/PoSnakeGame.Infrastructure.pdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-I7c8KwT9l09rob33jfUCHCdVEVG/yPYR6AGU7CXpQH0="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Infrastructure.3cz90v89fd.pdb.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0v7cos92tb-3cz90v89fd.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8430"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SZsZZo70selR8kkz93B2jZ1x0E69lml0uKs+AhsOF5Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3cz90v89fd"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/PoSnakeGame.Infrastructure.pdb.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SZsZZo70selR8kkz93B2jZ1x0E69lml0uKs+AhsOF5Y="
         }
       ]
     },
@@ -23636,7 +23636,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14268"
+          "Value": "14184"
         },
         {
           "Name": "Content-Type",
@@ -23644,11 +23644,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Jp5u/TobQ51jvP2pU0WrIFxUvowf7i40D07QHUawYxE=\""
+          "Value": "\"I7c8KwT9l09rob33jfUCHCdVEVG/yPYR6AGU7CXpQH0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:19 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23658,18 +23658,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Jp5u/TobQ51jvP2pU0WrIFxUvowf7i40D07QHUawYxE="
+          "Value": "sha256-I7c8KwT9l09rob33jfUCHCdVEVG/yPYR6AGU7CXpQH0="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Infrastructure.pdb",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0v7cos92tb-abdnrsl7kz.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0v7cos92tb-3cz90v89fd.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000117109732"
+          "Quality": "0.000118609892"
         }
       ],
       "ResponseHeaders": [
@@ -23679,15 +23679,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8538"
+          "Value": "8430"
         },
         {
           "Name": "ETag",
-          "Value": "\"GuoYcPbnzGFcoyX5d/HHguVvypLIIixVrrs/mDHvwi4=\""
+          "Value": "\"SZsZZo70selR8kkz93B2jZ1x0E69lml0uKs+AhsOF5Y=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23707,19 +23707,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Jp5u/TobQ51jvP2pU0WrIFxUvowf7i40D07QHUawYxE=\""
+          "Value": "W/\"I7c8KwT9l09rob33jfUCHCdVEVG/yPYR6AGU7CXpQH0=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Jp5u/TobQ51jvP2pU0WrIFxUvowf7i40D07QHUawYxE="
+          "Value": "sha256-I7c8KwT9l09rob33jfUCHCdVEVG/yPYR6AGU7CXpQH0="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Infrastructure.pdb.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0v7cos92tb-abdnrsl7kz.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0v7cos92tb-3cz90v89fd.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23728,7 +23728,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8538"
+          "Value": "8430"
         },
         {
           "Name": "Content-Type",
@@ -23736,11 +23736,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"GuoYcPbnzGFcoyX5d/HHguVvypLIIixVrrs/mDHvwi4=\""
+          "Value": "\"SZsZZo70selR8kkz93B2jZ1x0E69lml0uKs+AhsOF5Y=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23758,7 +23758,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-GuoYcPbnzGFcoyX5d/HHguVvypLIIixVrrs/mDHvwi4="
+          "Value": "sha256-SZsZZo70selR8kkz93B2jZ1x0E69lml0uKs+AhsOF5Y="
         }
       ]
     },
@@ -23781,11 +23781,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"x1n4p8w83r9y9dHEGyTtL7fTk8/8kLEWT2Ekpu1uIFc=\""
+          "Value": "\"PLHsOrrSRBnBs03/MyVuhql422qvrJFoFXBxD1Ymvuo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23795,18 +23795,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-x1n4p8w83r9y9dHEGyTtL7fTk8/8kLEWT2Ekpu1uIFc="
+          "Value": "sha256-PLHsOrrSRBnBs03/MyVuhql422qvrJFoFXBxD1Ymvuo="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Infrastructure.wasm",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\lz82w5vboz-fqlzpioh7v.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\lz82w5vboz-0huuxy9xcj.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000176647235"
+          "Quality": "0.000180864532"
         }
       ],
       "ResponseHeaders": [
@@ -23816,15 +23816,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5660"
+          "Value": "5528"
         },
         {
           "Name": "ETag",
-          "Value": "\"Tp3439lrFOMzHWg5du7JXQ/9D+pQUCBupIEEQKYG2jo=\""
+          "Value": "\"gXKmb8tAOcfHZMo6NnY+Y9/pylgF+cJCJdnAXkv+b+4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23844,19 +23844,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"x1n4p8w83r9y9dHEGyTtL7fTk8/8kLEWT2Ekpu1uIFc=\""
+          "Value": "W/\"PLHsOrrSRBnBs03/MyVuhql422qvrJFoFXBxD1Ymvuo=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-x1n4p8w83r9y9dHEGyTtL7fTk8/8kLEWT2Ekpu1uIFc="
+          "Value": "sha256-PLHsOrrSRBnBs03/MyVuhql422qvrJFoFXBxD1Ymvuo="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Infrastructure.wasm.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\lz82w5vboz-fqlzpioh7v.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\lz82w5vboz-0huuxy9xcj.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23865,7 +23865,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5660"
+          "Value": "5528"
         },
         {
           "Name": "Content-Type",
@@ -23873,11 +23873,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Tp3439lrFOMzHWg5du7JXQ/9D+pQUCBupIEEQKYG2jo=\""
+          "Value": "\"gXKmb8tAOcfHZMo6NnY+Y9/pylgF+cJCJdnAXkv+b+4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23895,173 +23895,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Tp3439lrFOMzHWg5du7JXQ/9D+pQUCBupIEEQKYG2jo="
+          "Value": "sha256-gXKmb8tAOcfHZMo6NnY+Y9/pylgF+cJCJdnAXkv+b+4="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Wa.6aqgpjh0ae.pdb",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Wa.pdb",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "40560"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Dt64iL66ypxvxxp+H933PRE6M+Z6eAaNrPAc4Gx++yU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6aqgpjh0ae"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/PoSnakeGame.Wa.pdb"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt64iL66ypxvxxp+H933PRE6M+Z6eAaNrPAc4Gx++yU="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Wa.6aqgpjh0ae.pdb",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\y7x1zlzj2p-6aqgpjh0ae.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000033075346"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "30233"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"dCJqf1us27XcJgejuC9fKEWvALfZHqDlf9Q1ZAlM83E=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Dt64iL66ypxvxxp+H933PRE6M+Z6eAaNrPAc4Gx++yU=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6aqgpjh0ae"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/PoSnakeGame.Wa.pdb"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt64iL66ypxvxxp+H933PRE6M+Z6eAaNrPAc4Gx++yU="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Wa.6aqgpjh0ae.pdb.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\y7x1zlzj2p-6aqgpjh0ae.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "30233"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"dCJqf1us27XcJgejuC9fKEWvALfZHqDlf9Q1ZAlM83E=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6aqgpjh0ae"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/PoSnakeGame.Wa.pdb.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-dCJqf1us27XcJgejuC9fKEWvALfZHqDlf9Q1ZAlM83E="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/PoSnakeGame.Wa.9eo76xyzba.wasm",
+      "Route": "_framework/PoSnakeGame.Wa.m3kf0o5j2y.wasm",
       "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Wa.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -24079,11 +23918,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QUEEQbiHPQA/tZ4zy73dVk63pd04MANwTnlQfZXBqqQ=\""
+          "Value": "\"goPeqZreDi1pidvrvt9PSKoNQ5mpIu8d6SRgkQ+exWY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24093,7 +23932,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9eo76xyzba"
+          "Value": "m3kf0o5j2y"
         },
         {
           "Name": "label",
@@ -24101,18 +23940,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-QUEEQbiHPQA/tZ4zy73dVk63pd04MANwTnlQfZXBqqQ="
+          "Value": "sha256-goPeqZreDi1pidvrvt9PSKoNQ5mpIu8d6SRgkQ+exWY="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Wa.9eo76xyzba.wasm",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0sluas4v9m-9eo76xyzba.gz",
+      "Route": "_framework/PoSnakeGame.Wa.m3kf0o5j2y.wasm",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0sluas4v9m-m3kf0o5j2y.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000049231981"
+          "Quality": "0.000050299281"
         }
       ],
       "ResponseHeaders": [
@@ -24122,15 +23961,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "20311"
+          "Value": "19880"
         },
         {
           "Name": "ETag",
-          "Value": "\"Un6dbZaBXqnmmU5CMA816ecfddUcdE0r9d6wD+8mCqA=\""
+          "Value": "\"dUvi/bee2KurcKupnqdpKUJp+sxOFOYOv1/XrPFZS8U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24150,13 +23989,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"QUEEQbiHPQA/tZ4zy73dVk63pd04MANwTnlQfZXBqqQ=\""
+          "Value": "W/\"goPeqZreDi1pidvrvt9PSKoNQ5mpIu8d6SRgkQ+exWY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9eo76xyzba"
+          "Value": "m3kf0o5j2y"
         },
         {
           "Name": "label",
@@ -24164,13 +24003,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-QUEEQbiHPQA/tZ4zy73dVk63pd04MANwTnlQfZXBqqQ="
+          "Value": "sha256-goPeqZreDi1pidvrvt9PSKoNQ5mpIu8d6SRgkQ+exWY="
         }
       ]
     },
     {
-      "Route": "_framework/PoSnakeGame.Wa.9eo76xyzba.wasm.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0sluas4v9m-9eo76xyzba.gz",
+      "Route": "_framework/PoSnakeGame.Wa.m3kf0o5j2y.wasm.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0sluas4v9m-m3kf0o5j2y.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -24179,7 +24018,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "20311"
+          "Value": "19880"
         },
         {
           "Name": "Content-Type",
@@ -24187,11 +24026,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Un6dbZaBXqnmmU5CMA816ecfddUcdE0r9d6wD+8mCqA=\""
+          "Value": "\"dUvi/bee2KurcKupnqdpKUJp+sxOFOYOv1/XrPFZS8U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24209,7 +24048,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9eo76xyzba"
+          "Value": "m3kf0o5j2y"
         },
         {
           "Name": "label",
@@ -24217,7 +24056,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Un6dbZaBXqnmmU5CMA816ecfddUcdE0r9d6wD+8mCqA="
+          "Value": "sha256-dUvi/bee2KurcKupnqdpKUJp+sxOFOYOv1/XrPFZS8U="
         }
       ]
     },
@@ -24232,7 +24071,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "40560"
+          "Value": "40608"
         },
         {
           "Name": "Content-Type",
@@ -24240,11 +24079,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Dt64iL66ypxvxxp+H933PRE6M+Z6eAaNrPAc4Gx++yU=\""
+          "Value": "\"9U1E0KW51Txy+qpPnD4hrggMBMitCtw05d3cZjAINfw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24254,18 +24093,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Dt64iL66ypxvxxp+H933PRE6M+Z6eAaNrPAc4Gx++yU="
+          "Value": "sha256-9U1E0KW51Txy+qpPnD4hrggMBMitCtw05d3cZjAINfw="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Wa.pdb",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\y7x1zlzj2p-6aqgpjh0ae.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\y7x1zlzj2p-xlecdv3t2e.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000033075346"
+          "Quality": "0.000033214867"
         }
       ],
       "ResponseHeaders": [
@@ -24275,15 +24114,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "30233"
+          "Value": "30106"
         },
         {
           "Name": "ETag",
-          "Value": "\"dCJqf1us27XcJgejuC9fKEWvALfZHqDlf9Q1ZAlM83E=\""
+          "Value": "\"Qb5inxArNXq98K7p4zgWh73GLWoGEbrDqChyo2Kuwqo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24303,19 +24142,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Dt64iL66ypxvxxp+H933PRE6M+Z6eAaNrPAc4Gx++yU=\""
+          "Value": "W/\"9U1E0KW51Txy+qpPnD4hrggMBMitCtw05d3cZjAINfw=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Dt64iL66ypxvxxp+H933PRE6M+Z6eAaNrPAc4Gx++yU="
+          "Value": "sha256-9U1E0KW51Txy+qpPnD4hrggMBMitCtw05d3cZjAINfw="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Wa.pdb.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\y7x1zlzj2p-6aqgpjh0ae.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\y7x1zlzj2p-xlecdv3t2e.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -24324,7 +24163,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "30233"
+          "Value": "30106"
         },
         {
           "Name": "Content-Type",
@@ -24332,11 +24171,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dCJqf1us27XcJgejuC9fKEWvALfZHqDlf9Q1ZAlM83E=\""
+          "Value": "\"Qb5inxArNXq98K7p4zgWh73GLWoGEbrDqChyo2Kuwqo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24354,7 +24193,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-dCJqf1us27XcJgejuC9fKEWvALfZHqDlf9Q1ZAlM83E="
+          "Value": "sha256-Qb5inxArNXq98K7p4zgWh73GLWoGEbrDqChyo2Kuwqo="
         }
       ]
     },
@@ -24377,11 +24216,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QUEEQbiHPQA/tZ4zy73dVk63pd04MANwTnlQfZXBqqQ=\""
+          "Value": "\"goPeqZreDi1pidvrvt9PSKoNQ5mpIu8d6SRgkQ+exWY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24391,18 +24230,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-QUEEQbiHPQA/tZ4zy73dVk63pd04MANwTnlQfZXBqqQ="
+          "Value": "sha256-goPeqZreDi1pidvrvt9PSKoNQ5mpIu8d6SRgkQ+exWY="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Wa.wasm",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0sluas4v9m-9eo76xyzba.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0sluas4v9m-m3kf0o5j2y.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000049231981"
+          "Quality": "0.000050299281"
         }
       ],
       "ResponseHeaders": [
@@ -24412,15 +24251,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "20311"
+          "Value": "19880"
         },
         {
           "Name": "ETag",
-          "Value": "\"Un6dbZaBXqnmmU5CMA816ecfddUcdE0r9d6wD+8mCqA=\""
+          "Value": "\"dUvi/bee2KurcKupnqdpKUJp+sxOFOYOv1/XrPFZS8U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24440,19 +24279,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"QUEEQbiHPQA/tZ4zy73dVk63pd04MANwTnlQfZXBqqQ=\""
+          "Value": "W/\"goPeqZreDi1pidvrvt9PSKoNQ5mpIu8d6SRgkQ+exWY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-QUEEQbiHPQA/tZ4zy73dVk63pd04MANwTnlQfZXBqqQ="
+          "Value": "sha256-goPeqZreDi1pidvrvt9PSKoNQ5mpIu8d6SRgkQ+exWY="
         }
       ]
     },
     {
       "Route": "_framework/PoSnakeGame.Wa.wasm.gz",
-      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0sluas4v9m-9eo76xyzba.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\0sluas4v9m-m3kf0o5j2y.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -24461,7 +24300,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "20311"
+          "Value": "19880"
         },
         {
           "Name": "Content-Type",
@@ -24469,11 +24308,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Un6dbZaBXqnmmU5CMA816ecfddUcdE0r9d6wD+8mCqA=\""
+          "Value": "\"dUvi/bee2KurcKupnqdpKUJp+sxOFOYOv1/XrPFZS8U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 09:34:21 GMT"
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24491,7 +24330,168 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Un6dbZaBXqnmmU5CMA816ecfddUcdE0r9d6wD+8mCqA="
+          "Value": "sha256-dUvi/bee2KurcKupnqdpKUJp+sxOFOYOv1/XrPFZS8U="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Wa.xlecdv3t2e.pdb",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\bin\\Debug\\net9.0\\wwwroot\\_framework\\PoSnakeGame.Wa.pdb",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "40608"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9U1E0KW51Txy+qpPnD4hrggMBMitCtw05d3cZjAINfw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xlecdv3t2e"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/PoSnakeGame.Wa.pdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9U1E0KW51Txy+qpPnD4hrggMBMitCtw05d3cZjAINfw="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Wa.xlecdv3t2e.pdb",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\y7x1zlzj2p-xlecdv3t2e.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000033214867"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "30106"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Qb5inxArNXq98K7p4zgWh73GLWoGEbrDqChyo2Kuwqo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"9U1E0KW51Txy+qpPnD4hrggMBMitCtw05d3cZjAINfw=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xlecdv3t2e"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/PoSnakeGame.Wa.pdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9U1E0KW51Txy+qpPnD4hrggMBMitCtw05d3cZjAINfw="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/PoSnakeGame.Wa.xlecdv3t2e.pdb.gz",
+      "AssetFile": "C:\\Users\\punko\\Downloads\\PoSnakeGameBase\\PoSnakeGameCopilotReverted\\PoSnakeGame.Wa\\obj\\Debug\\net9.0\\compressed\\y7x1zlzj2p-xlecdv3t2e.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "30106"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Qb5inxArNXq98K7p4zgWh73GLWoGEbrDqChyo2Kuwqo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 21:06:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xlecdv3t2e"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/PoSnakeGame.Wa.pdb.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Qb5inxArNXq98K7p4zgWh73GLWoGEbrDqChyo2Kuwqo="
         }
       ]
     },

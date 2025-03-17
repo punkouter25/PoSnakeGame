@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoSnakeGame.Web", "PoSnakeGame.Web\PoSnakeGame.Web.csproj", "{F607E6CC-EEDC-4BD4-81A3-B5EA057D879D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoSnakeGame.Core", "PoSnakeGame.Core\PoSnakeGame.Core.csproj", "{A2AB4266-96A0-41BA-86A5-9A8574A890DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoSnakeGame.Infrastructure", "PoSnakeGame.Infrastructure\PoSnakeGame.Infrastructure.csproj", "{84724CC9-D2DE-4BD7-AC5A-73EE6100F1D7}"
