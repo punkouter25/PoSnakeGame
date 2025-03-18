@@ -1,1 +1,0 @@
-C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Wa\bin\Release\net9.0\publish\web.config
