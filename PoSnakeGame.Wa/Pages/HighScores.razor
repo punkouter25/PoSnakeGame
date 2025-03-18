@@ -1,7 +1,9 @@
 @page "/highscores"
 @using PoSnakeGame.Core.Models
 @using PoSnakeGame.Infrastructure.Services
+@using PoSnakeGame.Core.Interfaces
 @inject ITableStorageService TableStorageService
+@inject IUserPreferencesService UserPreferencesService
 
 <PageTitle>Snake Battle Royale - High Scores</PageTitle>
 
@@ -10,235 +12,64 @@
     
     @if (_loading)
     {
-        <div class="loading">Loading scores...</div>
+        <div class="loading">Loading high scores...</div>
     }
     else if (_error)
     {
-        <div class="error">
-            <p>Error loading high scores. Please try again later.</p>
-            <button class="retro-button" @onclick="LoadScores">RETRY</button>
-        </div>
+        <div class="error">@_errorMessage</div>
+    }
+    else if (_highScores == null || !_highScores.Any())
+    {
+        <div class="no-scores">No high scores recorded yet. Be the first!</div>
     }
     else
     {
         <div class="scores-table">
             <div class="table-header">
-                <div class="col-rank">#</div>
                 <div class="col-initials">PLAYER</div>
                 <div class="col-score">SCORE</div>
                 <div class="col-date">DATE</div>
             </div>
             
-            @if (_highScores.Count == 0)
+            @foreach (var (score, index) in _highScores.Select((score, index) => (score, index)))
             {
-                <div class="no-scores">No scores recorded yet. Be the first!</div>
-            }
-            else
-            {
-                @for (int i = 0; i < _highScores.Count; i++)
-                {
-                    var score = _highScores[i];
-                    <div class="table-row @(score.Initials == _userInitials ? "personal-best" : "")">
-                        <div class="col-rank">@(i + 1)</div>
-                        <div class="col-initials">@score.Initials</div>
-                        <div class="col-score">@score.Score</div>
-                        <div class="col-date">@score.Date.ToString("MM/dd/yy")</div>
-                    </div>
-                }
+                string rowClass = score.Initials == _playerInitials ? "table-row personal-best" : "table-row";
+                
+                <div class="@rowClass">
+                    <div class="col-initials">@score.Initials</div>
+                    <div class="col-score">@score.Score</div>
+                    <div class="col-date">@score.Date.ToString("MM/dd/yy")</div>
+                </div>
             }
         </div>
     }
     
-    <div class="buttons">
-        <button class="retro-button" @onclick="NavigateToMainMenu">MAIN MENU</button>
-        <button class="retro-button" @onclick="NavigateToGame">PLAY GAME</button>
-    </div>
+    <a href="/" class="retro-button">BACK TO MENU</a>
 </div>
 
-<style>
-    .high-scores-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-    
-    .scores-table {
-        width: 100%;
-        margin: 30px 0;
-        border: 2px solid #39ff14;
-        box-shadow: 0 0 10px #39ff14;
-        background-color: #000;
-    }
-    
-    .table-header {
-        display: flex;
-        background-color: #39ff14;
-        color: #000;
-        padding: 10px;
-        font-family: 'Press Start 2P', monospace;
-        font-size: 14px;
-    }
-    
-    .table-row {
-        display: flex;
-        padding: 10px;
-        border-bottom: 1px solid #333;
-        color: #fff;
-        transition: background-color 0.3s;
-    }
-    
-    .table-row:hover {
-        background-color: #111;
-    }
-    
-    .table-row.personal-best {
-        background-color: rgba(57, 255, 20, 0.2);
-    }
-    
-    .col-rank {
-        flex: 0 0 15%;
-        text-align: center;
-    }
-    
-    .col-initials {
-        flex: 0 0 25%;
-        text-align: center;
-    }
-    
-    .col-score {
-        flex: 0 0 35%;
-        text-align: center;
-    }
-    
-    .col-date {
-        flex: 0 0 25%;
-        text-align: center;
-    }
-    
-    .loading, .error, .no-scores {
-        padding: 20px;
-        text-align: center;
-        margin: 20px 0;
-        font-family: 'Press Start 2P', monospace;
-    }
-    
-    .loading {
-        color: #39ff14;
-    }
-    
-    .error {
-        color: #ff0000;
-    }
-    
-    .no-scores {
-        color: #ffff00;
-    }
-    
-    .buttons {
-        display: flex;
-        gap: 20px;
-        margin-top: 20px;
-    }
-    
-    @@media (max-width: 600px) {
-        .table-header, .table-row {
-            font-size: 12px;
-        }
-        
-        .buttons {
-            flex-direction: column;
-        }
-    }
-</style>
-
 @code {
-    private List<HighScore> _highScores = new();
+    private List<HighScore> _highScores;
     private bool _loading = true;
     private bool _error = false;
-    private string _userInitials = ""; // Will be set when user submits a score
-    
-    [Inject]
-    private NavigationManager NavigationManager { get; set; } = default!;
+    private string _errorMessage;
+    private string _playerInitials;
     
     protected override async Task OnInitializedAsync()
     {
-        await LoadScores();
-    }
-    
-    private async Task LoadScores()
-    {
         try
         {
-            _loading = true;
-            _error = false;
-            StateHasChanged();
-            
-            // Log for debugging
-            Console.WriteLine("Loading high scores from Azure Table Storage");
-            
-            try
-            {
-                // Load high scores from Azure Table Storage
-                _highScores = await TableStorageService.GetTopScoresAsync();
-                
-                // Sort by score descending
-                _highScores = _highScores.OrderByDescending(s => s.Score).Take(10).ToList();
-                
-                Console.WriteLine($"Successfully loaded {_highScores.Count} high scores");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error loading from Azure: {ex.Message}");
-                
-                // Temporary for demo - add some fake scores if none exist or there's an error
-                _highScores = new List<HighScore>
-                {
-                    new HighScore { 
-                        Initials = "AAA", 
-                        Score = 150, 
-                        Date = DateTime.Now.AddDays(-7),
-                        RowKey = Guid.NewGuid().ToString(),
-                        PartitionKey = "HighScore"
-                    },
-                    new HighScore { 
-                        Initials = "BBB", 
-                        Score = 120, 
-                        Date = DateTime.Now.AddDays(-5),
-                        RowKey = Guid.NewGuid().ToString(),
-                        PartitionKey = "HighScore"
-                    },
-                    new HighScore { 
-                        Initials = "CCC", 
-                        Score = 100, 
-                        Date = DateTime.Now.AddDays(-2),
-                        RowKey = Guid.NewGuid().ToString(),
-                        PartitionKey = "HighScore"
-                    }
-                };
-            }
+            _highScores = await TableStorageService.GetTopScoresAsync();
+            var userPrefs = await UserPreferencesService.GetUserPreferencesAsync();
+            _playerInitials = userPrefs.Initials;
         }
         catch (Exception ex)
         {
             _error = true;
-            Console.WriteLine($"Error loading high scores: {ex.Message}");
+            _errorMessage = $"Error loading high scores: {ex.Message}";
         }
         finally
         {
             _loading = false;
-            StateHasChanged();
         }
-    }
-    
-    private void NavigateToMainMenu()
-    {
-        NavigationManager.NavigateTo("/");
-    }
-    
-    private void NavigateToGame()
-    {
-        NavigationManager.NavigateTo("/game");
     }
 } 

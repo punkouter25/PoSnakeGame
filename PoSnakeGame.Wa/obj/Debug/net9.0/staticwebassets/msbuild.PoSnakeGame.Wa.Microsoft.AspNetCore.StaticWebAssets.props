@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>81sotqnb8s</Fingerprint>
-      <Integrity>FEcjGL5Vayj/vVFfza9Fl7AOyv/PLNTZoBBgB6QciYc=</Integrity>
+      <Fingerprint>asnne7hsg5</Fingerprint>
+      <Integrity>1s0aGmvYJCqaaivCxyhxG8rjwzh3OpRdNQR2KX/riDs=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\app.css'))</OriginalItemSpec>
@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>lhw16p52pf</Fingerprint>
-      <Integrity>RwteAFkhiuKM5S948/Zi0JfEMYdLeDpaqV1kdWgvKD4=</Integrity>
+      <Fingerprint>ze3cc5y287</Fingerprint>
+      <Integrity>S/xBL4NYbvNo8IccwXiLzS1EVj4hK3eqfp0U1B+am9A=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\game.css'))</OriginalItemSpec>
@@ -84,8 +84,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gezlgqu4p1</Fingerprint>
-      <Integrity>iMG3fQu7EFuNySfoI6p8ZuUPhRkj26qmnPKEsGaQ3Ac=</Integrity>
+      <Fingerprint>9edyor1odt</Fingerprint>
+      <Integrity>rxMrOeT4kADXNu18U2Nj+dpvHrOhJ/dWg6zubxxgK0M=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</OriginalItemSpec>
@@ -102,8 +102,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gw93sru1oe</Fingerprint>
-      <Integrity>IKOu6wWK2uvnoQPErg6Vatsl1MKfLb7B428MYBwSXoA=</Integrity>
+      <Fingerprint>5fmsr5eo6i</Fingerprint>
+      <Integrity>gW+knorvauhFwVgtqcuutykPtrT/ic40csOhL50UO6g=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\game.js'))</OriginalItemSpec>

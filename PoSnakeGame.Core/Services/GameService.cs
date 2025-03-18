@@ -19,8 +19,8 @@ namespace PoSnakeGame.Core.Services
         public float TimeRemaining { get; private set; }
 
         // Game configuration
-        private readonly int _arenaWidth = 20;
-        private readonly int _arenaHeight = 20;
+        private readonly int _arenaWidth = 50;
+        private readonly int _arenaHeight = 100;
         private readonly int _initialFoodCount = 20;  // Changed to 20
         private readonly int _targetFoodCount = 20;   // Added new constant
         private readonly Random _random = new();

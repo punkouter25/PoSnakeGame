@@ -3,16 +3,46 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Snake Battle Royale</title>
     <base href="/" />
-    <link rel="stylesheet" href="css/app.css" />
-    <link rel="stylesheet" href="css/game.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="css/game.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="PoSnakeGame.Wa.styles.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <!-- If you add any scoped CSS files, uncomment the following to load them
-    <link href="PoSnakeGame.Wa.styles.css" rel="stylesheet" /> -->
+    <style>
+        .fallback-container {
+            display: none;
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+            font-family: 'Press Start 2P', monospace;
+            color: #39ff14;
+            padding: 20px;
+            background-color: #111;
+            border: 2px solid #39ff14;
+            box-shadow: 0 0 15px #39ff14;
+        }
+        .fallback-container h2 {
+            color: #39ff14;
+            margin-bottom: 20px;
+        }
+        .fallback-button {
+            background-color: #222;
+            border: 2px solid #39ff14;
+            color: #39ff14;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Press Start 2P', monospace;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .fallback-button:hover {
+            background-color: #333;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,13 +54,52 @@
         <div class="loading-progress-text"></div>
     </div>
 
+    <div id="fallback" class="fallback-container">
+        <h2>GAME LOADING ERROR</h2>
+        <p>The Snake Battle Royale game failed to load properly.</p>
+        <p>This might be due to cached resources or browser compatibility issues.</p>
+        <button class="fallback-button" onclick="window.location.reload(true);">RELOAD GAME</button>
+        <button class="fallback-button" onclick="clearCacheAndReload()">CLEAR CACHE AND RELOAD</button>
+    </div>
+
     <div id="blazor-error-ui">
         An unhandled error has occurred.
-        <a href="." class="reload">Reload</a>
-        <span class="dismiss">🗙</span>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script src="js/game.js"></script>
+    <script>
+        // Configure Blazor to bypass integrity checks during development
+        Blazor.start({
+            loadBootResource: function (type, name, defaultUri, integrity) {
+                // Disable integrity checking for all resources during development
+                return defaultUri;
+            }
+        }).catch(err => {
+            console.error("Blazor startup error:", err);
+            document.getElementById('app').style.display = 'none';
+            document.getElementById('fallback').style.display = 'block';
+        });
+
+        // Function to clear cache and reload
+        function clearCacheAndReload() {
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    for (let name of names) caches.delete(name);
+                });
+            }
+            window.location.reload(true);
+        }
+
+        // Set a timeout to show fallback if Blazor doesn't load within 10 seconds
+        setTimeout(function() {
+            if (document.querySelector('.loading-progress')) {
+                document.getElementById('app').style.display = 'none';
+                document.getElementById('fallback').style.display = 'block';
+            }
+        }, 10000);
+    </script>
 </body>
 
 </html>

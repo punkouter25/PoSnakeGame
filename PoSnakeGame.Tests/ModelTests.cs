@@ -84,7 +84,7 @@ public class ModelTests
         
         // Assert
         Assert.Equal(newHeadPosition, snake.Segments[0]);
-        Assert.Equal(1, snake.Segments.Count); // Length = 1, so should have only one segment
+        Assert.Single(snake.Segments); // Length = 1, so should have only one segment
     }
     
     [Fact]

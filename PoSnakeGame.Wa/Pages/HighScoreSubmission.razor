@@ -1,6 +1,5 @@
 @using PoSnakeGame.Core.Models
 @using PoSnakeGame.Infrastructure.Services
-@inject ITableStorageService TableStorageService
 @inject NavigationManager NavigationManager
 
 <div class="high-score-submission">
@@ -27,11 +26,13 @@
     {
         <div class="error-message">Error saving score. Please try again.</div>
     }
+    
+    <button class="retro-button" @onclick="Submit" disabled="@(!IsValid)">SUBMIT</button>
 </div>
 
 @code {
     [Parameter] public int Score { get; set; }
-    [Parameter] public EventCallback<bool> OnSubmitted { get; set; }
+    [Parameter] public EventCallback<string> OnSubmitted { get; set; }
 
     private string[] _initials = new string[3] { "", "", "" };
     private bool _error;
@@ -72,6 +73,10 @@
         {
             await _inputRefs[index - 1].FocusAsync();
         }
+        else if (e.Key == "Enter" && IsValid)
+        {
+            await Submit();
+        }
         else if (e.Key.Length == 1 && char.IsLetter(e.Key[0]))
         {
             _initials[index] = e.Key.ToUpper();
@@ -94,23 +99,12 @@
 
         try
         {
-            var highScore = new HighScore
-            {
-                Initials = string.Join("", _initials).ToUpper(),
-                Score = Score,
-                Date = DateTime.UtcNow,
-                GameDuration = 30.0f,
-                SnakeLength = 1,
-                FoodEaten = 0
-            };
-
-            await TableStorageService.SaveHighScoreAsync(highScore);
-            await OnSubmitted.InvokeAsync(true);
-            NavigationManager.NavigateTo("/highscores");
+            string initials = string.Join("", _initials).ToUpper();
+            await OnSubmitted.InvokeAsync(initials);
         }
         catch (Exception ex)
         {
-            Console.Error.WriteLine($"Error saving high score: {ex.Message}");
+            Console.Error.WriteLine($"Error processing high score submission: {ex.Message}");
             _error = true;
             StateHasChanged();
         }

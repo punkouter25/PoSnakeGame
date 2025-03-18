@@ -8,6 +8,29 @@ window.isMobileDevice = () => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
 
+// Error handling for Blazor
+window.addEventListener('error', (event) => {
+    console.error('Error caught by global handler:', event.error);
+    // Log additional information that might help debugging
+    console.log('Error details:', {
+        message: event.message,
+        filename: event.filename,
+        lineno: event.lineno,
+        colno: event.colno
+    });
+});
+
+// Make the reload button more effective by forcing a clean reload
+document.addEventListener('DOMContentLoaded', () => {
+    const reloadLinks = document.querySelectorAll('.reload');
+    reloadLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = window.location.href.split('?')[0] + '?nocache=' + Date.now();
+        });
+    });
+});
+
 // Virtual joystick initialization and handling
 window.initVirtualJoystick = (joystickElement, thumbElement, dotNetRef) => {
     if (!joystickElement || !thumbElement) return;

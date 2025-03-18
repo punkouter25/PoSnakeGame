@@ -38,9 +38,9 @@ C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Infrastructure\obj\Debug\net9.0\PoSnakeGame.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Infrastructure\obj\Debug\net9.0\PoSnakeGame.Infrastructure.AssemblyInfo.cs
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Infrastructure\obj\Debug\net9.0\PoSnakeGame.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Infrastructure\obj\Debug\net9.0\PoSnakeGame.Infrastructure.sourcelink.json
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Infrastructure\obj\Debug\net9.0\PoSnakeG.2566B129.Up2Date
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Infrastructure\obj\Debug\net9.0\PoSnakeGame.Infrastructure.dll
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Infrastructure\obj\Debug\net9.0\refint\PoSnakeGame.Infrastructure.dll
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Infrastructure\obj\Debug\net9.0\PoSnakeGame.Infrastructure.pdb
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Infrastructure\obj\Debug\net9.0\ref\PoSnakeGame.Infrastructure.dll
-C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Infrastructure\obj\Debug\net9.0\PoSnakeGame.Infrastructure.sourcelink.json

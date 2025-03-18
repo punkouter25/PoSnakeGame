@@ -252,8 +252,8 @@ c:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilot\PoSnakeGame.Tests\ob
 c:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilot\PoSnakeGame.Tests\obj\Debug\net9.0\ref\PoSnakeGame.Tests.dll
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\bin\Debug\net9.0\.msCoverageSourceRootsMapping_PoSnakeGame.Tests
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\bin\Debug\net9.0\CoverletSourceRootsMapping_PoSnakeGame.Tests
-C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\bin\Debug\net9.0\testhost.exe
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\bin\Debug\net9.0\testhost.dll
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\bin\Debug\net9.0\testhost.exe
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\bin\Debug\net9.0\xunit.runner.visualstudio.testadapter.dll
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\bin\Debug\net9.0\xunit.runner.reporters.netcoreapp10.dll
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\bin\Debug\net9.0\xunit.runner.utility.netcoreapp10.dll
@@ -370,10 +370,10 @@ C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\PoSnakeGame.Tests.AssemblyInfoInputs.cache
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\PoSnakeGame.Tests.AssemblyInfo.cs
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\PoSnakeGame.Tests.csproj.CoreCompileInputs.cache
+C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\PoSnakeGame.Tests.sourcelink.json
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\PoSnakeG.6CA11F18.Up2Date
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\PoSnakeGame.Tests.dll
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\refint\PoSnakeGame.Tests.dll
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\PoSnakeGame.Tests.pdb
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\PoSnakeGame.Tests.genruntimeconfig.cache
 C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\ref\PoSnakeGame.Tests.dll
-C:\Users\punko\Downloads\PoSnakeGameBase\PoSnakeGameCopilotReverted\PoSnakeGame.Tests\obj\Debug\net9.0\PoSnakeGame.Tests.sourcelink.json

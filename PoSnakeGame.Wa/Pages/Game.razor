@@ -2,10 +2,12 @@
 @using PoSnakeGame.Core.Models
 @using PoSnakeGame.Core.Services
 @using PoSnakeGame.Infrastructure.Services
+@using PoSnakeGame.Core.Interfaces
 @using Microsoft.AspNetCore.Components.Web
 @inject GameService GameService
 @inject GameEngine GameEngine
 @inject ITableStorageService TableStorageService
+@inject IUserPreferencesService UserPreferencesService
 @inject IJSRuntime JSRuntime
 @implements IDisposable
 
@@ -31,6 +33,7 @@
                     <p>Your Score: @PlayerScore</p>
                     <button class="retro-button" @onclick="RestartGame">PLAY AGAIN</button>
                     <button class="retro-button" @onclick="NavigateToMainMenu">MAIN MENU</button>
+                    <button class="retro-button" @onclick="NavigateToHighScores">HIGH SCORES</button>
                 }
             </div>
         </div>
@@ -101,9 +104,9 @@
     private DotNetObjectReference<Game>? objRef;
     private bool _showingHighScoreSubmission;
     
-    private int ArenaWidth => GameService.Arena?.Width ?? 20;
-    private int ArenaHeight => GameService.Arena?.Height ?? 20;
-    private int CellSize => 20;
+    private int ArenaWidth => GameService.Arena?.Width ?? 50;
+    private int ArenaHeight => GameService.Arena?.Height ?? 100;
+    private int CellSize => IsMobileDevice ? 5 : 8; // Increase cell size for better visibility
     private float TimeRemaining => GameService.TimeRemaining;
     private int PlayerScore => GameService.Snakes.FirstOrDefault(s => s.Type == SnakeType.Human)?.Score ?? 0;
     private bool IsMobileDevice = false;
@@ -137,10 +140,41 @@
         StateHasChanged();
     }
 
-    private void OnHighScoreSubmitted(bool success)
+    private async void OnHighScoreSubmitted(string initials)
     {
-        _showingHighScoreSubmission = false;
-        StateHasChanged();
+        if (!string.IsNullOrEmpty(initials))
+        {
+            try
+            {
+                // Save the user's initials in preferences
+                var userPrefs = await UserPreferencesService.GetUserPreferencesAsync();
+                userPrefs.Initials = initials;
+                await UserPreferencesService.SaveUserPreferencesAsync(userPrefs);
+                
+                // Create high score entry
+                var highScore = new HighScore
+                {
+                    Initials = initials,
+                    Score = PlayerScore,
+                    Date = DateTime.UtcNow,
+                    GameDuration = 30.0f,
+                    SnakeLength = GameService.Snakes.FirstOrDefault(s => s.Type == SnakeType.Human)?.Length ?? 0,
+                    FoodEaten = 0 // Not currently tracked
+                };
+
+                await TableStorageService.SaveHighScoreAsync(highScore);
+                NavigateToHighScores();
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error saving high score: {ex.Message}");
+            }
+        }
+        else
+        {
+            _showingHighScoreSubmission = false;
+            StateHasChanged();
+        }
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -236,6 +270,12 @@
         GameEngine.Stop();
         NavigationManager.NavigateTo("/");
     }
+    
+    private void NavigateToHighScores()
+    {
+        GameEngine.Stop();
+        NavigationManager.NavigateTo("/highscores");
+    }
 
     private void FocusIn()
     {
@@ -249,7 +289,7 @@
 
     public void Dispose()
     {
-        // Clean up event subscriptions
+        // Clean up event handlers
         GameService.OnGameStateChanged -= StateHasChanged;
         GameService.OnGameOver -= HandleGameOver;
         GameService.OnCountdownChanged -= StateHasChanged;
@@ -257,7 +297,7 @@
         // Stop the game engine
         GameEngine.Stop();
         
-        // Dispose of JS interop object reference
+        // Dispose the DotNetObjectReference
         objRef?.Dispose();
     }
 } 
