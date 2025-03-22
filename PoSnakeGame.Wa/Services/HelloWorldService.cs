@@ -12,15 +12,11 @@ namespace PoSnakeGame.Wa.Services
     {
         private readonly ILogger<HelloWorldService> _logger;
         private readonly HttpClient _httpClient;
-        private readonly string _baseUrl = "http://localhost:7071"; // Azure Functions local URL
-
         public HelloWorldService(ILogger<HelloWorldService> logger, HttpClient httpClient)
         {
             _logger = logger;
             _httpClient = httpClient;
-            
-            // Set the base address for the Azure Functions
-            _httpClient.BaseAddress = new Uri(_baseUrl);
+            _httpClient.BaseAddress = new Uri("http://localhost:7071");
         }
 
         /// <summary>

@@ -17,7 +17,8 @@
                     "http://localhost:5001",
                     "https://localhost:5000",
                     "https://localhost:5001",
-                    "http://localhost:5297"
+                    "http://localhost:5297",
+                    "https://localhost:7047"
                 ],
                 "allowedMethods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
                 "allowedHeaders": ["Content-Type", "Authorization"],

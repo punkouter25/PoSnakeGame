@@ -14,13 +14,11 @@ namespace PoSnakeGame.Wa.Services
     {
         private readonly ILogger<MockTableStorageService> _logger;
         private readonly HttpClient _httpClient;
-        private readonly string _baseUrl = "http://localhost:7071/api"; // Azure Functions local URL
-
         public MockTableStorageService(ILogger<MockTableStorageService> logger, HttpClient httpClient)
         {
             _logger = logger;
             _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri(_baseUrl);
+            _httpClient.BaseAddress = new Uri("http://localhost:7071/api");
         }
 
         public async Task<List<HighScore>> GetTopScoresAsync(int count = 10)
