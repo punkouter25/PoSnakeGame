@@ -10,12 +10,13 @@ using PoSnakeGame.Wa;
 using PoSnakeGame.Wa.Services;
 using System;
 using System.Net.Http;
+using System.Net.Http.Json;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-// Register HttpClient
+// Register default HttpClient for the app
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // Configure Azure Table Storage
@@ -30,9 +31,28 @@ builder.Services.AddSingleton(tableConfig);
 // Register game services
 builder.Services.AddSingleton<GameService>();
 builder.Services.AddSingleton<GameEngine>();
-builder.Services.AddScoped<HelloWorldService>();
-builder.Services.AddScoped<GameStatisticsService>();
-builder.Services.AddScoped<MockTableStorageService>();
+
+// Register services with dedicated HttpClient instances
+builder.Services.AddScoped(sp => 
+{
+    var logger = sp.GetRequiredService<ILogger<HelloWorldService>>();
+    var httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:7071/") };
+    return new HelloWorldService(logger, httpClient);
+});
+
+builder.Services.AddScoped(sp => 
+{
+    var logger = sp.GetRequiredService<ILogger<GameStatisticsService>>();
+    var httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:7071/api/") };
+    return new GameStatisticsService(logger, httpClient);
+});
+
+builder.Services.AddScoped(sp => 
+{
+    var logger = sp.GetRequiredService<ILogger<MockTableStorageService>>();
+    var httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:7071/api/") };
+    return new MockTableStorageService(logger, httpClient);
+});
 
 // Use the mock table storage service for WebAssembly
 builder.Services.AddScoped<ITableStorageService>(sp => sp.GetRequiredService<MockTableStorageService>());

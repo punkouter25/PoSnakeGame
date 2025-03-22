@@ -15,7 +15,6 @@ namespace PoSnakeGame.Wa.Services
         {
             _logger = logger;
             _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri("http://localhost:7071/api");
         }
 
         public async Task<Dictionary<string, int>> GetStatisticsAsync()
