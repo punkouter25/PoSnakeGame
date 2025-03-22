@@ -1,9 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Azure.Data.Tables;
@@ -11,20 +9,20 @@ using PoSnakeGame.Core.Models;
 using System.Linq;
 using System.Text.Json;
 using System.IO;
+using System.Net;
 
 namespace PoSnakeGame.Functions
 {
-    public static class HighScoresFunction
+    public class HighScoresFunction
     {
-        private static readonly string TableName = "HighScores";
-
-        [FunctionName("GetHighScores")]
-        public static async Task<IActionResult> GetHighScores(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "highscores")] HttpRequest req,
-            [Table(TableName)] TableClient tableClient,
-            ILogger log)
+        [Function("GetHighScores")]
+        public async Task<HttpResponseData> GetHighScores(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "highscores")] HttpRequestData req,
+            [TableInput("HighScores")] TableClient tableClient,
+            FunctionContext context)
         {
-            log.LogInformation("Getting high scores");
+            var logger = context.GetLogger<HighScoresFunction>();
+            logger.LogInformation("Getting high scores");
             
             var scores = new List<HighScore>();
             await foreach (var score in tableClient.QueryAsync<HighScore>())
@@ -32,21 +30,25 @@ namespace PoSnakeGame.Functions
                 scores.Add(score);
             }
 
-            return new OkObjectResult(scores.OrderByDescending(s => s.Score).Take(10));
+            var response = req.CreateResponse(HttpStatusCode.OK);
+            await response.WriteAsJsonAsync(scores.OrderByDescending(s => s.Score).Take(10));
+            return response;
         }
 
-        [FunctionName("SaveHighScore")]
-        public static async Task<IActionResult> SaveHighScore(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "highscores")] HttpRequest req,
-            [Table(TableName)] TableClient tableClient,
-            ILogger log)
+        [Function("SaveHighScore")]
+        public async Task<HttpResponseData> SaveHighScore(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "highscores")] HttpRequestData req,
+            [TableInput("HighScores")] TableClient tableClient,
+            FunctionContext context)
         {
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            var highScore = JsonSerializer.Deserialize<HighScore>(requestBody);
+            var logger = context.GetLogger<HighScoresFunction>();
+            var highScore = await req.ReadFromJsonAsync<HighScore>();
 
             if (highScore == null)
             {
-                return new BadRequestObjectResult("Invalid high score data");
+                var badResponse = req.CreateResponse(HttpStatusCode.BadRequest);
+                await badResponse.WriteStringAsync("Invalid high score data");
+                return badResponse;
             }
 
             highScore.PartitionKey = "HighScore";
@@ -55,17 +57,20 @@ namespace PoSnakeGame.Functions
 
             await tableClient.AddEntityAsync(highScore);
 
-            return new OkObjectResult(highScore);
+            var response = req.CreateResponse(HttpStatusCode.OK);
+            await response.WriteAsJsonAsync(highScore);
+            return response;
         }
 
-        [FunctionName("IsHighScore")]
-        public static async Task<IActionResult> IsHighScore(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "highscores/check/{score}")] HttpRequest req,
-            [Table(TableName)] TableClient tableClient,
+        [Function("IsHighScore")]
+        public async Task<HttpResponseData> IsHighScore(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "highscores/check/{score}")] HttpRequestData req,
+            [TableInput("HighScores")] TableClient tableClient,
             int score,
-            ILogger log)
+            FunctionContext context)
         {
-            log.LogInformation($"Checking if {score} is a high score");
+            var logger = context.GetLogger<HighScoresFunction>();
+            logger.LogInformation($"Checking if {score} is a high score");
 
             var scores = new List<HighScore>();
             await foreach (var highScore in tableClient.QueryAsync<HighScore>())
@@ -76,7 +81,9 @@ namespace PoSnakeGame.Functions
             var topScores = scores.OrderByDescending(s => s.Score).Take(10);
             bool isHighScore = scores.Count < 10 || score > topScores.Min(s => s.Score);
 
-            return new OkObjectResult(isHighScore);
+            var response = req.CreateResponse(HttpStatusCode.OK);
+            await response.WriteAsJsonAsync(isHighScore);
+            return response;
         }
     }
 }

@@ -29,7 +29,7 @@ builder.Services.AddSingleton<GameEngine>();
 builder.Services.AddSingleton<GameStatisticsService>();
 
 // Use the mock table storage service for WebAssembly
-builder.Services.AddSingleton<ITableStorageService, MockTableStorageService>();
+builder.Services.AddScoped<ITableStorageService, MockTableStorageService>();
 
 // Add user preferences service
 builder.Services.AddSingleton<IUserPreferencesService, LocalStorageUserPreferencesService>();

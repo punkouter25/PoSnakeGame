@@ -2,8 +2,13 @@
   "profiles": {
     "PoSnakeGame.Functions": {
       "commandName": "Project",
-      "commandLineArgs": "--port 7271",
-      "launchBrowser": false
+      "commandLineArgs": "--host 127.0.0.1 --port 7271 --workerId posnake-functions-worker",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "AZURE_FUNCTIONS_ENVIRONMENT": "Development"
+      }
     }
   }
 }

@@ -1,30 +1,28 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Azure.Data.Tables;
 using System.Linq;
 using System.Text.Json;
 using System.IO;
+using System.Net;
 
 namespace PoSnakeGame.Functions
 {
-    public static class GameStatisticsFunction
+    public class GameStatisticsFunction
     {
-        private static readonly string TableName = "GameStatistics";
-        
-        [FunctionName("GetGameStatistics")]
-        public static async Task<IActionResult> GetGameStatistics(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "statistics")] HttpRequest req,
-            [Table("HighScores")] TableClient highScoresTable,
-            [Table(TableName)] TableClient statsTable,
-            ILogger log)
+        [Function("GetGameStatistics")]
+        public async Task<HttpResponseData> GetGameStatistics(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "statistics")] HttpRequestData req,
+            [TableInput("HighScores")] TableClient highScoresTable,
+            [TableInput("GameStatistics")] TableClient statsTable,
+            FunctionContext context)
         {
-            log.LogInformation("Getting game statistics");
+            var logger = context.GetLogger<GameStatisticsFunction>();
+            logger.LogInformation("Getting game statistics");
 
             var stats = new Dictionary<string, int>();
             
@@ -74,21 +72,25 @@ namespace PoSnakeGame.Functions
             stats["longestSnake"] = longestSnake;
             stats["totalPlaytime"] = totalPlaytime;
 
-            return new OkObjectResult(stats);
+            var response = req.CreateResponse(HttpStatusCode.OK);
+            await response.WriteAsJsonAsync(stats);
+            return response;
         }
 
-        [FunctionName("UpdateGameStatistics")]
-        public static async Task<IActionResult> UpdateGameStatistics(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "statistics")] HttpRequest req,
-            [Table(TableName)] TableClient tableClient,
-            ILogger log)
+        [Function("UpdateGameStatistics")]
+        public async Task<HttpResponseData> UpdateGameStatistics(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "statistics")] HttpRequestData req,
+            [TableInput("GameStatistics")] TableClient tableClient,
+            FunctionContext context)
         {
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            var stats = JsonSerializer.Deserialize<Dictionary<string, int>>(requestBody);
+            var logger = context.GetLogger<GameStatisticsFunction>();
+            var stats = await req.ReadFromJsonAsync<Dictionary<string, int>>();
 
             if (stats == null)
             {
-                return new BadRequestObjectResult("Invalid statistics data");
+                var badResponse = req.CreateResponse(HttpStatusCode.BadRequest);
+                await badResponse.WriteStringAsync("Invalid statistics data");
+                return badResponse;
             }
 
             // Update game count
@@ -132,7 +134,8 @@ namespace PoSnakeGame.Functions
                 await tableClient.UpsertEntityAsync(timeEntity);
             }
 
-            return new OkResult();
+            var response = req.CreateResponse(HttpStatusCode.OK);
+            return response;
         }
 
         private static async Task<int> GetCurrentCount(TableClient tableClient, string partitionKey, string rowKey)
