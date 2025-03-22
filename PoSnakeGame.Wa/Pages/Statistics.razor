@@ -1,7 +1,8 @@
 @page "/statistics"
 @using PoSnakeGame.Core.Models
-@using PoSnakeGame.Infrastructure.Services
-@inject ITableStorageService TableStorageService
+@using PoSnakeGame.Wa.Services
+@inject GameStatisticsService StatisticsService
+@inject NavigationManager NavigationManager
 
 <PageTitle>Snake Battle Royale - Statistics</PageTitle>
 
@@ -31,27 +32,27 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-title">Total Games</div>
-                <div class="stat-value">@_totalGames</div>
+                <div class="stat-value">@_stats.GetValueOrDefault("totalGames", 0)</div>
             </div>
             <div class="stat-card">
                 <div class="stat-title">Average Score</div>
-                <div class="stat-value">@_averageScore</div>
+                <div class="stat-value">@_stats.GetValueOrDefault("averageScore", 0)</div>
             </div>
             <div class="stat-card">
                 <div class="stat-title">Highest Score</div>
-                <div class="stat-value">@_highestScore</div>
+                <div class="stat-value">@_stats.GetValueOrDefault("highestScore", 0)</div>
             </div>
             <div class="stat-card">
                 <div class="stat-title">Food Eaten</div>
-                <div class="stat-value">@_totalFoodEaten</div>
+                <div class="stat-value">@_stats.GetValueOrDefault("totalFoodEaten", 0)</div>
             </div>
             <div class="stat-card">
                 <div class="stat-title">Longest Snake</div>
-                <div class="stat-value">@_longestSnake segments</div>
+                <div class="stat-value">@_stats.GetValueOrDefault("longestSnake", 0) segments</div>
             </div>
             <div class="stat-card">
                 <div class="stat-title">Total Play Time</div>
-                <div class="stat-value">@_totalPlaytime min</div>
+                <div class="stat-value">@_stats.GetValueOrDefault("totalPlaytime", 0) min</div>
             </div>
         </div>
     }
@@ -65,30 +66,10 @@
 @code {
     private bool _loading = true;
     private bool _error = false;
+    private Dictionary<string, int> _stats = new();
     
-    // Sample statistics (in a real app, these would come from Azure Table Storage)
-    private int _totalGames = 0;
-    private int _averageScore = 0;
-    private int _highestScore = 0;
-    private int _totalFoodEaten = 0;
-    private int _longestSnake = 0;
-    private int _totalPlaytime = 0;
-    
-    [Inject]
-    private NavigationManager NavigationManager { get; set; } = default!;
-    
-    // Load statistics on component initialization
     protected override async Task OnInitializedAsync()
     {
-        // Pre-populate with data to avoid flashing
-        _totalGames = 42;
-        _averageScore = 78;
-        _highestScore = 217;
-        _totalFoodEaten = 326;
-        _longestSnake = 18;
-        _totalPlaytime = 104;
-        
-        // Still load data but don't show loading indicator
         await LoadStatisticsQuietly();
     }
     
@@ -96,16 +77,7 @@
     {
         try
         {
-            // Don't set _loading to true here to avoid UI flash
-            Console.WriteLine("Loading game statistics");
-            
-            // In a real app, we would load stats from Azure Table Storage
-            await Task.Delay(500);
-            
-            // Sample data updates would happen here
-            // In this demo, we're keeping the pre-populated values
-            
-            Console.WriteLine("Statistics loaded successfully");
+            _stats = await StatisticsService.GetStatisticsAsync();
         }
         catch (Exception ex)
         {
@@ -127,20 +99,7 @@
             _error = false;
             StateHasChanged();
             
-            Console.WriteLine("Reloading game statistics");
-            
-            // In a real app, we would load stats from Azure Table Storage
-            await Task.Delay(500);
-            
-            // Sample data for demonstration
-            _totalGames = 42;
-            _averageScore = 78;
-            _highestScore = 217;
-            _totalFoodEaten = 326;
-            _longestSnake = 18;
-            _totalPlaytime = 104;
-            
-            Console.WriteLine("Statistics reloaded successfully");
+            _stats = await StatisticsService.GetStatisticsAsync();
         }
         catch (Exception ex)
         {
@@ -163,4 +122,4 @@
     {
         NavigationManager.NavigateTo("/game");
     }
-} 
+}

@@ -64,5 +64,5 @@ logs/
 
 # IDE specific files
 .idea/
-.vscode/
+
 *.code-workspace

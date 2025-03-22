@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "PoSnakeGame.Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7271",
+      "launchBrowser": false
+    }
+  }
+}
