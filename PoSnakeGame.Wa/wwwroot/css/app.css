@@ -62,6 +62,28 @@ html, body {
     margin-top: 2rem;
 }
 
+.hello-world-message {
+    background-color: var(--retro-dark-accent);
+    border: 2px solid var(--retro-green);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 80%;
+    box-shadow: 0 0 8px var(--retro-green);
+    font-size: 0.9rem;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px var(--retro-green);
+    }
+    to {
+        box-shadow: 0 0 15px var(--retro-green);
+    }
+}
+
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }

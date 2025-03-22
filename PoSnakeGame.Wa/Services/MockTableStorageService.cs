@@ -60,7 +60,7 @@ namespace PoSnakeGame.Wa.Services
                 _logger.LogInformation("Saving high score for {Initials} with score {Score} via Azure Function", 
                     highScore.Initials, highScore.Score);
                 
-                await _httpClient.PostAsJsonAsync("highscores", highScore);
+                await _httpClient.PostAsJsonAsync("highscores/save", highScore);
             }
             catch (Exception ex)
             {

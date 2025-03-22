@@ -16,11 +16,19 @@ namespace PoSnakeGame.Functions
     {
         [Function("GetGameStatistics")]
         public async Task<HttpResponseData> GetGameStatistics(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "statistics")] HttpRequestData req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "options", Route = "statistics")] HttpRequestData req,
             [TableInput("HighScores")] TableClient highScoresTable,
             [TableInput("GameStatistics")] TableClient statsTable,
             FunctionContext context)
         {
+            // Handle preflight OPTIONS request
+            if (req.Method.Equals("OPTIONS", StringComparison.OrdinalIgnoreCase))
+            {
+                var preflightResponse = req.CreateResponse(HttpStatusCode.OK);
+                AddCorsHeaders(preflightResponse);
+                return preflightResponse;
+            }
+
             var logger = context.GetLogger<GameStatisticsFunction>();
             logger.LogInformation("Getting game statistics");
 
@@ -73,22 +81,36 @@ namespace PoSnakeGame.Functions
             stats["totalPlaytime"] = totalPlaytime;
 
             var response = req.CreateResponse(HttpStatusCode.OK);
+            AddCorsHeaders(response);
             await response.WriteAsJsonAsync(stats);
             return response;
         }
 
         [Function("UpdateGameStatistics")]
         public async Task<HttpResponseData> UpdateGameStatistics(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "statistics")] HttpRequestData req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", "options", Route = "statistics/update")] HttpRequestData req,
             [TableInput("GameStatistics")] TableClient tableClient,
             FunctionContext context)
         {
+            // Handle preflight OPTIONS request
+            if (req.Method.Equals("OPTIONS", StringComparison.OrdinalIgnoreCase))
+            {
+                var preflightResponse = req.CreateResponse(HttpStatusCode.OK);
+                preflightResponse.Headers.Add("Access-Control-Allow-Origin", "*");
+                preflightResponse.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+                preflightResponse.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+                return preflightResponse;
+            }
+
             var logger = context.GetLogger<GameStatisticsFunction>();
             var stats = await req.ReadFromJsonAsync<Dictionary<string, int>>();
 
             if (stats == null)
             {
                 var badResponse = req.CreateResponse(HttpStatusCode.BadRequest);
+                badResponse.Headers.Add("Access-Control-Allow-Origin", "*");
+                badResponse.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+                badResponse.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
                 await badResponse.WriteStringAsync("Invalid statistics data");
                 return badResponse;
             }
@@ -135,6 +157,9 @@ namespace PoSnakeGame.Functions
             }
 
             var response = req.CreateResponse(HttpStatusCode.OK);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+            response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
             return response;
         }
 
@@ -149,6 +174,13 @@ namespace PoSnakeGame.Functions
             {
                 return 0;
             }
+        }
+
+        private static void AddCorsHeaders(HttpResponseData response)
+        {
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+            response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
         }
     }
 }

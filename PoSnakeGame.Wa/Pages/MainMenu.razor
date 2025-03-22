@@ -1,9 +1,19 @@
 @page "/"
+@using PoSnakeGame.Wa.Services
+@using Microsoft.Extensions.Logging
+@using System
 
 <PageTitle>Snake Battle Royale</PageTitle>
 
 <div class="main-menu">
     <h1 class="retro-title">SNAKE BATTLE ROYALE</h1>
+    
+    @if (!string.IsNullOrEmpty(HelloWorldMessage))
+    {
+        <div class="hello-world-message">
+            <p>@HelloWorldMessage</p>
+        </div>
+    }
     
     <div class="menu-buttons">
         <button class="retro-button" @onclick="StartGame">START GAME</button>
@@ -12,7 +22,40 @@
     </div>
 </div>
 
-@code {    
+@code {
+    private string HelloWorldMessage { get; set; } = string.Empty;
+    private bool IsLoading { get; set; } = true;
+    
+    [Inject]
+    private NavigationManager NavigationManager { get; set; } = default!;
+    
+    [Inject]
+    private HelloWorldService HelloWorldService { get; set; } = default!;
+    
+    [Inject]
+    private ILogger<MainMenu> Logger { get; set; } = default!;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Call the HelloWorld function when the main menu loads
+            HelloWorldMessage = await HelloWorldService.GetHelloWorldMessageAsync();
+            Logger.LogInformation($"Received message from HelloWorld function: {HelloWorldMessage}");
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error calling HelloWorld function");
+            HelloWorldMessage = "Error connecting to HelloWorld function";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+        
+        await base.OnInitializedAsync();
+    }
+    
     private void StartGame()
     {
         NavigationManager.NavigateTo("/game");
@@ -27,7 +70,4 @@
     {
         NavigationManager.NavigateTo("/statistics");
     }
-
-    [Inject]
-    private NavigationManager NavigationManager { get; set; } = default!;
-} 
+}

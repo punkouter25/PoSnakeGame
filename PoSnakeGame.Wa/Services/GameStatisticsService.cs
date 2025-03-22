@@ -40,7 +40,7 @@ namespace PoSnakeGame.Wa.Services
             try
             {
                 _logger.LogInformation("Updating game statistics via Azure Function");
-                await _httpClient.PostAsJsonAsync("statistics", stats);
+                await _httpClient.PostAsJsonAsync("statistics/update", stats);
             }
             catch (Exception ex)
             {

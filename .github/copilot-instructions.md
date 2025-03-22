@@ -22,7 +22,6 @@ TESTING/DEBUGGING:
 
 AZURE:
 - Get app working locally first before deploying to Azure cloud
-- Create a Azure resource group to hold any non code resources while running code locally (Table Storage, Application Insights etc.) so that when code resources are deployed they will already be connected to their Azure resources
 - Create resources as needed in cloud using Azure CLI / PowerShell script 
 - Create a resource group named after the app name and store all resources in there / If you need info about the details of a resource use the Azure CLI to query this info
 - use azure cli to create and obtain keys as needed to avoid asking the user to manually set up resources and get keys

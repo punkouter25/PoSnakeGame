@@ -27,6 +27,7 @@ builder.Services.AddSingleton(tableConfig);
 builder.Services.AddSingleton<GameService>();
 builder.Services.AddSingleton<GameEngine>();
 builder.Services.AddSingleton<GameStatisticsService>();
+builder.Services.AddScoped<HelloWorldService>();
 
 // Use the mock table storage service for WebAssembly
 builder.Services.AddScoped<ITableStorageService, MockTableStorageService>();
