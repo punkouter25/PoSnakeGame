@@ -32,6 +32,9 @@ namespace PoSnakeGame.Functions
             var logger = context.GetLogger<HighScoresFunction>();
             logger.LogInformation("Getting high scores");
             
+            // Create table if it doesn't exist
+            await tableClient.CreateIfNotExistsAsync();
+            
             var scores = new List<HighScore>();
             await foreach (var score in tableClient.QueryAsync<HighScore>())
             {
@@ -54,21 +57,21 @@ namespace PoSnakeGame.Functions
             if (req.Method.Equals("OPTIONS", StringComparison.OrdinalIgnoreCase))
             {
                 var preflightResponse = req.CreateResponse(HttpStatusCode.OK);
-                preflightResponse.Headers.Add("Access-Control-Allow-Origin", "*");
-                preflightResponse.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-                preflightResponse.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+                AddCorsHeaders(preflightResponse);
                 return preflightResponse;
             }
 
             var logger = context.GetLogger<HighScoresFunction>();
+            
+            // Create table if it doesn't exist
+            await tableClient.CreateIfNotExistsAsync();
+            
             var highScore = await req.ReadFromJsonAsync<HighScore>();
 
             if (highScore == null)
             {
                 var badResponse = req.CreateResponse(HttpStatusCode.BadRequest);
-                badResponse.Headers.Add("Access-Control-Allow-Origin", "*");
-                badResponse.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-                badResponse.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+                AddCorsHeaders(badResponse);
                 await badResponse.WriteStringAsync("Invalid high score data");
                 return badResponse;
             }
@@ -80,9 +83,7 @@ namespace PoSnakeGame.Functions
             await tableClient.AddEntityAsync(highScore);
 
             var response = req.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Access-Control-Allow-Origin", "*");
-            response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-            response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            AddCorsHeaders(response);
             await response.WriteAsJsonAsync(highScore);
             return response;
         }
@@ -105,6 +106,9 @@ namespace PoSnakeGame.Functions
             var logger = context.GetLogger<HighScoresFunction>();
             logger.LogInformation($"Checking if {score} is a high score");
 
+            // Create table if it doesn't exist
+            await tableClient.CreateIfNotExistsAsync();
+
             var scores = new List<HighScore>();
             await foreach (var highScore in tableClient.QueryAsync<HighScore>())
             {
@@ -112,7 +116,7 @@ namespace PoSnakeGame.Functions
             }
 
             var topScores = scores.OrderByDescending(s => s.Score).Take(10);
-            bool isHighScore = scores.Count < 10 || score > topScores.Min(s => s.Score);
+            bool isHighScore = scores.Count < 10 || (scores.Count > 0 && score > topScores.Min(s => s.Score));
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             AddCorsHeaders(response);
