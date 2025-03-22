@@ -16,6 +16,7 @@ public class Snake
     public float Speed { get; set; }
     public bool IsAlive { get; set; }
     public int Score { get; private set; }
+    public float SizeMultiplier { get; set; } = 1.0f; // New property to control snake size
 
     public Snake(Position startPosition, Direction initialDirection, Color color, SnakeType type)
     {

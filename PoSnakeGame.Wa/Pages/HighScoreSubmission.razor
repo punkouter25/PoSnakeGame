@@ -77,20 +77,7 @@
         {
             await Submit();
         }
-        else if (e.Key.Length == 1 && char.IsLetter(e.Key[0]))
-        {
-            _initials[index] = e.Key.ToUpper();
-            StateHasChanged();
-            
-            if (index < 2)
-            {
-                await _inputRefs[index + 1].FocusAsync();
-            }
-            else if (index == 2 && IsValid)
-            {
-                await Submit();
-            }
-        }
+        // We'll handle letter entry via the HandleInput method instead of duplicating logic here
     }
 
     private async Task Submit()

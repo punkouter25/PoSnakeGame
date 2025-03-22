@@ -21,7 +21,7 @@ namespace PoSnakeGame.Core.Services
         // Game configuration
         private readonly int _arenaWidth = 50;
         private readonly int _arenaHeight = 100;
-        private readonly int _initialFoodCount = 20;  // Changed to 20
+        private readonly int _initialFoodCount = 100;  // Changed from 20 to 100
         private readonly int _targetFoodCount = 20;   // Added new constant
         private readonly Random _random = new();
         private readonly float _globalSpeedMultiplier = 0.3f; // New global speed multiplier to slow down gameplay
@@ -80,8 +80,8 @@ namespace PoSnakeGame.Core.Services
             _countdownTimer = 0f;
             _logger.LogInformation("Countdown initialized: Active={IsActive}, Value={Value}", IsCountdownActive, CountdownValue);
 
-            // Create player snake (in red)
-            var playerSnake = CreateSnake(SnakeType.Human, Color.Red);
+            // Create player snake with a more vibrant red color to make it stand out
+            var playerSnake = CreateSnake(SnakeType.Human, Color.FromArgb(255, 0, 0), null, 1.2f); // Brighter red and 20% larger
             Snakes.Add(playerSnake);
 
             // Create CPU snakes (all in green)
@@ -110,7 +110,7 @@ namespace PoSnakeGame.Core.Services
             SafeInvokeOnUiThread(() => OnGameStateChanged?.Invoke());
         }
 
-        private Snake CreateSnake(SnakeType type, Color color, string? personality = null)
+        private Snake CreateSnake(SnakeType type, Color color, string? personality = null, float sizeMultiplier = 1.0f)
         {
             // Find a spawn position that doesn't overlap with other snakes
             Position startPosition;
@@ -127,7 +127,8 @@ namespace PoSnakeGame.Core.Services
 
             var snake = new Snake(startPosition, initialDirection, color, type)
             {
-                Personality = personality
+                Personality = personality,
+                SizeMultiplier = sizeMultiplier // New property to make snakes larger
             };
 
             return snake;
