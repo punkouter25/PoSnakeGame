@@ -1,7 +1,6 @@
 # Deploy Azure Static Web App for PoSnakeGame
 
 param(
-    [Parameter(Mandatory=$true)]
     [string]$resourceGroupName = "PoSnakeGame",
     [string]$location = "eastus",
     [string]$storageAccountName = "posnakegamestorage",
@@ -66,31 +65,34 @@ az functionapp config appsettings set `
     --settings "AzureWebJobsStorage=$storageConnectionString" `
     "TableStorageConnectionString=$storageConnectionString"
 
-# Build the Function App
-Write-Host "Building the Function App..."
-dotnet build "$rootDir\PoSnakeGame.Functions\PoSnakeGame.Functions.csproj" -c Release
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "Function App build failed"
-    exit 1
-}
+# Build and publish the Function App
+Write-Host "Building and publishing the Function App..."
+dotnet publish "$rootDir\PoSnakeGame.Functions\PoSnakeGame.Functions.csproj" -c Release
+
+# Create zip file from publish output
+$publishPath = "$rootDir\PoSnakeGame.Functions\bin\Release\net8.0\publish"
+$zipPath = "$publishPath.zip"
+Compress-Archive -Path "$publishPath\*" -DestinationPath $zipPath -Force
 
 # Deploy Function App
 Write-Host "Deploying Function App..."
-dotnet publish "$rootDir\PoSnakeGame.Functions\PoSnakeGame.Functions.csproj" -c Release
 az functionapp deployment source config-zip `
     --name $functionAppName `
     --resource-group $resourceGroupName `
-    --src "$rootDir\PoSnakeGame.Functions\bin\Release\net8.0\publish.zip"
+    --src $zipPath
 
 # Create Static Web App
 Write-Host "Creating and deploying Static Web App..."
 # Build the Blazor WebAssembly project
 Write-Host "Building the Blazor WebAssembly project..."
-dotnet build "$rootDir\PoSnakeGame.Wa\PoSnakeGame.Wa.csproj" -c Release
+dotnet publish "$rootDir\PoSnakeGame.Wa\PoSnakeGame.Wa.csproj" -c Release
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Blazor Web App build failed"
     exit 1
 }
+
+# Get the current git branch
+$currentBranch = git rev-parse --abbrev-ref HEAD
 
 # Deploy Static Web App
 az staticwebapp create `
@@ -98,6 +100,7 @@ az staticwebapp create `
     --resource-group $resourceGroupName `
     --location $location `
     --source "$rootDir" `
+    --branch $currentBranch `
     --app-location "PoSnakeGame.Wa" `
     --output-location "wwwroot" `
     --api-location "PoSnakeGame.Functions"
