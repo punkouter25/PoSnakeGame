@@ -96,9 +96,7 @@ namespace PoSnakeGame.Functions
             if (req.Method.Equals("OPTIONS", StringComparison.OrdinalIgnoreCase))
             {
                 var preflightResponse = req.CreateResponse(HttpStatusCode.OK);
-                preflightResponse.Headers.Add("Access-Control-Allow-Origin", "*");
-                preflightResponse.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-                preflightResponse.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+                AddCorsHeaders(preflightResponse);
                 return preflightResponse;
             }
 
@@ -108,9 +106,7 @@ namespace PoSnakeGame.Functions
             if (stats == null)
             {
                 var badResponse = req.CreateResponse(HttpStatusCode.BadRequest);
-                badResponse.Headers.Add("Access-Control-Allow-Origin", "*");
-                badResponse.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-                badResponse.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+                AddCorsHeaders(badResponse);
                 await badResponse.WriteStringAsync("Invalid statistics data");
                 return badResponse;
             }
@@ -157,9 +153,7 @@ namespace PoSnakeGame.Functions
             }
 
             var response = req.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Access-Control-Allow-Origin", "*");
-            response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-            response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            AddCorsHeaders(response);
             return response;
         }
 
