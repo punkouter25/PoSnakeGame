@@ -2,7 +2,7 @@
 
 param(
     [string]$resourceGroupName = "PoSnakeGame",
-    [string]$location = "eastus",
+    [string]$location = "eastus2",  # Changed from eastus to eastus2 for Static Web App compatibility
     [string]$storageAccountName = "posnakegamestorage",
     [string]$functionAppName = "posnakegame-functions",
     [string]$staticWebAppName = "posnakegame-web"
