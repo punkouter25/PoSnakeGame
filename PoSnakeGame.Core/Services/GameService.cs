@@ -112,15 +112,24 @@ namespace PoSnakeGame.Core.Services
 
         private Snake CreateSnake(SnakeType type, Color color, string? personality = null, float sizeMultiplier = 1.0f)
         {
-            // Find a spawn position that doesn't overlap with other snakes
             Position startPosition;
-            do
+            if (type == SnakeType.Human)
             {
-                startPosition = new Position(
-                    _random.Next(1, _arenaWidth - 1),
-                    _random.Next(1, _arenaHeight - 1)
-                );
-            } while (IsPositionOccupied(startPosition));
+                // Place human snake in the center of the arena
+                startPosition = new Position(_arenaWidth / 2, _arenaHeight / 2);
+                _logger.LogInformation("Player snake created at center position: {Position}", startPosition);
+            }
+            else
+            {
+                // For CPU snakes, find a random spawn position that doesn't overlap with other snakes
+                do
+                {
+                    startPosition = new Position(
+                        _random.Next(1, _arenaWidth - 1),
+                        _random.Next(1, _arenaHeight - 1)
+                    );
+                } while (IsPositionOccupied(startPosition));
+            }
 
             // Random initial direction
             Direction initialDirection = (Direction)_random.Next(4);
@@ -128,7 +137,7 @@ namespace PoSnakeGame.Core.Services
             var snake = new Snake(startPosition, initialDirection, color, type)
             {
                 Personality = personality,
-                SizeMultiplier = sizeMultiplier // New property to make snakes larger
+                SizeMultiplier = sizeMultiplier
             };
 
             return snake;
