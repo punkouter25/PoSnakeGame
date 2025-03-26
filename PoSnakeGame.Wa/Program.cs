@@ -71,13 +71,13 @@ builder.Services.AddScoped(sp =>
 
 builder.Services.AddScoped(sp => 
 {
-    var logger = sp.GetRequiredService<ILogger<MockTableStorageService>>();
+    var logger = sp.GetRequiredService<ILogger<PoSnakeGame.Wa.Services.TableStorageService>>();
     var httpClient = new HttpClient();
-    return new MockTableStorageService(logger, httpClient);
+    return new PoSnakeGame.Wa.Services.TableStorageService(logger, httpClient);
 });
 
 // Use the mock table storage service for WebAssembly
-builder.Services.AddScoped<ITableStorageService>(sp => sp.GetRequiredService<MockTableStorageService>());
+builder.Services.AddScoped<ITableStorageService>(sp => sp.GetRequiredService<PoSnakeGame.Wa.Services.TableStorageService>());
 
 // Add user preferences service
 builder.Services.AddSingleton<IUserPreferencesService, LocalStorageUserPreferencesService>();
@@ -106,7 +106,7 @@ void UpdateServiceHttpClients(IServiceProvider services, string baseUrl)
     // Get all the services that need their HTTP clients configured
     var helloWorldService = services.GetRequiredService<HelloWorldService>();
     var gameStatisticsService = services.GetRequiredService<GameStatisticsService>();
-    var mockTableStorageService = services.GetRequiredService<MockTableStorageService>();
+    var mockTableStorageService = services.GetRequiredService<PoSnakeGame.Wa.Services.TableStorageService>();
     
     // Ensure baseUrl ends with a slash for proper URL combination
     if (!baseUrl.EndsWith("/"))

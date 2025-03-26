@@ -19,13 +19,13 @@ namespace PoSnakeGame.Core.Services
         public float TimeRemaining { get; private set; }
 
         // Game configuration
-        private readonly int _arenaWidth = 50;
-        private readonly int _arenaHeight = 100;
-        private readonly int _initialFoodCount = 100;  // Changed from 20 to 100
-        private readonly int _targetFoodCount = 20;   // Added new constant
+        private readonly int _arenaWidth = 40;  // Reduced from 50 to make snake more visible
+        private readonly int _arenaHeight = 40; // Reduced from 100 to make arena more square and visible
+        private readonly int _initialFoodCount = 20;  // Reduced from 100 to avoid overcrowding
+        private readonly int _targetFoodCount = 10;   // Reduced from 20 to avoid overcrowding
         private readonly Random _random = new();
-        private readonly float _globalSpeedMultiplier = 0.3f; // New global speed multiplier to slow down gameplay
-        private readonly float _powerUpSpawnChance = 0.1f; // Chance per second to spawn a power-up
+        private readonly float _globalSpeedMultiplier = 0.3f;
+        private readonly float _powerUpSpawnChance = 0.1f;
         public bool IsCountdownActive { get; private set; } = false; // New property for countdown state
         public int CountdownValue { get; private set; } = 3; // New property for countdown value
         private float _countdownTimer = 0f; // Timer for countdown
@@ -113,32 +113,43 @@ namespace PoSnakeGame.Core.Services
         private Snake CreateSnake(SnakeType type, Color color, string? personality = null, float sizeMultiplier = 1.0f)
         {
             Position startPosition;
+            Direction initialDirection;
+
             if (type == SnakeType.Human)
             {
                 // Place human snake in the center of the arena
                 startPosition = new Position(_arenaWidth / 2, _arenaHeight / 2);
+                // Start facing right for predictability
+                initialDirection = Direction.Right;
                 _logger.LogInformation("Player snake created at center position: {Position}", startPosition);
             }
             else
             {
                 // For CPU snakes, find a random spawn position that doesn't overlap with other snakes
+                // and is at least 5 units away from the player snake
+                var playerSnake = Snakes.FirstOrDefault(s => s.Type == SnakeType.Human);
                 do
                 {
                     startPosition = new Position(
                         _random.Next(1, _arenaWidth - 1),
                         _random.Next(1, _arenaHeight - 1)
                     );
-                } while (IsPositionOccupied(startPosition));
-            }
+                } while (IsPositionOccupied(startPosition) || 
+                        (playerSnake != null && 
+                         CalculateManhattanDistance(startPosition, playerSnake.Segments[0]) < 5));
 
-            // Random initial direction
-            Direction initialDirection = (Direction)_random.Next(4);
+                // Random initial direction for CPU snakes
+                initialDirection = (Direction)_random.Next(4);
+            }
 
             var snake = new Snake(startPosition, initialDirection, color, type)
             {
                 Personality = personality,
                 SizeMultiplier = sizeMultiplier
             };
+
+            _logger.LogInformation("Created {Type} snake at {Position} facing {Direction}", 
+                type, startPosition, initialDirection);
 
             return snake;
         }

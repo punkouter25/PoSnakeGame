@@ -9,12 +9,12 @@ using System.Net.Http.Json;
 
 namespace PoSnakeGame.Wa.Services
 {
-    public class MockTableStorageService : ITableStorageService
+    public class TableStorageService : ITableStorageService
     {
-        private readonly ILogger<MockTableStorageService> _logger;
+        private readonly ILogger<TableStorageService> _logger;
         private readonly HttpClient _httpClient;
         
-        public MockTableStorageService(ILogger<MockTableStorageService> logger, HttpClient httpClient)
+        public TableStorageService(ILogger<TableStorageService> logger, HttpClient httpClient)
         {
             _logger = logger;
             _httpClient = httpClient;
