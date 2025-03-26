@@ -13,10 +13,11 @@ on:
     - master
 env:
   AZURE_STATIC_WEBAPP_NAME: posnakegame-staticwebapp
-  APP_DIRECTORY: PoSnakeGame
-  API_DIRECTORY: ''
+  APP_DIRECTORY: PoSnakeGame.Wa
+  API_DIRECTORY: PoSnakeGame.Functions
   OUTPUT: wwwroot
-  DEPLOYMENT_ENVIRONMENT: preview
+  DEPLOYMENT_ENVIRONMENT: production
+
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
@@ -26,24 +27,33 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: true
-    - id: builddeploy
-      name: Build And Deploy
+        
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+        
+    - name: Build And Deploy
+      id: builddeploy
       uses: Azure/static-web-apps-deploy@v1
       with:
         azure_static_web_apps_api_token: ${{ secrets.posnakegame_staticwebapp_SPN }}
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         action: upload
-        deployment_environment: ${{env.DEPLOYMENT_ENVIRONMENT}}
+        deployment_environment: ${{ env.DEPLOYMENT_ENVIRONMENT }}
         app_location: ${{ env.APP_DIRECTORY }}
         api_location: ${{ env.API_DIRECTORY }}
         output_location: ${{ env.OUTPUT }}
+        app_build_command: dotnet publish -c Release -o publish
+        api_build_command: dotnet publish -c Release -o publish
+        
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     name: Close Pull Request Job
     runs-on: ubuntu-latest
     steps:
-    - id: closepullrequest
-      name: Close Pull Request
+    - name: Close Pull Request
+      id: closepullrequest
       uses: Azure/static-web-apps-deploy@v1
       with:
         azure_static_web_apps_api_token: ${{ secrets.posnakegame_staticwebapp_SPN }}
