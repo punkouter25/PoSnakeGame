@@ -63,6 +63,13 @@
                                         left: @(food.X * CellSize)px; top: @(food.Y * CellSize)px;"></div>
             }
 
+            @* Render fading foods (being eaten) *@
+            @foreach (var food in GameService.FadingFoods)
+            {
+                <div class="food food-eaten" style="width: @(CellSize)px; height: @(CellSize)px; 
+                                        left: @(food.X * CellSize)px; top: @(food.Y * CellSize)px;"></div>
+            }
+
             @* Render power-ups *@
             @foreach (var powerUp in GameService.Arena.PowerUps)
             {
@@ -72,7 +79,7 @@
             }
 
             @* Render snakes *@
-            @foreach (var snake in GameService.Snakes)
+            @foreach (var snake in GameService.Snakes.Where(s => s.IsAlive))
             {
                 @foreach (var segment in snake.Segments)
                 {
@@ -83,8 +90,24 @@
                          style="width: @(calculatedSize)px; height: @(calculatedSize)px; 
                                 left: @(segment.X * CellSize - offset)px; top: @(segment.Y * CellSize - offset)px; 
                                 background-color: rgb(@snake.Color.R, @snake.Color.G, @snake.Color.B); 
-                                opacity: @(snake.IsAlive ? "1" : "0.5");
                                 z-index: @(snake.Type == SnakeType.Human ? 10 : 5);">
+                    </div>
+                }
+            }
+            
+            @* Render dying snakes with animation *@
+            @foreach (var snake in GameService.DyingSnakes)
+            {
+                @foreach (var segment in snake.Segments)
+                {
+                    var calculatedSize = CellSize * snake.SizeMultiplier;
+                    var offset = (calculatedSize - CellSize) / 2;
+                    
+                    <div class="snake-segment @(segment == snake.Segments[0] ? "head" : "") snake-dying" 
+                         style="width: @(calculatedSize)px; height: @(calculatedSize)px; 
+                                left: @(segment.X * CellSize - offset)px; top: @(segment.Y * CellSize - offset)px; 
+                                background-color: rgb(@snake.Color.R, @snake.Color.G, @snake.Color.B); 
+                                z-index: @(snake.Type == SnakeType.Human ? 9 : 4);">
                     </div>
                 }
             }

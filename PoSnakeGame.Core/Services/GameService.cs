@@ -17,6 +17,16 @@ namespace PoSnakeGame.Core.Services
         public bool IsGameRunning { get; private set; }
         public bool IsGameOver { get; private set; }
         public float TimeRemaining { get; private set; }
+        
+        // Track foods that are being eaten and fading out
+        public List<Position> FadingFoods { get; private set; } = new();
+        private Dictionary<Position, float> _foodFadeTimers = new();
+        private const float FoodFadeTime = 0.3f; // Match CSS animation time
+        
+        // Track dying snakes with animation
+        public List<Snake> DyingSnakes { get; private set; } = new();
+        private Dictionary<Snake, float> _snakeDyingTimers = new();
+        private const float SnakeDyingTime = 0.5f; // Match CSS animation time
 
         // Game configuration
         private readonly int _arenaWidth = 40;  // Reduced from 50 to make snake more visible
@@ -63,7 +73,7 @@ namespace PoSnakeGame.Core.Services
             _logger.LogInformation("GameService created");
         }
 
-        public void InitializeGame(int playerCount = 1, int cpuCount = 7)
+        public void InitializeGame(int playerCount = 1, int cpuCount = 15)
         {
             _logger.LogInformation("Initializing game with {PlayerCount} players and {CpuCount} CPU snakes", playerCount, cpuCount);
 
@@ -81,8 +91,17 @@ namespace PoSnakeGame.Core.Services
             _logger.LogInformation("Countdown initialized: Active={IsActive}, Value={Value}", IsCountdownActive, CountdownValue);
 
             // Create player snake with a more vibrant red color to make it stand out
-            var playerSnake = CreateSnake(SnakeType.Human, Color.FromArgb(255, 0, 0), null, 1.2f); // Brighter red and 20% larger
+            // Position on the left side of the arena
+            var playerSnake = new Snake(
+                new Position(_arenaWidth / 8, _arenaHeight / 2), // Left side position
+                Direction.Right, 
+                Color.FromArgb(255, 0, 0), 
+                SnakeType.Human)
+            {
+                SizeMultiplier = 1.2f // 20% larger
+            };
             Snakes.Add(playerSnake);
+            _logger.LogInformation("Player snake created at left side position: {Position}", playerSnake.Segments[0]);
 
             // Create CPU snakes (all in green)
             string[] personalities = {
@@ -90,15 +109,30 @@ namespace PoSnakeGame.Core.Services
                 "Random", "Hunter", "Survivor", "Speedy"
             };
 
+            // Create CPU snakes on the right side of the arena
             for (int i = 0; i < cpuCount; i++)
             {
                 var personality = personalities[i % personalities.Length];
-                var cpuSnake = CreateSnake(
-                    SnakeType.CPU,
-                    Color.Green,
-                    personality
-                );
+                
+                // Calculate position on the right side with some spacing
+                Position startPosition;
+                do
+                {
+                    startPosition = new Position(
+                        _random.Next(_arenaWidth * 3 / 4, _arenaWidth - 2), // Right side of arena
+                        _random.Next(1, _arenaHeight - 1)
+                    );
+                } while (IsPositionOccupied(startPosition));
+                
+                // Create snake facing left (toward player side)
+                var cpuSnake = new Snake(startPosition, Direction.Left, Color.Green, SnakeType.CPU)
+                {
+                    Personality = personality
+                };
+                
                 Snakes.Add(cpuSnake);
+                _logger.LogInformation("CPU snake ({Personality}) created at right side position: {Position}", 
+                    personality, cpuSnake.Segments[0]);
             }
 
             // Generate initial food
@@ -283,6 +317,12 @@ namespace PoSnakeGame.Core.Services
             // Update game state
             Arena.ElapsedTime += deltaTime;
 
+            // Update food fade timers
+            UpdateFadingFoods(deltaTime);
+            
+            // Update dying snake timers
+            UpdateDyingSnakes(deltaTime);
+
             // Notify listeners (safely on UI thread)
             if (OnGameStateChanged != null)
             {
@@ -298,6 +338,13 @@ namespace PoSnakeGame.Core.Services
                 if (snake.Type == SnakeType.CPU)
                 {
                     UpdateCpuSnakeDirection(snake);
+                    
+                    // Reduce default speed of CPU snakes to avoid the quick animation effect
+                    // Only apply base speed adjustment if no speed power-ups are active
+                    if (snake.Speed == 1.0f && snake.Personality != "Speedy")
+                    {
+                        snake.Speed = 0.7f;
+                    }
                 }
 
                 // Calculate new head position
@@ -340,6 +387,38 @@ namespace PoSnakeGame.Core.Services
                    (dir1 == Direction.Down && dir2 == Direction.Up) ||
                    (dir1 == Direction.Left && dir2 == Direction.Right) ||
                    (dir1 == Direction.Right && dir2 == Direction.Left);
+        }
+
+        // New method to get valid relative directions (forward, left, right, but not backward)
+        private List<Direction> GetValidRelativeDirections(Direction currentDirection)
+        {
+            var directions = new List<Direction>();
+            
+            // Add current direction (forward)
+            directions.Add(currentDirection);
+            
+            // Add left and right relative to current direction
+            switch (currentDirection)
+            {
+                case Direction.Up:
+                    directions.Add(Direction.Left);
+                    directions.Add(Direction.Right);
+                    break;
+                case Direction.Down:
+                    directions.Add(Direction.Left);
+                    directions.Add(Direction.Right);
+                    break;
+                case Direction.Left:
+                    directions.Add(Direction.Up);
+                    directions.Add(Direction.Down);
+                    break;
+                case Direction.Right:
+                    directions.Add(Direction.Up);
+                    directions.Add(Direction.Down);
+                    break;
+            }
+            
+            return directions;
         }
 
         private void CheckCollisions()
@@ -388,16 +467,26 @@ namespace PoSnakeGame.Core.Services
                 if (foodIndex >= 0)
                 {
                     var food = Arena.Foods[foodIndex];
-                    Arena.Foods.RemoveAt(foodIndex);
-
-                    // Snake grows and gets points
-                    snake.Grow();
-                    snake.AddPoints(10);
-
-                    _logger.LogInformation("Snake ate food at {Position}", head);
-
-                    // Spawn new food to maintain target count
-                    SpawnFood();
+                    
+                    // Instead of immediately removing food, mark it as fading
+                    if (!FadingFoods.Contains(food))
+                    {
+                        // Add to fading foods list
+                        FadingFoods.Add(food);
+                        _foodFadeTimers[food] = FoodFadeTime;
+                        
+                        // Remove from active foods
+                        Arena.Foods.RemoveAt(foodIndex);
+                        
+                        // Snake grows and gets points
+                        snake.Grow();
+                        snake.AddPoints(10);
+                        
+                        _logger.LogInformation("Snake ate food at {Position}", head);
+                        
+                        // Spawn new food to maintain target count
+                        SpawnFood();
+                    }
                 }
 
                 // Check power-up consumption
@@ -423,13 +512,17 @@ namespace PoSnakeGame.Core.Services
 
         private void HandleSnakeCollision(Snake snake)
         {
+            // Mark snake as dead
             snake.Die();
-
-            // When a snake dies, its segments become obstacles
-            foreach (var segment in snake.Segments)
+            
+            // Add to dying snakes for animation
+            if (!DyingSnakes.Contains(snake))
             {
-                Arena.AddObstacle(segment);
+                DyingSnakes.Add(snake);
+                _snakeDyingTimers[snake] = SnakeDyingTime;
             }
+            
+            // Segments become obstacles after animation completes in UpdateDyingSnakes
         }
 
         private void ApplyPowerUp(Snake snake, PowerUp powerUp)
@@ -550,6 +643,58 @@ namespace PoSnakeGame.Core.Services
             if (humanSnake != null)
             {
                 ChangeDirection(newDirection, humanSnake);
+            }
+        }
+
+        private void UpdateFadingFoods(float deltaTime)
+        {
+            // Remove fully faded food items
+            var finishedFoods = new List<Position>();
+            
+            foreach (var food in _foodFadeTimers.Keys.ToList())
+            {
+                _foodFadeTimers[food] -= deltaTime;
+                if (_foodFadeTimers[food] <= 0)
+                {
+                    finishedFoods.Add(food);
+                }
+            }
+            
+            // Remove completed animations
+            foreach (var food in finishedFoods)
+            {
+                FadingFoods.Remove(food);
+                _foodFadeTimers.Remove(food);
+            }
+        }
+
+        private void UpdateDyingSnakes(float deltaTime)
+        {
+            // Process dying snakes timers
+            var completedSnakes = new List<Snake>();
+            
+            foreach (var snake in _snakeDyingTimers.Keys.ToList())
+            {
+                _snakeDyingTimers[snake] -= deltaTime;
+                
+                // When animation completes, add segments as obstacles
+                if (_snakeDyingTimers[snake] <= 0)
+                {
+                    completedSnakes.Add(snake);
+                    
+                    // Add snake segments as obstacles
+                    foreach (var segment in snake.Segments)
+                    {
+                        Arena.AddObstacle(segment);
+                    }
+                }
+            }
+            
+            // Remove completed snakes from dying list
+            foreach (var snake in completedSnakes)
+            {
+                DyingSnakes.Remove(snake);
+                _snakeDyingTimers.Remove(snake);
             }
         }
     }
