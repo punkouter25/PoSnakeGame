@@ -1,0 +1,67 @@
+@using PoSnakeGame.Wa.Services
+@using System.Text.Json
+@inject HelloWorldService HelloWorldService
+@inject ILogger<ConnectivityChecker> Logger
+
+@code {
+    [Parameter]
+    public EventCallback<bool> OnConnectivityChecked { get; set; }
+    
+    private bool isConnected = false;
+    private string message = "Checking connectivity to API...";
+    private string errorDetails = string.Empty;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Debug log to assist with troubleshooting
+            Logger.LogInformation("Initiating connectivity check to Functions API...");
+            
+            var response = await HelloWorldService.GetHelloWorldMessageAsync();
+            
+            // Parse the response to check if it's valid JSON
+            try
+            {
+                var responseObj = JsonSerializer.Deserialize<ConnectivityResponse>(response);
+                if (responseObj != null && responseObj.Status == "Connected")
+                {
+                    isConnected = true;
+                    message = $"Connected to API: {responseObj.Message}";
+                    Logger.LogInformation("Successfully connected to API: {Message}", responseObj.Message);
+                }
+                else
+                {
+                    message = "Received response but status is not 'Connected'";
+                    errorDetails = response;
+                    Logger.LogWarning("API connectivity check failed: {Response}", response);
+                }
+            }
+            catch (JsonException ex)
+            {
+                isConnected = false;
+                message = "Error parsing API response";
+                errorDetails = $"Response: {response}, Error: {ex.Message}";
+                Logger.LogError(ex, "Error parsing API response: {Response}", response);
+            }
+        }
+        catch (Exception ex)
+        {
+            isConnected = false;
+            message = "Failed to connect to API";
+            errorDetails = ex.Message;
+            Logger.LogError(ex, "Failed to connect to Functions API: {Error}", ex.Message);
+        }
+        
+        // Notify parent component about the connectivity status
+        await OnConnectivityChecked.InvokeAsync(isConnected);
+    }
+    
+    // Class to deserialize the HelloWorld function response
+    private class ConnectivityResponse
+    {
+        public string Message { get; set; }
+        public DateTime Timestamp { get; set; }
+        public string Status { get; set; }
+    }
+}

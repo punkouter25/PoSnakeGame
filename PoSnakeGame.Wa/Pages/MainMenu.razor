@@ -8,10 +8,23 @@
 <div class="main-menu">
     <h1 class="retro-title">SNAKE BATTLE ROYALE</h1>
     
-    @if (!string.IsNullOrEmpty(HelloWorldMessage))
+    @if (IsLoading)
     {
-        <div class="hello-world-message">
-            <p>@HelloWorldMessage</p>
+        <div class="loading-spinner">
+            <p>Checking API connectivity...</p>
+        </div>
+    }
+    else
+    {
+        <div class="api-status @(IsConnected ? "connected" : "disconnected")">
+            <p>
+                <span class="status-indicator"></span>
+                API Status: @(IsConnected ? "Connected" : "Not Connected")
+                @if (IsConnected)
+                {
+                    <span> - @HelloWorldMessage</span>
+                }
+            </p>
         </div>
     }
     
@@ -25,6 +38,7 @@
 @code {
     private string HelloWorldMessage { get; set; } = string.Empty;
     private bool IsLoading { get; set; } = true;
+    private bool IsConnected { get; set; } = false;
     
     [Inject]
     private NavigationManager NavigationManager { get; set; } = default!;
@@ -39,18 +53,35 @@
     {
         try
         {
-            // Call the HelloWorld function when the main menu loads
-            HelloWorldMessage = await HelloWorldService.GetHelloWorldMessageAsync();
-            Logger.LogInformation($"Received message from HelloWorld function: {HelloWorldMessage}");
+            // Call the HelloWorld function when the main menu loads to verify connectivity
+            Logger.LogInformation("Checking API connectivity on startup");
+            
+            var response = await HelloWorldService.GetConnectionStatusAsync();
+            
+            if (response != null)
+            {
+                IsConnected = response.Status == "Connected";
+                HelloWorldMessage = response.Message;
+                Logger.LogInformation("API connectivity check completed. Connected: {IsConnected}, Message: {Message}", 
+                    IsConnected, HelloWorldMessage);
+            }
+            else
+            {
+                IsConnected = false;
+                HelloWorldMessage = "Could not connect to API";
+                Logger.LogWarning("Failed to connect to API on startup");
+            }
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, "Error calling HelloWorld function");
-            HelloWorldMessage = "Error connecting to HelloWorld function";
+            IsConnected = false;
+            HelloWorldMessage = "Error connecting to API";
+            Logger.LogError(ex, "Error checking API connectivity on startup: {Error}", ex.Message);
         }
         finally
         {
             IsLoading = false;
+            StateHasChanged();
         }
         
         await base.OnInitializedAsync();

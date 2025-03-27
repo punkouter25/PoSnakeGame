@@ -5,7 +5,16 @@
             "samplingSettings": {
                 "isEnabled": true,
                 "excludedTypes": "Request"
+            },
+            "logLevel": {
+                "default": "Information",
+                "Host.Results": "Information",
+                "Function": "Information",
+                "Host.Aggregator": "Information"
             }
+        },
+        "console": {
+            "isEnabled": true
         }
     },
     "extensions": {
@@ -13,19 +22,15 @@
             "routePrefix": "api",
             "cors": {
                 "allowedOrigins": [
-                    "http://localhost:5000",
-                    "http://localhost:5001",
-                    "https://localhost:5000",
-                    "https://localhost:5001",
-                    "http://localhost:5297",
-                    "https://localhost:7047",
-                    "https://zealous-river-059a32e0f.6.azurestaticapps.net",
-                    "https://posnakegame-web.azurestaticapps.net"
+                    "*"
                 ],
-                "allowedMethods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-                "allowedHeaders": ["Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With"],
+                "allowedMethods": ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD"],
+                "allowedHeaders": ["*"],
                 "allowCredentials": true,
                 "maxAge": 86400
+            },
+            "customHeaders": {
+                "X-Content-Type-Options": "nosniff"
             }
         }
     }
