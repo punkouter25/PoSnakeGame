@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoSnakeGame.Wa", "PoSnakeGa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoSnakeGame.Functions", "PoSnakeGame.Functions\PoSnakeGame.Functions.csproj", "{89EED9B5-D8B1-4469-8EA4-57A838EE4243}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionApp1", "FunctionApp1\FunctionApp1.csproj", "{2B462AD1-EDC4-4C84-9C4D-678591A281C9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,18 +83,6 @@ Global
 		{89EED9B5-D8B1-4469-8EA4-57A838EE4243}.Release|x64.Build.0 = Release|Any CPU
 		{89EED9B5-D8B1-4469-8EA4-57A838EE4243}.Release|x86.ActiveCfg = Release|Any CPU
 		{89EED9B5-D8B1-4469-8EA4-57A838EE4243}.Release|x86.Build.0 = Release|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Debug|x64.Build.0 = Debug|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Debug|x86.Build.0 = Debug|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Release|x64.ActiveCfg = Release|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Release|x64.Build.0 = Release|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Release|x86.ActiveCfg = Release|Any CPU
-		{2B462AD1-EDC4-4C84-9C4D-678591A281C9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
