@@ -46,7 +46,7 @@ namespace PoSnakeGame.Functions
 
             // Create response
             var response = req.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Content-Type", "application/json; charset=utf-8");
+            // The Content-Type header will be set by WriteAsJsonAsync
 
             // Add permissive CORS headers directly in the function
             response.Headers.Add("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
