@@ -118,4 +118,80 @@ public class ModelTests
         Assert.True(arena.IsOutOfBounds(new Position(5, -1))); // Out of top boundary
         Assert.True(arena.IsOutOfBounds(new Position(5, 10))); // Out of bottom boundary
     }
+    
+    [Fact]
+    public void Arena_HasCollision_Returns_True_For_Obstacles()
+    {
+        // Arrange
+        var arena = new Arena(10, 10);
+        var obstaclePosition = new Position(3, 3);
+        arena.AddObstacle(obstaclePosition);
+        
+        // Act & Assert
+        Assert.True(arena.HasCollision(obstaclePosition));
+        Assert.False(arena.HasCollision(new Position(4, 4))); // Different position
+    }
+    
+    [Fact]
+    public void Arena_AddFood_Does_Not_Add_Food_On_Obstacles()
+    {
+        // Arrange
+        var arena = new Arena(10, 10);
+        var obstaclePosition = new Position(3, 3);
+        arena.AddObstacle(obstaclePosition);
+        
+        // Act
+        arena.AddFood(obstaclePosition);
+        
+        // Assert
+        Assert.Empty(arena.Foods); // Food should not be added on an obstacle
+    }
+    
+    [Fact]
+    public void Arena_AddPowerUp_Does_Not_Add_PowerUp_On_Obstacles()
+    {
+        // Arrange
+        var arena = new Arena(10, 10);
+        var obstaclePosition = new Position(3, 3);
+        arena.AddObstacle(obstaclePosition);
+        var powerUp = new PowerUp(obstaclePosition, PowerUpType.Speed, 5.0f, 0.5f);
+        
+        // Act
+        arena.AddPowerUp(powerUp);
+        
+        // Assert
+        Assert.Empty(arena.PowerUps); // PowerUp should not be added on an obstacle
+    }
+    
+    [Fact]
+    public void PowerUp_Initialization_Sets_Properties_Correctly()
+    {
+        // Arrange
+        var position = new Position(5, 5);
+        var type = PowerUpType.Speed;
+        var duration = 10.0f;
+        var value = 0.5f;
+        
+        // Act
+        var powerUp = new PowerUp(position, type, duration, value);
+        
+        // Assert
+        Assert.Equal(position, powerUp.Position);
+        Assert.Equal(type, powerUp.Type);
+        Assert.Equal(duration, powerUp.Duration);
+        Assert.Equal(value, powerUp.Value);
+    }
+    
+    [Fact]
+    public void Snake_Die_Sets_IsAlive_To_False()
+    {
+        // Arrange
+        var snake = new Snake(new Position(5, 5), Direction.Right, Color.Green, SnakeType.Human);
+        
+        // Act
+        snake.Die();
+        
+        // Assert
+        Assert.False(snake.IsAlive);
+    }
 }

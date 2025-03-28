@@ -4,15 +4,16 @@
 
 1. **Set up Project Structure and Azure Development Environment**
    - [x] Create .gitignore file
-   - [x] Set up Azurite for local Azure storage emulation
-   - [ ] Ensure all projects build correctly
-   - [ ] Set up local logging
+   - [x] Set up AZURE TABLE STORAGE for  Azure storage 
+   - [x] Ensure all projects build correctly
+   - [x] Make sure azure table storage connection points to Azure table storage in the cloud
+   - [x] Set up local logging
 
 2. **Core Game Logic Implementation**
-   - [ ] Implement Snake model and movement logic
-   - [ ] Implement Arena and collision detection
-   - [ ] Implement PowerUp generation and effects
-   - [ ] Write unit tests for game logic
+   - [x] Implement Snake model and movement logic
+   - [x] Implement Arena and collision detection
+   - [x] Implement PowerUp generation and effects
+   - [x] Write unit tests for game logic
 
 3. **AI Snake Behavior Implementation**
    - [ ] Implement CpuSnakeAI service 

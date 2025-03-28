@@ -11,6 +11,7 @@ using PoSnakeGame.Wa.Services;
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Threading.Tasks;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -26,50 +27,59 @@ builder.Services.AddScoped<AzureConfigurationService>();
 bool isProduction = builder.HostEnvironment.IsProduction();
 Console.WriteLine($"Environment: {(isProduction ? "Production" : "Development")}");
 
-// Configure Azure Table Storage
+// Configure Azure Table Storage from appsettings.json
 var tableConfig = new TableStorageConfig();
-if (isProduction)
-{
-    // In production, the actual connection string is managed by the Azure Functions
-    // We only store a placeholder here for type initialization
-    tableConfig.ConnectionString = "DefaultEndpointsProtocol=https;AccountName=posnakegamestorage;AccountKey=****;EndpointSuffix=core.windows.net";
-    tableConfig.HighScoresTableName = "HighScores";
-    tableConfig.GameStatisticsTableName = "GameStatistics";
-    Console.WriteLine("Using production Azure Storage via Azure Functions");
-}
-else
-{
-    // In development, use the local storage emulator
-    tableConfig.ConnectionString = "UseDevelopmentStorage=true";
-    tableConfig.HighScoresTableName = "HighScores";
-    tableConfig.GameStatisticsTableName = "GameStatistics";
-    Console.WriteLine("Using local Azurite storage emulator");
-}
+var storageConfig = builder.Configuration.GetSection("TableStorage");
+tableConfig.ConnectionString = storageConfig["ConnectionString"];
+tableConfig.HighScoresTableName = storageConfig["HighScoresTableName"];
+tableConfig.GameStatisticsTableName = storageConfig["GameStatisticsTableName"];
+
+Console.WriteLine($"Using Azure Table Storage: {(tableConfig.IsUsingLocalStorage ? "Local Azurite" : "Azure Cloud")}");
 builder.Services.AddSingleton(tableConfig);
 
 // Register game services
 builder.Services.AddSingleton<GameService>();
 builder.Services.AddSingleton<GameEngine>();
 
+// Get the function base URL before building the app to avoid accessing disposed services
+// This avoids the "Cannot access disposed object" error with IServiceProvider
+string functionBaseUrl = null;
+builder.Services.AddScoped<Func<Task<string>>>(sp => async () =>
+{
+    if (functionBaseUrl != null)
+        return functionBaseUrl;
+
+    var configService = sp.GetRequiredService<AzureConfigurationService>();
+    functionBaseUrl = await configService.GetFunctionAppBaseUrlAsync();
+
+    // Ensure baseUrl ends with a slash for proper URL combination
+    if (!string.IsNullOrEmpty(functionBaseUrl) && !functionBaseUrl.EndsWith("/"))
+    {
+        functionBaseUrl += "/";
+    }
+
+    return functionBaseUrl;
+});
+
 // The service endpoints will be dynamically configured at runtime based on environment
 // This registration approach uses the Factory pattern to create services with the right configuration
-builder.Services.AddScoped(sp => 
+builder.Services.AddScoped(sp =>
 {
     var logger = sp.GetRequiredService<ILogger<HelloWorldService>>();
-    // Create a base HttpClient that will get its URL configured at runtime
+    // Create a base HttpClient 
     var httpClient = new HttpClient();
-    // Return the service with the dynamically configured HttpClient
     return new HelloWorldService(logger, httpClient);
 });
 
-builder.Services.AddScoped(sp => 
+builder.Services.AddScoped(sp =>
 {
     var logger = sp.GetRequiredService<ILogger<GameStatisticsService>>();
     var httpClient = new HttpClient();
     return new GameStatisticsService(logger, httpClient);
 });
 
-builder.Services.AddScoped(sp => 
+// Register the mock TableStorageService that calls Azure Functions
+builder.Services.AddScoped(sp =>
 {
     var logger = sp.GetRequiredService<ILogger<PoSnakeGame.Wa.Services.TableStorageService>>();
     var httpClient = new HttpClient();
@@ -85,48 +95,83 @@ builder.Services.AddSingleton<IUserPreferencesService, LocalStorageUserPreferenc
 // Configure logging
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 
+// Register a service to initialize URL configurations after the app has started
+// This uses the Decorator pattern to wrap the initialization of services
+builder.Services.AddScoped<ServiceInitializer>();
+
 // Build the app
 var app = builder.Build();
 
-// Configure service URLs based on the environment
-// This must be done after the app is built to resolve the AzureConfigurationService
-var serviceProvider = app.Services;
-var azureConfigService = serviceProvider.GetRequiredService<AzureConfigurationService>();
-var functionBaseUrl = await azureConfigService.GetFunctionAppBaseUrlAsync();
-
-// Update the URLs for all HTTP clients in services
-UpdateServiceHttpClients(serviceProvider, functionBaseUrl);
+// Trigger URL configuration initialization but don't await it directly here
+// This prevents accessing disposed services after the app has shut down
+var serviceInitializer = app.Services.GetRequiredService<ServiceInitializer>();
+_ = serviceInitializer.InitializeServicesAsync();
 
 await app.RunAsync();
 
-// Helper method to update all HTTP clients with the correct base URL
-// This demonstrates the Strategy pattern by dynamically configuring behavior at runtime
-void UpdateServiceHttpClients(IServiceProvider services, string baseUrl)
+// Service initializer class to configure service URLs after app startup
+// This implements the Decorator pattern to add functionality to existing services
+public class ServiceInitializer
 {
-    // Get all the services that need their HTTP clients configured
-    var helloWorldService = services.GetRequiredService<HelloWorldService>();
-    var gameStatisticsService = services.GetRequiredService<GameStatisticsService>();
-    var mockTableStorageService = services.GetRequiredService<PoSnakeGame.Wa.Services.TableStorageService>();
-    
-    // Ensure baseUrl ends with a slash for proper URL combination
-    if (!baseUrl.EndsWith("/"))
+    private readonly IServiceProvider _services;
+    private readonly Func<Task<string>> _getFunctionBaseUrlAsync;
+    private readonly ILogger<ServiceInitializer> _logger;
+    private bool _initialized = false;
+
+    public ServiceInitializer(
+        IServiceProvider services,
+        Func<Task<string>> getFunctionBaseUrlAsync,
+        ILogger<ServiceInitializer> logger)
     {
-        baseUrl += "/";
+        _services = services;
+        _getFunctionBaseUrlAsync = getFunctionBaseUrlAsync;
+        _logger = logger;
     }
-    
-    // All services should use the api/ base path
-    var apiBaseUrl = baseUrl + "api/";
-    
-    // Log for debugging
-    Console.WriteLine($"API Base URL for all services: {apiBaseUrl}");
-    
-    // Configure all services with the API base URL
-    helloWorldService.ConfigureHttpClient(apiBaseUrl);
-    gameStatisticsService.ConfigureHttpClient(apiBaseUrl);
-    mockTableStorageService.ConfigureHttpClient(apiBaseUrl);
-    
-    Console.WriteLine($"Configured all service HTTP clients with API base URL: {apiBaseUrl}");
+
+    public async Task InitializeServicesAsync()
+    {
+        if (_initialized)
+            return;
+
+        try
+        {
+            // Get the Function App base URL
+            string baseUrl = await _getFunctionBaseUrlAsync();
+
+            if (string.IsNullOrEmpty(baseUrl))
+            {
+                _logger.LogWarning("Function App base URL is empty. Services may not work correctly.");
+                return;
+            }
+
+            // All services should use the api/ base path
+            var apiBaseUrl = baseUrl + "api/";
+
+            // Log for debugging
+            _logger.LogInformation($"API Base URL for all services: {apiBaseUrl}");
+
+            // Configure all services with the API base URL
+            if (_services.GetService<HelloWorldService>() is HelloWorldService helloWorldService)
+            {
+                helloWorldService.ConfigureHttpClient(apiBaseUrl);
+            }
+
+            if (_services.GetService<GameStatisticsService>() is GameStatisticsService gameStatisticsService)
+            {
+                gameStatisticsService.ConfigureHttpClient(apiBaseUrl);
+            }
+
+            if (_services.GetService<PoSnakeGame.Wa.Services.TableStorageService>() is PoSnakeGame.Wa.Services.TableStorageService tableStorageService)
+            {
+                tableStorageService.ConfigureHttpClient(apiBaseUrl);
+            }
+
+            _logger.LogInformation("Configured all service HTTP clients with API base URL successfully");
+            _initialized = true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error configuring service HTTP clients");
+        }
+    }
 }
-
-
-

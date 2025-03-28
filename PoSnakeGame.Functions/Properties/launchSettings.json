@@ -6,8 +6,6 @@
       "launchBrowser": false,
       "environmentVariables": {
         "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
-        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-        "AZURE_FUNCTIONS_ENVIRONMENT": "Development"
       }
     }
   }
