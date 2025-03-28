@@ -9,5 +9,6 @@ namespace PoSnakeGame.Infrastructure.Services
         Task<List<HighScore>> GetTopScoresAsync(int count = 10);
         Task<bool> IsHighScore(int score);
         Task SaveHighScoreAsync(HighScore highScore);
+        Task<bool> TableExistsAsync(string tableName); // Added method signature
     }
-} 
+}

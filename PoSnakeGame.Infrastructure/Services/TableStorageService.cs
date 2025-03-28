@@ -1,4 +1,5 @@
 using Azure.Data.Tables;
+using Azure.Data.Tables.Models; // Added for TableItem
 using Microsoft.Extensions.Logging;
 using PoSnakeGame.Core.Models;
 using PoSnakeGame.Infrastructure.Configuration;
@@ -14,17 +15,18 @@ public class TableStorageService : ITableStorageService
     private readonly TableStorageConfig _config;
     private readonly ILogger<TableStorageService> _logger;
     private readonly TableClient _highScoresTable;
+    private readonly TableServiceClient _tableServiceClient; // Added field
 
     public TableStorageService(TableStorageConfig config, ILogger<TableStorageService> logger)
     {
         _config = config;
         _logger = logger;
-        
+
         try
         {
-            var tableServiceClient = new TableServiceClient(_config.ConnectionString);
-            _highScoresTable = tableServiceClient.GetTableClient(_config.HighScoresTableName);
-            
+            _tableServiceClient = new TableServiceClient(_config.ConnectionString); // Initialize field
+            _highScoresTable = _tableServiceClient.GetTableClient(_config.HighScoresTableName);
+
             // Create table if it doesn't exist
             _highScoresTable.CreateIfNotExists();
         }
@@ -101,6 +103,34 @@ public class TableStorageService : ITableStorageService
         {
             _logger.LogError(ex, "Error saving high score");
             throw;
+        }
+    }
+
+    // Implementation for TableExistsAsync
+    public async Task<bool> TableExistsAsync(string tableName)
+    {
+        try
+        {
+            _logger.LogInformation("Checking if table '{TableName}' exists.", tableName);
+            // Query tables with the specific name - Removed generic type argument
+            var query = _tableServiceClient.QueryAsync(filter: $"TableName eq '{tableName}'");
+
+            await foreach (var table in query)
+            {
+                if (table.Name.Equals(tableName, StringComparison.OrdinalIgnoreCase))
+                {
+                    _logger.LogInformation("Table '{TableName}' found.", tableName);
+                    return true;
+                }
+            }
+            _logger.LogWarning("Table '{TableName}' not found.", tableName);
+            return false;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error checking if table '{TableName}' exists", tableName);
+            // Depending on requirements, you might want to return false or re-throw
+            return false; 
         }
     }
 }

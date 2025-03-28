@@ -15,12 +15,14 @@
 		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="2.0.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.2.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" Version="2.0.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.OpenApi" Version="1.5.1" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Tables" Version="1.4.2" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.0" />
 		<PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Tables" Version="1.3.3" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\PoSnakeGame.Core\PoSnakeGame.Core.csproj" />
+		<ProjectReference Include="..\PoSnakeGame.Infrastructure\PoSnakeGame.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="host.json">
