@@ -315,8 +315,8 @@ namespace PoSnakeGame.Tests
             var directions = new List<Direction>();
 
             // Act
-            // Run AI multiple times to see if direction changes erratically
-            for (int i = 0; i < 10; i++)
+            // Run AI multiple times (e.g., 30) to increase probability of observing erratic change
+            for (int i = 0; i < 30; i++) 
             {
                 ai.UpdateDirection();
                 directions.Add(snake.CurrentDirection);
