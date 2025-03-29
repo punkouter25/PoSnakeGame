@@ -62,7 +62,8 @@
 10. **Deployment and CI/CD**
     - [x] Set up GitHub CI/CD Workflows (`ci.yml`, `posnakegame-staticwebapp.yml`, `deploy-api.yml`)
     - [x] Create Azure resources via CLI (App Service Plan `PoSnakeGameApiPlanWest2`, App Service `posnakegame-api`)
-    - [ ] Configure Azure resources (Static Web App API linking in portal, GitHub Secret `AZURE_CREDENTIALS`)
+    - [x] Configure GitHub Secret `AZURE_CREDENTIALS` via CLI
+    - [x] Update Blazor production config (`appsettings.Production.json`) to use direct API URL (API linking not used due to SWA Free tier)
     - [ ] Create Azure deployment scripts (if needed beyond workflows)
     - [ ] Implement Application Insights monitoring
     - [ ] Complete final testing and deployment
