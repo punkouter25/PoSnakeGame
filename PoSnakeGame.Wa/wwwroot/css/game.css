@@ -96,8 +96,19 @@
     box-shadow: 0 0 8px #00f;
 }
 
-.power-up.invincibility {
-    background-color: #f0f;
+/* Added styles for other power-up types */
+.power-up.slowdown {
+    background-color: #ffa500; /* Orange */
+    box-shadow: 0 0 8px #ffa500;
+}
+
+.power-up.points {
+    background-color: #ffd700; /* Gold */
+    box-shadow: 0 0 8px #ffd700;
+}
+
+.power-up.invincibility { /* Keep this if invincibility is added later */
+    background-color: #f0f; /* Magenta */
     box-shadow: 0 0 8px #f0f;
 }
 
@@ -291,4 +302,4 @@
 .error-message {
     color: #ff0000;
     margin-top: 10px;
-} 
+}

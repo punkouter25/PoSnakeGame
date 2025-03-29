@@ -32,6 +32,7 @@
         <button class="retro-button" @onclick="StartGame">START GAME</button>
         <button class="retro-button" @onclick="ViewHighScores">HIGH SCORES</button>
         <button class="retro-button" @onclick="ViewStatistics">STATISTICS</button>
+        <button class="retro-button" @onclick="ViewSettings">SETTINGS</button> @* Added Settings button *@
     </div>
 </div>
 
@@ -101,5 +102,10 @@
     private void ViewStatistics()
     {
         NavigationManager.NavigateTo("/statistics");
+    }
+
+    private void ViewSettings()
+    {
+        NavigationManager.NavigateTo("/settings");
     }
 }

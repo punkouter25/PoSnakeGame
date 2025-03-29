@@ -8,6 +8,7 @@ using PoSnakeGame.Infrastructure.Configuration;
 using PoSnakeGame.Infrastructure.Services;
 using PoSnakeGame.Wa;
 using PoSnakeGame.Wa.Services;
+using Blazored.LocalStorage; // Added for local storage
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -95,8 +96,11 @@ builder.Services.AddScoped(sp =>
 // });
 // builder.Services.AddScoped<ITableStorageService>(sp => sp.GetRequiredService<PoSnakeGame.Wa.Services.TableStorageService>());
 
-// Add user preferences service
-builder.Services.AddSingleton<IUserPreferencesService, LocalStorageUserPreferencesService>();
+// Add Blazored Local Storage services
+builder.Services.AddBlazoredLocalStorage(); 
+
+// Add user preferences service (using Scoped as it interacts with LocalStorage)
+builder.Services.AddScoped<IUserPreferencesService, LocalStorageUserPreferencesService>();
 
 // Configure logging
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));

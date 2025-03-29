@@ -16,68 +16,114 @@ namespace PoSnakeGame.Core.Services
         {
             Snake = snake;
             Arena = arena;
-            Random = new Random();
+            // Use a shared Random instance if possible, but for simplicity, each AI gets its own for now.
+            // Consider injecting Random if needed for better testability or seed control.
+            Random = new Random(); 
         }
 
+        /// <summary>
+        /// Abstract method for AI logic to determine the snake's next direction.
+        /// Must be implemented by concrete AI personality classes.
+        /// </summary>
         public abstract void UpdateDirection();
 
+        /// <summary>
+        /// Calculates the Manhattan distance between two positions.
+        /// Useful for simple distance heuristics.
+        /// </summary>
         protected static int CalculateManhattanDistance(Position p1, Position p2)
         {
             return Math.Abs(p1.X - p2.X) + Math.Abs(p1.Y - p2.Y);
         }
 
+        /// <summary>
+        /// Checks if moving in the given direction from the snake's current head position is valid.
+        /// A move is valid if it's within bounds, doesn't hit an obstacle, and doesn't hit any snake's body (including its own).
+        /// </summary>
+        /// <param name="direction">The direction to check.</param>
+        /// <returns>True if the move is valid, false otherwise.</returns>
         protected bool IsValidMove(Direction direction)
         {
             var head = Snake.Segments[0];
             var nextPos = head + Position.FromDirection(direction);
 
-            // Check if out of bounds
-            if (Arena.IsOutOfBounds(nextPos)) return false;
+            // 1. Check Arena Bounds
+            if (Arena.IsOutOfBounds(nextPos))
+            {
+                // Console.WriteLine($"Invalid Move: {direction} leads to Out of Bounds at {nextPos}");
+                return false;
+            }
 
-            // Check collision with obstacles
-            if (Arena.HasCollision(nextPos)) return false;
+            // 2. Check Obstacles
+            if (Arena.HasCollision(nextPos))
+            {
+                // Console.WriteLine($"Invalid Move: {direction} leads to Obstacle collision at {nextPos}");
+                return false;
+            }
 
-            // Check collision with snakes
-            if (IsTouchingSnake(nextPos)) return false;
+            // 3. Check Collision with ALL snake segments (including self, except potentially the tail tip if it moves)
+            if (IsCollidingWithAnySnake(nextPos))
+            {
+                // Console.WriteLine($"Invalid Move: {direction} leads to Snake collision at {nextPos}");
+                return false;
+            }
 
+            // If all checks pass, the move is valid
             return true;
         }
 
-        // Helper method to count valid adjacent positions
+        /// <summary>
+        /// Counts the number of adjacent positions (up, down, left, right) from a given position 
+        /// that are valid moves (within bounds, no obstacles, no snakes).
+        /// Useful for evaluating the "openness" of a potential next position.
+        /// </summary>
+        /// <param name="pos">The position to check adjacent cells from.</param>
+        /// <returns>The number of valid adjacent positions.</returns>
         protected int CountValidAdjacentPositions(Position pos)
         {
             int count = 0;
-            
-            // Check all four directions
             foreach (Direction dir in Enum.GetValues<Direction>())
             {
                 var adjacentPos = pos + Position.FromDirection(dir);
-                
-                // Position is valid if it's in bounds and not occupied
-                if (!Arena.IsOutOfBounds(adjacentPos) && 
+                // Check if the adjacent position itself is a valid place to be (not just a valid move *to*)
+                if (!Arena.IsOutOfBounds(adjacentPos) &&
                     !Arena.HasCollision(adjacentPos) &&
-                    !IsTouchingSnake(adjacentPos))
+                    !IsCollidingWithAnySnake(adjacentPos))
                 {
                     count++;
                 }
             }
-            
             return count;
         }
 
-        // Helper to check if a position touches any snake
-        protected bool IsTouchingSnake(Position pos)
+        /// <summary>
+        /// Checks if a given position collides with any segment of any snake currently in the arena.
+        /// </summary>
+        /// <param name="pos">The position to check.</param>
+        /// <returns>True if the position overlaps with any snake segment, false otherwise.</returns>
+        protected bool IsCollidingWithAnySnake(Position pos)
         {
-            if (Arena.Snakes == null) return false;
+            // Ensure Arena.Snakes is populated (important for tests)
+            if (Arena.Snakes == null || Arena.Snakes.Count == 0) return false; 
 
             foreach (var snake in Arena.Snakes)
             {
-                if (snake.Segments.Contains(pos))
+                // Check collision against all segments of the snake
+                // Note: A snake *can* move into the space its own tail just vacated, 
+                // but checking against all segments simplifies collision logic and prevents weird overlaps.
+                if (snake.Segments.Contains(pos)) 
+                {
                     return true;
+                }
             }
             return false;
         }
 
+        /// <summary>
+        /// Gets a list of directions the snake can safely move in its next step.
+        /// Excludes moving directly backward and directions leading to immediate collisions.
+        /// </summary>
+        /// <returns>A list of safe directions.</returns>
         protected List<Direction> GetSafeDirections()
         {
             // Get all valid directions that won't cause immediate collisions
@@ -105,6 +151,10 @@ namespace PoSnakeGame.Core.Services
     }
 
     // Concrete Strategy: Random movement AI
+    /// <summary>
+    /// An AI personality that chooses a random direction from the available safe moves.
+    /// It does not consider food, other snakes, or long-term survival.
+    /// </summary>
     public class RandomAI : CpuSnakeAI
     {
         public RandomAI(Snake snake, Arena arena) : base(snake, arena) { }
@@ -122,12 +172,14 @@ namespace PoSnakeGame.Core.Services
                 
                 Console.WriteLine($"RandomAI: Changed to {Snake.CurrentDirection}");
             }
-            // If no safe directions, keep current direction (likely will lead to death)
+            // If no safe directions, it keeps its current direction, which will likely result in a collision.
+            // This is acceptable behavior for a purely random AI.
         }
     }
 
-    // Concrete Strategy: Simple AI that follows food
-    public class SimpleAI : CpuSnakeAI
+    // Concrete Strategy: Simple AI that follows food (Consider removing or merging with FoodieAI if redundant)
+    // NOTE: This seems very similar to FoodieAI. Let's keep FoodieAI as the primary food-seeking AI.
+    public class SimpleAI : CpuSnakeAI 
     {
         public SimpleAI(Snake snake, Arena arena) : base(snake, arena) { }
 
@@ -267,20 +319,33 @@ namespace PoSnakeGame.Core.Services
                         score += distance; // Farther is better
                     }
                 }
-                
+
+                // Debugging log for CautiousAI scoring
+                Console.WriteLine($"CautiousAI: Eval Dir={dir}, NextPos={nextPos}, Open={CountValidAdjacentPositions(nextPos)}, Score={score}");
+
                 if (score > bestScore)
                 {
                     bestScore = score;
                     bestDirection = dir;
+                    Console.WriteLine($"CautiousAI: New best direction {bestDirection} with score {bestScore}");
+                }
+                else if (score == bestScore)
+                {
+                     // Optional: Add tie-breaking logic if needed, e.g., prefer current direction or random
+                     Console.WriteLine($"CautiousAI: Tied score {score} for direction {dir}. Keeping current best {bestDirection}.");
                 }
             }
             
             Snake.CurrentDirection = bestDirection;
-            Console.WriteLine($"CautiousAI: Selected {Snake.CurrentDirection} with score {bestScore}");
+            Console.WriteLine($"CautiousAI: Final Selected {Snake.CurrentDirection} with score {bestScore}");
         }
     }
 
-    // Concrete Strategy: Foodie AI focuses entirely on food
+    // Concrete Strategy: Foodie AI focuses primarily on finding and consuming food.
+    /// <summary>
+    /// An AI personality that prioritizes moving towards the nearest food source (Points power-ups first, then regular food).
+    /// If no food is nearby or reachable safely, it falls back to moving towards the most open space.
+    /// </summary>
     public class FoodieAI : CpuSnakeAI
     {
         public FoodieAI(Snake snake, Arena arena) : base(snake, arena) { }
@@ -335,9 +400,12 @@ namespace PoSnakeGame.Core.Services
                 return;
             }
             
-            // Fallback: choose direction with most open space
-            Direction fallbackDir = safeDirections[0];
-            int maxOpenSpace = 0;
+            // --- Fallback Logic ---
+            // If no food target was found or reachable safely, choose the safe direction 
+            // that leads to the position with the most valid adjacent positions (most open space).
+            Console.WriteLine($"FoodieAI: No food target found or reachable. Falling back to finding open space.");
+            Direction fallbackDir = safeDirections.Count > 0 ? safeDirections[0] : Snake.CurrentDirection; // Default to first safe or current
+            int maxOpenSpace = -1; // Use -1 to ensure the first valid direction is chosen if all have 0 open space
             
             foreach (var dir in safeDirections)
             {
@@ -356,7 +424,12 @@ namespace PoSnakeGame.Core.Services
         }
     }
 
-    // Concrete Strategy: Hunter AI targets the player snake
+    // Concrete Strategy: Hunter AI specifically targets the human player snake.
+    /// <summary>
+    /// An AI personality that attempts to intercept the human player's snake.
+    /// It uses simple prediction to estimate the player's next position.
+    /// If the player snake is not found, it falls back to a balanced strategy of seeking food and open space.
+    /// </summary>
     public class HunterAI : CpuSnakeAI
     {
         public HunterAI(Snake snake, Arena arena) : base(snake, arena) { }
@@ -407,9 +480,12 @@ namespace PoSnakeGame.Core.Services
                 return;
             }
             
-            // Fallback to AdvancedAI if no player found
-            // Look for food
-            Position targetFood = null;
+            // --- Fallback Logic ---
+            // If the player snake is not found (e.g., already dead or not present), 
+            // fall back to a strategy similar to AdvancedAI/CautiousAI: prioritize open space, 
+            // but also consider moving towards Points power-ups.
+            Console.WriteLine($"HunterAI: Player snake not found or not alive. Falling back.");
+            Position targetFood = null; // Specifically look for Points power-ups in fallback
             if (Arena.PowerUps?.Count > 0)
             {
                 targetFood = Arena.PowerUps
@@ -419,8 +495,8 @@ namespace PoSnakeGame.Core.Services
                     .FirstOrDefault();
             }
             
-            // Evaluate directions
-            Direction fallbackDir = Snake.CurrentDirection;
+            // Evaluate safe directions based on open space and proximity to Points power-ups
+            Direction fallbackDir = safeDirections.Count > 0 ? safeDirections[0] : Snake.CurrentDirection;
             int bestScore = int.MinValue;
             
             foreach (var dir in safeDirections)
@@ -442,11 +518,15 @@ namespace PoSnakeGame.Core.Services
             }
             
             Snake.CurrentDirection = fallbackDir;
-            Console.WriteLine($"HunterAI: No player found, fallback direction: {fallbackDir}");
+            Console.WriteLine($"HunterAI: Fallback selected {fallbackDir} with score {bestScore}");
         }
     }
 
-    // Concrete Strategy: Survivor AI prioritizes survival and open space
+    // Concrete Strategy: Survivor AI prioritizes survival and maximizing open space.
+    /// <summary>
+    /// An AI personality focused on staying alive as long as possible.
+    /// It prioritizes moving into areas with the most open space and avoids getting close to other snakes or walls.
+    /// </summary>
     public class SurvivorAI : CpuSnakeAI
     {
         public SurvivorAI(Snake snake, Arena arena) : base(snake, arena) { }
@@ -513,10 +593,14 @@ namespace PoSnakeGame.Core.Services
         }
     }
 
-    // Concrete Strategy: Speedy AI moves quickly and erratically
+    // Concrete Strategy: Speedy AI moves quickly and changes direction frequently.
+    /// <summary>
+    /// An AI personality characterized by high speed and somewhat erratic movement.
+    /// It changes direction periodically and prioritizes moving towards food or power-ups when not changing randomly.
+    /// </summary>
     public class SpeedyAI : CpuSnakeAI
     {
-        private int moveCounter = 0;
+        private int moveCounter = 0; // Counter to trigger periodic random direction changes
         
         public SpeedyAI(Snake snake, Arena arena) : base(snake, arena) 
         {
@@ -544,20 +628,33 @@ namespace PoSnakeGame.Core.Services
             
             // Otherwise, use a more intelligent approach to find food or open space
             var head = Snake.Segments[0];
-            Position targetFood = null;
+            Position targetItem = null; // Can be food or powerup
             
-            // Find nearest food
+            // Find nearest relevant item (Points/Speed PowerUp or regular Food)
+            var potentialTargets = new List<(Position Pos, int Dist)>();
+
+            // Check PowerUps first
             if (Arena.PowerUps?.Count > 0)
             {
-                targetFood = Arena.PowerUps
+                potentialTargets.AddRange(Arena.PowerUps
                     .Where(p => p.Type == PowerUpType.Points || p.Type == PowerUpType.Speed)
-                    .OrderBy(f => CalculateManhattanDistance(head, f.Position))
-                    .Select(f => f.Position)
-                    .FirstOrDefault();
+                    .Select(p => (p.Position, CalculateManhattanDistance(head, p.Position))));
+            }
+            // Check regular Food
+             if (Arena.Foods?.Count > 0)
+            {
+                 potentialTargets.AddRange(Arena.Foods
+                    .Select(f => (f, CalculateManhattanDistance(head, f))));
+            }
+
+            // Find the closest target overall
+            if(potentialTargets.Any())
+            {
+                targetItem = potentialTargets.OrderBy(t => t.Dist).First().Pos;
             }
             
-            // If food found, move toward it
-            if (targetFood != null)
+            // If target found, move toward it
+            if (targetItem != null)
             {
                 Direction bestDirection = Snake.CurrentDirection;
                 int shortestDistance = int.MaxValue;
@@ -565,22 +662,22 @@ namespace PoSnakeGame.Core.Services
                 foreach (var dir in safeDirections)
                 {
                     var newPos = head + Position.FromDirection(dir);
-                    var distance = CalculateManhattanDistance(newPos, targetFood);
+                    var distance = CalculateManhattanDistance(newPos, targetItem); // Use targetItem
                     
                     if (distance < shortestDistance)
-                    {
+                    { // Added missing opening brace
                         shortestDistance = distance;
                         bestDirection = dir;
-                    }
+                    } // Added missing closing brace
                 }
                 
                 Snake.CurrentDirection = bestDirection;
-                Console.WriteLine($"SpeedyAI: Moving toward food, distance: {shortestDistance}");
+                Console.WriteLine($"SpeedyAI: Moving toward item at {targetItem}, distance: {shortestDistance}");
                 return;
             }
             
-            // If no food, move in direction with most open space
-            Direction fallbackDir = safeDirections[0];
+            // If no item found, move in direction with most open space
+            Direction fallbackDir = safeDirections.Count > 0 ? safeDirections[0] : Snake.CurrentDirection; // Handle no safe directions case
             int maxOpenSpace = 0;
             
             foreach (var dir in safeDirections)
@@ -596,11 +693,16 @@ namespace PoSnakeGame.Core.Services
             }
             
             Snake.CurrentDirection = fallbackDir;
-            Console.WriteLine($"SpeedyAI: Moving to open space: {fallbackDir}");
+            Console.WriteLine($"SpeedyAI: No food/power-up found, moving to open space: {fallbackDir}");
         }
     }
 
-    // Concrete Strategy: Aggressive AI that targets other snakes
+    // Concrete Strategy: Aggressive AI targets the nearest snake (player or CPU).
+    /// <summary>
+    /// An AI personality that actively seeks out and attempts to intercept the nearest snake.
+    /// If no snakes are nearby, it prioritizes grabbing any available power-up.
+    /// As a last resort, it moves randomly.
+    /// </summary>
     public class AggressiveAI : CpuSnakeAI
     {
         public AggressiveAI(Snake snake, Arena arena) : base(snake, arena) { }
@@ -656,18 +758,20 @@ namespace PoSnakeGame.Core.Services
                 return;
             }
             
-            // If no snakes to target, look for power-ups
-            Position targetFood = null;
+            // --- Fallback 1: Target Power-ups ---
+            // If no snakes are found to target, look for the nearest power-up of any type.
+            Console.WriteLine($"AggressiveAI: No target snake found. Looking for power-ups.");
+            Position targetPowerUp = null;
             if (Arena.PowerUps?.Count > 0)
             {
-                targetFood = Arena.PowerUps
+                targetPowerUp = Arena.PowerUps // Corrected variable name here
                     .OrderBy(f => CalculateManhattanDistance(head, f.Position))
-                    .Select(f => f.Position)
+                    .Select(p => p.Position) // Select the position of the power-up
                     .FirstOrDefault();
             }
             
-            // Move toward food if found
-            if (targetFood != null)
+            // Move toward the nearest power-up if one is found
+            if (targetPowerUp != null)
             {
                 Direction bestDirection = Snake.CurrentDirection;
                 int shortestDistance = int.MaxValue;
@@ -675,7 +779,7 @@ namespace PoSnakeGame.Core.Services
                 foreach (var dir in safeDirections)
                 {
                     var newPos = head + Position.FromDirection(dir);
-                    var distance = CalculateManhattanDistance(newPos, targetFood);
+                    var distance = CalculateManhattanDistance(newPos, targetPowerUp); // Use targetPowerUp
                     
                     if (distance < shortestDistance)
                     {
@@ -685,12 +789,18 @@ namespace PoSnakeGame.Core.Services
                 }
                 
                 Snake.CurrentDirection = bestDirection;
+                Console.WriteLine($"AggressiveAI: Moving toward power-up, distance: {shortestDistance}");
                 return;
             }
-            
-            // If nothing to target, move randomly
-            Snake.CurrentDirection = safeDirections[Random.Next(safeDirections.Count)];
+
+            // --- Fallback 2: Random Movement ---
+            // If no snakes and no power-ups are found, move randomly among safe directions.
+            Console.WriteLine($"AggressiveAI: No snakes or power-ups found. Moving randomly.");
+            if (safeDirections.Count > 0) // Ensure there's at least one safe direction
+            {
+                Snake.CurrentDirection = safeDirections[Random.Next(safeDirections.Count)];
+            }
+            // If no safe directions, it keeps its current direction (likely leading to collision).
         }
     }
 }
-

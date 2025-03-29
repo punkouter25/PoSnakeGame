@@ -75,9 +75,11 @@ namespace PoSnakeGame.Core.Services
             _logger.LogInformation("GameService created");
         }
 
-        public void InitializeGame(int playerCount = 1, int cpuCount = 15)
+        // Modified to accept optional user preferences
+        public void InitializeGame(int playerCount = 1, int cpuCount = 15, UserPreferences? preferences = null) 
         {
-            _logger.LogInformation("Initializing game with {PlayerCount} players and {CpuCount} CPU snakes", playerCount, cpuCount);
+            _logger.LogInformation("Initializing game with {PlayerCount} players and {CpuCount} CPU snakes. Preferences provided: {HasPrefs}", 
+                playerCount, cpuCount, preferences != null);
 
             Arena = new Arena(_arenaWidth, _arenaHeight);
             Snakes.Clear();
@@ -97,12 +99,16 @@ namespace PoSnakeGame.Core.Services
             _countdownTimer = 0f;
             _logger.LogInformation("Countdown initialized: Active={IsActive}, Value={Value}", IsCountdownActive, CountdownValue);
 
-            // Create player snake with a more vibrant red color to make it stand out
+            // Determine player snake color: Use preference if available, otherwise default to Red
+            Color playerColor = preferences?.GetPlayerSnakeColor() ?? Color.Red;
+             _logger.LogInformation("Using player snake color: {Color}", ColorTranslator.ToHtml(playerColor));
+
+            // Create player snake with the determined color
             // Position on the left side of the arena
             var playerSnake = new Snake(
                 new Position(_arenaWidth / 8, _arenaHeight / 2), // Left side position
                 Direction.Right, 
-                Color.FromArgb(255, 0, 0), 
+                playerColor, // Use loaded/default color
                 SnakeType.Human)
             {
                 SizeMultiplier = 1.2f // 20% larger

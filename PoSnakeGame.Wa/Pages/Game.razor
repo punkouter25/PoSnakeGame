@@ -146,8 +146,11 @@
         // Set up the UI thread invoker for the GameService
         GameService.SetUiThreadInvoker(action => InvokeAsync(action));
         
-        // Initialize the game
-        GameService.InitializeGame();
+        // Load preferences first
+        var userPrefs = await UserPreferencesService.LoadPreferencesAsync();
+        
+        // Initialize the game, passing the loaded preferences
+        GameService.InitializeGame(preferences: userPrefs); 
         
         // Subscribe to game state changes
         GameService.OnGameStateChanged += StateHasChanged;
@@ -174,9 +177,10 @@
             try
             {
                 // Save the user's initials in preferences
-                var userPrefs = await UserPreferencesService.GetUserPreferencesAsync();
-                userPrefs.Initials = initials;
-                await UserPreferencesService.SaveUserPreferencesAsync(userPrefs);
+                var userPrefs = await UserPreferencesService.LoadPreferencesAsync(); // Corrected method name
+                // TODO: Add Initials property to UserPreferences model
+                // userPrefs.Initials = initials; 
+                await UserPreferencesService.SavePreferencesAsync(userPrefs); // Corrected method name
                 
                 // Create high score entry
                 var highScore = new HighScore

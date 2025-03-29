@@ -4,18 +4,21 @@ using System.Threading.Tasks;
 namespace PoSnakeGame.Core.Interfaces
 {
     /// <summary>
-    /// Service for managing user preferences
+    /// Defines the contract for a service that manages user preferences.
     /// </summary>
     public interface IUserPreferencesService
     {
         /// <summary>
-        /// Retrieves the user preferences
+        /// Loads the user preferences asynchronously.
         /// </summary>
-        Task<UserPreferences> GetUserPreferencesAsync();
-        
+        /// <returns>The loaded UserPreferences object, or a default object if none found or error occurs.</returns>
+        Task<UserPreferences> LoadPreferencesAsync();
+
         /// <summary>
-        /// Saves user preferences
+        /// Saves the user preferences asynchronously.
         /// </summary>
-        Task SaveUserPreferencesAsync(UserPreferences preferences);
+        /// <param name="preferences">The UserPreferences object to save.</param>
+        /// <returns>A task representing the asynchronous save operation.</returns>
+        Task SavePreferencesAsync(UserPreferences preferences);
     }
-} 
+}

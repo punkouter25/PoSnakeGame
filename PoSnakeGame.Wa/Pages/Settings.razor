@@ -1,0 +1,83 @@
+@page "/settings"
+@using PoSnakeGame.Core.Interfaces
+@using PoSnakeGame.Core.Models
+@inject IUserPreferencesService UserPreferencesService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Snake Battle Royale - Settings</PageTitle>
+
+<div class="settings-container">
+    <h1 class="retro-title">SETTINGS</h1>
+
+    @if (_preferences == null)
+    {
+        <p>Loading preferences...</p>
+    }
+    else
+    {
+        <div class="settings-form">
+            <div class="form-group">
+                <label for="playerColor">Player Snake Color:</label>
+                <input type="color" id="playerColor" @bind="_preferences.PlayerSnakeColorHex" @bind:event="oninput" />
+                <span class="color-preview" style="background-color: @_preferences.PlayerSnakeColorHex;"></span>
+            </div>
+
+            @* Add more settings here later *@
+            @* 
+            <div class="form-group">
+                <label for="soundVolume">Sound Volume:</label>
+                <input type="range" id="soundVolume" min="0" max="1" step="0.1" @bind="_preferences.SoundVolume" />
+                <span>@(_preferences.SoundVolume * 100)%</span>
+            </div>
+            *@
+
+            <div class="button-group">
+                <button class="retro-button" @onclick="SaveChanges">SAVE</button>
+                <button class="retro-button secondary" @onclick="NavigateBack">CANCEL</button>
+            </div>
+            
+            @if (!string.IsNullOrEmpty(_statusMessage))
+            {
+                <p class="status-message @_statusClass">@_statusMessage</p>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private UserPreferences? _preferences;
+    private string _statusMessage = string.Empty;
+    private string _statusClass = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _preferences = await UserPreferencesService.LoadPreferencesAsync();
+    }
+
+    private async Task SaveChanges()
+    {
+        if (_preferences != null)
+        {
+            try
+            {
+                await UserPreferencesService.SavePreferencesAsync(_preferences);
+                _statusMessage = "Settings saved successfully!";
+                _statusClass = "success";
+                // Optionally navigate back after a short delay
+                await Task.Delay(1500); 
+                NavigateBack();
+            }
+            catch (Exception ex)
+            {
+                _statusMessage = $"Error saving settings: {ex.Message}";
+                _statusClass = "error";
+            }
+        }
+    }
+
+    private void NavigateBack()
+    {
+        // Navigate back to the main menu or previous page
+        NavigationManager.NavigateTo("/"); 
+    }
+}

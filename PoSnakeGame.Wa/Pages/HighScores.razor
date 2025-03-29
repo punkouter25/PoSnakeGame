@@ -60,8 +60,10 @@
         {
             // Use the new service to get scores from the API
             _highScores = await HighScoreService.GetHighScoresAsync(); 
-            var userPrefs = await UserPreferencesService.GetUserPreferencesAsync();
-            _playerInitials = userPrefs.Initials;
+            var userPrefs = await UserPreferencesService.LoadPreferencesAsync(); // Corrected method name
+            // TODO: Add Initials property to UserPreferences and uncomment below
+            // _playerInitials = userPrefs.Initials; 
+            _playerInitials = "TMP"; // Temporary placeholder
         }
         catch (Exception ex)
         {

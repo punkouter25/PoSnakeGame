@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -6,6 +6,10 @@
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" /> 
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Data.Tables" Version="12.10.0" />
@@ -25,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PoSnakeGame.Core\PoSnakeGame.Core.csproj" />
     <ProjectReference Include="..\PoSnakeGame.Infrastructure\PoSnakeGame.Infrastructure.csproj" />
+    <ProjectReference Include="..\PoSnakeGame.Api\PoSnakeGame.Api.csproj" />
   </ItemGroup>
 
 </Project>
