@@ -50,7 +50,7 @@ jobs:
       run: dotnet build --no-restore --configuration Release
 
     - name: Run Tests
-      run: dotnet test --no-build --verbosity normal --configuration Release --collect:"XPlat Code Coverage"
+      run: dotnet test --no-build --verbosity detailed --configuration Release --collect:"XPlat Code Coverage" --logger "console;verbosity=detailed"
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
