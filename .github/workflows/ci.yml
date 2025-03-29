@@ -1,6 +1,7 @@
 name: Build, Test, and Deploy
 
 on:
+  workflow_dispatch: # Allows manual triggering
   push:
     branches: [ "master" ]
   pull_request:
