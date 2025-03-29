@@ -1,4 +1,4 @@
-name: CI/CD
+name: Build, Test, and Deploy
 
 on:
   push:
@@ -6,18 +6,35 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  # Shared Variables
+  DOTNET_VERSION: '8.0.x'
+  # API Variables
+  API_PROJECT_PATH: 'PoSnakeGame.Api/PoSnakeGame.Api.csproj'
+  AZURE_API_WEBAPP_NAME: posnakegame-api   # Name of the Azure App Service for API
+  # Frontend Variables
+  AZURE_SWA_NAME: posnakegame-staticwebapp # Name of the Azure Static Web App
+  SWA_APP_DIRECTORY: PoSnakeGame.Wa        # Location of Blazor WASM app
+  SWA_OUTPUT_DIRECTORY: wwwroot            # Output location for Blazor WASM build
+
 jobs:
   build:
+    name: Build and Test
     runs-on: ubuntu-latest
+    outputs:
+      api_publish_path: ${{ steps.publish_api.outputs.publish_path }} # Output path for API artifact
 
     steps:
-    - uses: actions/checkout@v3
-    
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: true # Checkout submodules if any
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0.x
-    
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
     - name: Cache NuGet packages
       uses: actions/cache@v3
       with:
@@ -25,56 +42,131 @@ jobs:
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
         restore-keys: |
           ${{ runner.os }}-nuget-
-        
+
     - name: Restore dependencies
       run: dotnet restore
-      
-    - name: Build
+
+    - name: Build Solution
       run: dotnet build --no-restore --configuration Release
-      
-    - name: Test
+
+    - name: Run Tests
       run: dotnet test --no-build --verbosity normal --configuration Release --collect:"XPlat Code Coverage"
-      
+
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
-      
-    - name: Publish
-      run: dotnet publish --no-build --configuration Release
-      
-    - name: Upload build artifacts
+      # Add with: token: ${{ secrets.CODECOV_TOKEN }} if needed
+
+    - name: Publish API Project
+      id: publish_api # Give the step an ID
+      run: dotnet publish ${{ env.API_PROJECT_PATH }} --configuration Release --no-build --output ./api-publish
+      # outputs:
+      #   publish_path: ./api-publish # Define output path
+
+    - name: Upload API Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: build-artifacts
-        path: |
-          **/bin/Release/net8.0/publish/
-          !**/bin/Release/net8.0/publish/*.pdb
-        
-    - name: Run code analysis
+        name: api-publish-artifact # Artifact name for API
+        path: ./api-publish # Path to API publish output
+
+    - name: Run code analysis (Format Check)
       run: |
-        dotnet tool install --global dotnet-format
-        dotnet format --verify-no-changes
-        
+        dotnet tool install --global dotnet-format --version 8.*
+        dotnet format --verify-no-changes --verbosity diagnostic
+
   analyze:
     name: CodeQL Analysis
     runs-on: ubuntu-latest
     permissions:
       security-events: write
-      
+      actions: read
+      contents: read
+
     steps:
-    - uses: actions/checkout@v3
-    
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
         languages: csharp
-        
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0.x
-        
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
     - name: Autobuild
+      # This step automatically attempts to build the code
       uses: github/codeql-action/autobuild@v2
-      
+
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+
+  deploy_api:
+    name: Deploy API to Azure App Service
+    needs: build # Depends on the build job succeeding
+    runs-on: ubuntu-latest
+    # Only run on push to master branch
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+
+    # Removed environment block as 'production' environment is not configured in repo settings
+    # environment:
+    #   name: production 
+    #   url: ${{ steps.deploy_to_webapp.outputs.webapp-url }}
+
+    steps:
+    - name: Download API Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: api-publish-artifact # Match artifact name from build job
+        path: ./api-publish # Download to this path
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }} # Requires AZURE_CREDENTIALS secret
+
+    - name: Deploy to Azure App Service
+      id: deploy_to_webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_API_WEBAPP_NAME }}
+        package: './api-publish' # Deploy the downloaded artifact
+
+    - name: Logout from Azure
+      run: |
+        az logout
+        az cache purge
+        az account clear
+      if: always() # Ensure logout runs even if deployment fails
+
+  deploy_frontend:
+    name: Deploy Frontend to Azure Static Web App
+    needs: build # Depends on the build job succeeding
+    runs-on: ubuntu-latest
+    # Only run on push to master branch
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Build and Deploy Static Web App
+      id: builddeploy
+      uses: Azure/static-web-apps-deploy@v1
+      with:
+        azure_static_web_apps_api_token: ${{ secrets.posnakegame_staticwebapp_SPN }} # Use the SWA specific token
+        repo_token: ${{ secrets.GITHUB_TOKEN }} # Needed for GitHub integrations
+        action: "upload"
+        app_location: ${{ env.SWA_APP_DIRECTORY }} # Blazor project path
+        api_location: "" # No managed API for SWA Free tier
+        output_location: ${{ env.SWA_OUTPUT_DIRECTORY }} # Blazor build output (relative to app_location)
+        # app_build_command: "dotnet publish -c Release -o publish" # Let the action handle the build
+        # api_build_command: "" # No API build needed here
