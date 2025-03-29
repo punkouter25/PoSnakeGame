@@ -46,6 +46,15 @@
     position: absolute;
     border-radius: 3px;
     box-shadow: 0 0 3px var(--retro-green);
+    animation: snake-breathe 2s infinite ease-in-out; /* Add breathing animation */
+    transform-origin: center center; /* Ensure scaling is centered */
+}
+
+/* Define the breathing animation */
+@keyframes snake-breathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); } /* Slightly larger */
+    100% { transform: scale(1); }
 }
 
 .snake-segment.head {

@@ -37,6 +37,7 @@ builder.Services.AddCors(options =>
 });
 
 // Add services to the container.
+builder.Services.AddApplicationInsightsTelemetry(); // Add Application Insights
 builder.Services.AddControllers(); // Add support for API controllers
 
 // --- Configure and Register TableStorageConfig ---
