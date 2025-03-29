@@ -1,8 +1,8 @@
 @page "/highscores"
 @using PoSnakeGame.Core.Models
-@using PoSnakeGame.Infrastructure.Services
+@using PoSnakeGame.Wa.Services // Add this for HighScoreService
 @using PoSnakeGame.Core.Interfaces
-@inject ITableStorageService TableStorageService
+@inject HighScoreService HighScoreService // Inject the new service
 @inject IUserPreferencesService UserPreferencesService
 
 <PageTitle>Snake Battle Royale - High Scores</PageTitle>
@@ -58,7 +58,8 @@
     {
         try
         {
-            _highScores = await TableStorageService.GetTopScoresAsync();
+            // Use the new service to get scores from the API
+            _highScores = await HighScoreService.GetHighScoresAsync(); 
             var userPrefs = await UserPreferencesService.GetUserPreferencesAsync();
             _playerInitials = userPrefs.Initials;
         }
@@ -72,4 +73,4 @@
             _loading = false;
         }
     }
-} 
+}

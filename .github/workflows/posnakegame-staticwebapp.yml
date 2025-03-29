@@ -42,10 +42,10 @@ jobs:
         action: upload
         deployment_environment: ${{ env.DEPLOYMENT_ENVIRONMENT }}
         app_location: ${{ env.APP_DIRECTORY }}
-        api_location: ${{ env.API_DIRECTORY }}
+        # api_location: ${{ env.API_DIRECTORY }} # Remove API location - deploying API separately
         output_location: ${{ env.OUTPUT }}
         app_build_command: dotnet publish -c Release -o publish
-        api_build_command: dotnet publish -c Release -o publish
+        # api_build_command: dotnet publish -c Release -o publish # Remove API build command
         
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -59,3 +59,4 @@ jobs:
         azure_static_web_apps_api_token: ${{ secrets.posnakegame_staticwebapp_SPN }}
         action: close
         repo_token: ${{ secrets.GITHUB_TOKEN }}
+        app_location: ${{ env.APP_DIRECTORY }} # Add app_location back for close action

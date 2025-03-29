@@ -47,10 +47,10 @@ namespace PoSnakeGame.Wa.Services
         {
             try
             {
-                _logger.LogInformation("Calling HelloWorld Azure Function at {BaseAddress}", _httpClient.BaseAddress);
+                _logger.LogInformation("Calling HelloWorld API endpoint at {BaseAddress}", _httpClient.BaseAddress);
                 
-                // Since baseUrl already includes 'api/', we only need to append 'hello'
-                var response = await _httpClient.GetAsync("hello");
+                // Use the controller name as the relative path
+                var response = await _httpClient.GetAsync("HelloWorld"); 
                 response.EnsureSuccessStatusCode();
                 
                 var message = await response.Content.ReadAsStringAsync();
@@ -77,8 +77,8 @@ namespace PoSnakeGame.Wa.Services
             {
                 _logger.LogInformation("Checking API connectivity at {BaseAddress}", _httpClient.BaseAddress);
                 
-                // Using GetFromJsonAsync for cleaner JSON handling
-                var response = await _httpClient.GetFromJsonAsync<HelloWorldResponse>("hello");
+                // Using GetFromJsonAsync for cleaner JSON handling - use controller name
+                var response = await _httpClient.GetFromJsonAsync<HelloWorldResponse>("HelloWorld"); 
                 
                 if (response != null)
                 {

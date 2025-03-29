@@ -78,16 +78,22 @@ builder.Services.AddScoped(sp =>
     return new GameStatisticsService(logger, httpClient);
 });
 
-// Register the mock TableStorageService that calls Azure Functions
+// Register the new HighScoreService
 builder.Services.AddScoped(sp =>
 {
-    var logger = sp.GetRequiredService<ILogger<PoSnakeGame.Wa.Services.TableStorageService>>();
-    var httpClient = new HttpClient();
-    return new PoSnakeGame.Wa.Services.TableStorageService(logger, httpClient);
+    var logger = sp.GetRequiredService<ILogger<HighScoreService>>();
+    var httpClient = new HttpClient(); // BaseAddress will be set by ServiceInitializer
+    return new HighScoreService(logger, httpClient);
 });
 
-// Use the mock table storage service for WebAssembly
-builder.Services.AddScoped<ITableStorageService>(sp => sp.GetRequiredService<PoSnakeGame.Wa.Services.TableStorageService>());
+// Remove the mock TableStorageService registration and the interface mapping
+// builder.Services.AddScoped(sp =>
+// {
+//     var logger = sp.GetRequiredService<ILogger<PoSnakeGame.Wa.Services.TableStorageService>>();
+//     var httpClient = new HttpClient();
+//     return new PoSnakeGame.Wa.Services.TableStorageService(logger, httpClient);
+// });
+// builder.Services.AddScoped<ITableStorageService>(sp => sp.GetRequiredService<PoSnakeGame.Wa.Services.TableStorageService>());
 
 // Add user preferences service
 builder.Services.AddSingleton<IUserPreferencesService, LocalStorageUserPreferencesService>();
@@ -161,10 +167,17 @@ public class ServiceInitializer
                 gameStatisticsService.ConfigureHttpClient(apiBaseUrl);
             }
 
-            if (_services.GetService<PoSnakeGame.Wa.Services.TableStorageService>() is PoSnakeGame.Wa.Services.TableStorageService tableStorageService)
+            // Configure the new HighScoreService
+            if (_services.GetService<HighScoreService>() is HighScoreService highScoreService)
             {
-                tableStorageService.ConfigureHttpClient(apiBaseUrl);
+                highScoreService.ConfigureHttpClient(apiBaseUrl);
             }
+
+            // Remove configuration for the mock TableStorageService
+            // if (_services.GetService<PoSnakeGame.Wa.Services.TableStorageService>() is PoSnakeGame.Wa.Services.TableStorageService tableStorageService)
+            // {
+            //     tableStorageService.ConfigureHttpClient(apiBaseUrl);
+            // }
 
             _logger.LogInformation("Configured all service HTTP clients with API base URL successfully");
             _initialized = true;

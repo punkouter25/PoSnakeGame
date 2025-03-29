@@ -1,12 +1,12 @@
 @page "/game"
 @using PoSnakeGame.Core.Models
 @using PoSnakeGame.Core.Services
-@using PoSnakeGame.Infrastructure.Services
+@using PoSnakeGame.Wa.Services // Add this for HighScoreService
 @using PoSnakeGame.Core.Interfaces
 @using Microsoft.AspNetCore.Components.Web
 @inject GameService GameService
 @inject GameEngine GameEngine
-@inject ITableStorageService TableStorageService
+@inject HighScoreService HighScoreService // Inject the new service
 @inject IUserPreferencesService UserPreferencesService
 @inject IJSRuntime JSRuntime
 @implements IDisposable
@@ -159,8 +159,8 @@
 
     private async void HandleGameOver()
     {
-        // Check if the score qualifies for the high score board
-        if (await TableStorageService.IsHighScore(PlayerScore))
+        // Check if the score qualifies for the high score board using the new service
+        if (await HighScoreService.IsHighScoreAsync(PlayerScore))
         {
             _showingHighScoreSubmission = true;
         }
@@ -186,10 +186,11 @@
                     Date = DateTime.UtcNow,
                     GameDuration = 30.0f,
                     SnakeLength = GameService.Snakes.FirstOrDefault(s => s.Type == SnakeType.Human)?.Length ?? 0,
-                    FoodEaten = 0 // Not currently tracked
+                    FoodEaten = 0 // TODO: Track food eaten per game if desired for stats
                 };
 
-                await TableStorageService.SaveHighScoreAsync(highScore);
+                // Save the high score using the new service
+                await HighScoreService.SaveHighScoreAsync(highScore);
                 NavigateToHighScores();
             }
             catch (Exception ex)

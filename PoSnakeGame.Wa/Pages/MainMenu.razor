@@ -60,10 +60,11 @@
             
             if (response != null)
             {
-                IsConnected = response.Status == "Connected";
+                // Accept "API Responding" as a connected status
+                IsConnected = response.Status == "API Responding" || response.Status == "Connected"; 
                 HelloWorldMessage = response.Message;
-                Logger.LogInformation("API connectivity check completed. Connected: {IsConnected}, Message: {Message}", 
-                    IsConnected, HelloWorldMessage);
+                Logger.LogInformation("API connectivity check completed. Connected: {IsConnected} (Status: {Status}), Message: {Message}", 
+                    IsConnected, response.Status, HelloWorldMessage);
             }
             else
             {

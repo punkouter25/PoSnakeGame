@@ -39,11 +39,13 @@
    - [ ] Add game status and score display
    - [ ] Create main menu and settings screens
 
-7. **High Score System Implementation**
+7. **High Score System & Backend API Implementation**
    - [ ] Implement HighScore model and storage
-   - [ ] Create Azure Functions for score submission and retrieval
-   - [ ] Build high score display UI
-   - [ ] Write unit tests for high score system
+   - [ ] Create Azure Functions for score submission and retrieval (Original approach)
+   - [x] Create ASP.NET Core Web API project (`PoSnakeGame.Api`) to duplicate/replace Function App logic (New approach)
+   - [x] Connect Blazor UI (`PoSnakeGame.Wa`) to use the new Web API instead of Functions/direct service calls
+   - [ ] Build high score display UI (UI exists, but now uses API service)
+   - [ ] Write unit tests for high score system/API endpoints
 
 8. **Azure Storage Integration**
    - [ ] Implement Azure Table Storage services 
@@ -58,8 +60,10 @@
    - [ ] Conduct usability testing
 
 10. **Deployment and CI/CD**
-    - [ ] Set up GitHub CI/CD
-    - [ ] Create Azure deployment scripts
+    - [x] Set up GitHub CI/CD Workflows (`ci.yml`, `posnakegame-staticwebapp.yml`, `deploy-api.yml`)
+    - [x] Create Azure resources via CLI (App Service Plan `PoSnakeGameApiPlanWest2`, App Service `posnakegame-api`)
+    - [ ] Configure Azure resources (Static Web App API linking in portal, GitHub Secret `AZURE_CREDENTIALS`)
+    - [ ] Create Azure deployment scripts (if needed beyond workflows)
     - [ ] Implement Application Insights monitoring
     - [ ] Complete final testing and deployment
 
