@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using PoSnakeGame.Core.Models;
+// Note: Removed System.Drawing as Color is now a string
 
 namespace PoSnakeGame.Core.Services
 {
@@ -99,34 +101,39 @@ namespace PoSnakeGame.Core.Services
             _countdownTimer = 0f;
             _logger.LogInformation("Countdown initialized: Active={IsActive}, Value={Value}", IsCountdownActive, CountdownValue);
 
-            // Determine player snake color: Use preference if available, otherwise default to Red
-            Color playerColor = preferences?.GetPlayerSnakeColor() ?? Color.Red;
-             _logger.LogInformation("Using player snake color: {Color}", ColorTranslator.ToHtml(playerColor));
+            // Define personality colors
+            var personalityColors = new Dictionary<SnakePersonality, string>
+            {
+                { SnakePersonality.Human, preferences?.PlayerSnakeColorHex ?? "#00FF00" }, // Use Hex property, Green or preference
+                { SnakePersonality.Random, "#808080" },      // Gray
+                { SnakePersonality.Foodie, "#FFFF00" },      // Yellow
+                { SnakePersonality.Cautious, "#00FFFF" },    // Cyan
+                { SnakePersonality.Hunter, "#FF0000" },      // Red
+                { SnakePersonality.Survivor, "#00BFFF" },    // Deep Sky Blue
+                { SnakePersonality.Speedy, "#FFA500" },      // Orange
+                { SnakePersonality.Aggressive, "#800080" }   // Purple
+            };
+            _logger.LogInformation("Using player snake color: {Color}", personalityColors[SnakePersonality.Human]);
 
-            // Create player snake with the determined color
-            // Position on the left side of the arena
+            // Create player snake
             var playerSnake = new Snake(
                 new Position(_arenaWidth / 8, _arenaHeight / 2), // Left side position
-                Direction.Right, 
-                playerColor, // Use loaded/default color
-                SnakeType.Human)
+                Direction.Right,
+                personalityColors[SnakePersonality.Human],
+                SnakePersonality.Human)
             {
                 SizeMultiplier = 1.2f // 20% larger
             };
             Snakes.Add(playerSnake);
             _logger.LogInformation("Player snake created at position: {Position}", playerSnake.Segments[0]);
 
-            // Create CPU snakes (all in green)
-            string[] personalities = {
-                "Aggressive", "Cautious", "Foodie",
-                "Random", "Hunter", "Survivor", "Speedy"
-            };
-
-            // Create CPU snakes on the right side of the arena
+            // Create CPU snakes
+            var cpuPersonalities = Enum.GetValues<SnakePersonality>().Where(p => p != SnakePersonality.Human).ToList();
             for (int i = 0; i < cpuCount; i++)
             {
-                var personality = personalities[i % personalities.Length];
-                
+                var personality = cpuPersonalities[i % cpuPersonalities.Count]; // Cycle through CPU personalities
+                var color = personalityColors[personality];
+
                 // Calculate position on the right side with some spacing
                 Position startPosition;
                 do
@@ -136,16 +143,14 @@ namespace PoSnakeGame.Core.Services
                         _random.Next(1, _arenaHeight - 1)
                     );
                 } while (IsPositionOccupied(startPosition));
-                
+
                 // Create snake facing left (toward player side)
-                var cpuSnake = new Snake(startPosition, Direction.Left, Color.Green, SnakeType.CPU)
-                {
-                    Personality = personality
-                };
-                
+                var cpuSnake = new Snake(startPosition, Direction.Left, color, personality);
+                // Note: SpeedyAI constructor sets its own speed
+
                 Snakes.Add(cpuSnake);
-                _logger.LogInformation("CPU snake ({Personality}) created at position: {Position}", 
-                    personality, cpuSnake.Segments[0]);
+                _logger.LogInformation("CPU snake ({Personality}) created at position: {Position} with color {Color}",
+                    personality, cpuSnake.Segments[0], color);
             }
 
             // Make sure Arena's Snakes reference points to our Snakes list
@@ -309,19 +314,18 @@ namespace PoSnakeGame.Core.Services
         {
             // Debug information to help with test debugging
             Console.WriteLine($"Moving {Snakes.Count} snakes, {Snakes.Count(s => s.IsAlive)} are alive");
-            
+
             foreach (var snake in Snakes.Where(s => s.IsAlive))
             {
                 // For CPU snakes, decide on direction change
-                if (snake.Type == SnakeType.CPU)
+                if (snake.Personality != SnakePersonality.Human) // Check personality enum
                 {
                     UpdateCpuSnakeDirection(snake);
-                    
-                    // Reduce default speed of CPU snakes to avoid the quick animation effect
-                    // Only apply base speed adjustment if no speed power-ups are active
-                    if (snake.Speed == 1.0f && snake.Personality != "Speedy")
+
+                    // Reduce default speed of CPU snakes unless it's SpeedyAI or speed modified by powerup
+                    if (snake.Personality != SnakePersonality.Speedy && snake.Speed == 1.0f)
                     {
-                        snake.Speed = 0.7f;
+                        snake.Speed = 0.7f; // Base speed for non-Speedy CPU
                     }
                 }
 
@@ -351,35 +355,34 @@ namespace PoSnakeGame.Core.Services
             Console.WriteLine($"Updating direction for CPU snake with personality: {snake.Personality}, at position ({snake.Segments[0].X}, {snake.Segments[0].Y})");
             
             // Using Factory Method pattern to create the appropriate AI implementation
-            switch (snake.Personality)
+            switch (snake.Personality) // Switch on the enum
             {
-                case "Aggressive":
+                case SnakePersonality.Aggressive:
                     ai = new AggressiveAI(snake, Arena);
                     break;
-                case "Cautious":
+                case SnakePersonality.Cautious: // Handles both Advanced and Cautious logic now
                     ai = new CautiousAI(snake, Arena);
                     break;
-                case "Foodie":
+                case SnakePersonality.Foodie: // Handles Simple and Foodie logic now
                     ai = new FoodieAI(snake, Arena);
                     break;
-                case "Random":
+                case SnakePersonality.Random:
                     ai = new RandomAI(snake, Arena);
                     break;
-                case "Hunter":
+                case SnakePersonality.Hunter:
                     ai = new HunterAI(snake, Arena);
                     break;
-                case "Survivor":
+                case SnakePersonality.Survivor:
                     ai = new SurvivorAI(snake, Arena);
                     break;
-                case "Speedy":
+                case SnakePersonality.Speedy:
                     ai = new SpeedyAI(snake, Arena);
                     break;
-                default:
-                    Console.WriteLine($"Warning: Unknown snake personality '{snake.Personality}', defaulting to Random AI");
-                    ai = new RandomAI(snake, Arena);
-                    break;
+                // No default needed if all enum values are handled and Human is excluded earlier
+                // case SnakePersonality.Human: // Should not happen due to earlier check
+                //     break; 
             }
-            
+
             ai?.UpdateDirection();
             
             Console.WriteLine($"CPU snake direction updated to: {snake.CurrentDirection}");
@@ -522,7 +525,8 @@ namespace PoSnakeGame.Core.Services
             }
 
             // Check if game is over (only player snake matters for now)
-            if (Snakes.Count > 0 && Snakes.First().Type == SnakeType.Human && !Snakes.First().IsAlive)
+            var playerSnake = Snakes.FirstOrDefault(s => s.Personality == SnakePersonality.Human);
+            if (playerSnake != null && !playerSnake.IsAlive)
             {
                 EndGame();
             }
@@ -532,8 +536,8 @@ namespace PoSnakeGame.Core.Services
         {
             // Mark snake as dead
             snake.Die();
-            Console.WriteLine($"Snake {snake.Type} died due to collision");
-            
+            Console.WriteLine($"Snake {snake.Personality} died due to collision"); // Use Personality enum
+
             // Add to dying snakes for animation
             if (!DyingSnakes.Contains(snake))
             {
@@ -658,7 +662,7 @@ namespace PoSnakeGame.Core.Services
         public void ChangeHumanSnakeDirection(Direction newDirection)
         {
             // Find the human snake and change its direction
-            var humanSnake = Snakes.FirstOrDefault(s => s.Type == SnakeType.Human && s.IsAlive);
+            var humanSnake = Snakes.FirstOrDefault(s => s.Personality == SnakePersonality.Human && s.IsAlive);
             if (humanSnake != null)
             {
                 ChangeDirection(newDirection, humanSnake);

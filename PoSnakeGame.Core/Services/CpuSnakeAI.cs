@@ -448,8 +448,8 @@ namespace PoSnakeGame.Core.Services
             
             // Find the player snake
             var playerSnake = Arena.Snakes?
-                .FirstOrDefault(s => s.Type == SnakeType.Human && s.IsAlive);
-                
+                .FirstOrDefault(s => s.Personality == SnakePersonality.Human && s.IsAlive); // Use Personality enum
+
             if (playerSnake != null)
             {
                 // Calculate interception point (predict where player will be)

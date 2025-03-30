@@ -13,12 +13,39 @@
 
 <PageTitle>Snake Battle Royale - Game</PageTitle>
 
+@* Define the legend data here for easy access in markup *@
+@{
+    var personalityLegend = new Dictionary<SnakePersonality, string>
+    {
+        { SnakePersonality.Human, "#00FF00" },      // Green
+        { SnakePersonality.Random, "#808080" },     // Gray
+        { SnakePersonality.Foodie, "#FFFF00" },     // Yellow
+        { SnakePersonality.Cautious, "#00FFFF" },   // Cyan
+        { SnakePersonality.Hunter, "#FF0000" },     // Red
+        { SnakePersonality.Survivor, "#00BFFF" },   // Deep Sky Blue
+        { SnakePersonality.Speedy, "#FFA500" },     // Orange
+        { SnakePersonality.Aggressive, "#800080" }  // Purple
+    };
+}
+
 <div class="game-container" @ref="gameContainerRef" tabindex="0" @onkeydown="HandleKeyDown" @onfocusin="FocusIn" @onfocusout="FocusOut">
     <div class="game-header">
         <div class="game-timer">Time Left: @TimeRemaining.ToString("0.0")s</div>
         <div class="game-score">Score: @PlayerScore</div>
+        <div class="game-legend">
+            <h4>Legend</h4>
+            <ul>
+                @foreach (var entry in personalityLegend)
+                {
+                    <li>
+                        <span class="legend-color-box" style="background-color: @entry.Value;"></span>
+                        @entry.Key.ToString()
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
-    
+
     @if (GameService.IsGameOver)
     {
         <div class="game-over-overlay">
@@ -86,11 +113,11 @@
                     var calculatedSize = CellSize * snake.SizeMultiplier;
                     var offset = (calculatedSize - CellSize) / 2;
                     
-                    <div class="snake-segment @(segment == snake.Segments[0] ? "head" : "")" 
-                         style="width: @(calculatedSize)px; height: @(calculatedSize)px; 
-                                left: @(segment.X * CellSize - offset)px; top: @(segment.Y * CellSize - offset)px; 
-                                background-color: rgb(@snake.Color.R, @snake.Color.G, @snake.Color.B); 
-                                z-index: @(snake.Type == SnakeType.Human ? 10 : 5);">
+                    <div class="snake-segment @(segment == snake.Segments[0] ? "head" : "")"
+                         style="width: @(calculatedSize)px; height: @(calculatedSize)px;
+                                left: @(segment.X * CellSize - offset)px; top: @(segment.Y * CellSize - offset)px;
+                                background-color: @snake.Color; /* Use hex color string */
+                                z-index: @(snake.Personality == SnakePersonality.Human ? 10 : 5);">
                     </div>
                 }
             }
@@ -103,11 +130,11 @@
                     var calculatedSize = CellSize * snake.SizeMultiplier;
                     var offset = (calculatedSize - CellSize) / 2;
                     
-                    <div class="snake-segment @(segment == snake.Segments[0] ? "head" : "") snake-dying" 
-                         style="width: @(calculatedSize)px; height: @(calculatedSize)px; 
-                                left: @(segment.X * CellSize - offset)px; top: @(segment.Y * CellSize - offset)px; 
-                                background-color: rgb(@snake.Color.R, @snake.Color.G, @snake.Color.B); 
-                                z-index: @(snake.Type == SnakeType.Human ? 9 : 4);">
+                    <div class="snake-segment @(segment == snake.Segments[0] ? "head" : "") snake-dying"
+                         style="width: @(calculatedSize)px; height: @(calculatedSize)px;
+                                left: @(segment.X * CellSize - offset)px; top: @(segment.Y * CellSize - offset)px;
+                                background-color: @snake.Color; /* Use hex color string */
+                                z-index: @(snake.Personality == SnakePersonality.Human ? 9 : 4);">
                     </div>
                 }
             }
@@ -132,12 +159,12 @@
     private bool _showingHighScoreSubmission;
     
     private int ArenaWidth => GameService.Arena?.Width ?? 50;
-    private int ArenaHeight => GameService.Arena?.Height ?? 100;
+    private int ArenaHeight => GameService.Arena?.Height ?? 40; // Match GameService default
     private int CellSize => IsMobileDevice ? 10 : 16; // Increase cell size for better visibility
     private float TimeRemaining => GameService.TimeRemaining;
-    private int PlayerScore => GameService.Snakes.FirstOrDefault(s => s.Type == SnakeType.Human)?.Score ?? 0;
+    private int PlayerScore => GameService.Snakes.FirstOrDefault(s => s.Personality == SnakePersonality.Human)?.Score ?? 0; // Use Personality enum
     private bool IsMobileDevice = false;
-    
+
     [Inject]
     private NavigationManager NavigationManager { get; set; } = default!;
 
@@ -189,7 +216,7 @@
                     Score = PlayerScore,
                     Date = DateTime.UtcNow,
                     GameDuration = 30.0f,
-                    SnakeLength = GameService.Snakes.FirstOrDefault(s => s.Type == SnakeType.Human)?.Length ?? 0,
+                    SnakeLength = GameService.Snakes.FirstOrDefault(s => s.Personality == SnakePersonality.Human)?.Length ?? 0, // Use Personality enum
                     FoodEaten = 0 // TODO: Track food eaten per game if desired for stats
                 };
 
@@ -272,9 +299,9 @@
             "down" => Direction.Down,
             "left" => Direction.Left,
             "right" => Direction.Right,
-            _ => GameService.Snakes.FirstOrDefault(s => s.Type == SnakeType.Human)?.CurrentDirection ?? Direction.Right
+            _ => GameService.Snakes.FirstOrDefault(s => s.Personality == SnakePersonality.Human)?.CurrentDirection ?? Direction.Right // Use Personality enum
         };
-        
+
         GameService.ChangeHumanSnakeDirection(snakeDirection);
     }
 

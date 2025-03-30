@@ -10,22 +10,21 @@ public class Snake
     public List<Position> Segments { get; set; } = new();
     public Direction CurrentDirection { get; set; }
     public int Length { get; private set; }
-    public Color Color { get; set; }
-    public SnakeType Type { get; set; }
-    public string? Personality { get; set; } // For CPU snakes
+    public string Color { get; set; } // Use string for hex color representation
+    public SnakePersonality Personality { get; set; }
     public float Speed { get; set; }
     public bool IsAlive { get; set; }
     public int Score { get; private set; }
     public float SizeMultiplier { get; set; } = 1.0f; // New property to control snake size
 
-    public Snake(Position startPosition, Direction initialDirection, Color color, SnakeType type)
+    public Snake(Position startPosition, Direction initialDirection, string color, SnakePersonality personality)
     {
         Segments.Add(startPosition);
         CurrentDirection = initialDirection;
         Color = color;
-        Type = type;
+        Personality = personality;
         Length = 1;
-        Speed = 1.0f;
+        Speed = 1.0f; // Default speed, can be overridden by AI (e.g., SpeedyAI)
         IsAlive = true;
         Score = 0;
     }
