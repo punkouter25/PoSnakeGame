@@ -32,18 +32,7 @@
     <div class="game-header">
         <div class="game-timer">Time Left: @TimeRemaining.ToString("0.0")s</div>
         <div class="game-score">Score: @PlayerScore</div>
-        <div class="game-legend">
-            <h4>Legend</h4>
-            <ul>
-                @foreach (var entry in personalityLegend)
-                {
-                    <li>
-                        <span class="legend-color-box" style="background-color: @entry.Value;"></span>
-                        @entry.Key.ToString()
-                    </li>
-                }
-            </ul>
-        </div>
+        @* Legend completely removed from header *@
     </div>
 
     @if (GameService.IsGameOver)
@@ -140,7 +129,9 @@
             }
         }
     </div>
-    
+
+    @* Legend removed *@
+
     @if (IsMobileDevice)
     {
         <div class="virtual-joystick" @ref="joystickRef">

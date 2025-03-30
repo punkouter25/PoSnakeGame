@@ -127,11 +127,23 @@ namespace PoSnakeGame.Core.Services
             Snakes.Add(playerSnake);
             _logger.LogInformation("Player snake created at position: {Position}", playerSnake.Segments[0]);
 
-            // Create CPU snakes
-            var cpuPersonalities = Enum.GetValues<SnakePersonality>().Where(p => p != SnakePersonality.Human).ToList();
+            // Create CPU snakes, excluding Hunter
+            var cpuPersonalities = Enum.GetValues<SnakePersonality>()
+                                       .Where(p => p != SnakePersonality.Human && p != SnakePersonality.Hunter) // Exclude Hunter
+                                       .ToList();
+            if (!cpuPersonalities.Any()) // Handle case where only Human/Hunter exist
+            {
+                 _logger.LogWarning("No CPU personalities available after excluding Human and Hunter.");
+                 // Optionally add a default like Random if the list becomes empty
+                 // cpuPersonalities.Add(SnakePersonality.Random); 
+            }
+
             for (int i = 0; i < cpuCount; i++)
             {
-                var personality = cpuPersonalities[i % cpuPersonalities.Count]; // Cycle through CPU personalities
+                 // Ensure we don't crash if the list is empty
+                if (!cpuPersonalities.Any()) break; 
+
+                var personality = cpuPersonalities[i % cpuPersonalities.Count]; // Cycle through available CPU personalities
                 var color = personalityColors[personality];
 
                 // Calculate position on the right side with some spacing
@@ -369,9 +381,7 @@ namespace PoSnakeGame.Core.Services
                 case SnakePersonality.Random:
                     ai = new RandomAI(snake, Arena);
                     break;
-                case SnakePersonality.Hunter:
-                    ai = new HunterAI(snake, Arena);
-                    break;
+                // Hunter case removed as the class was deleted
                 case SnakePersonality.Survivor:
                     ai = new SurvivorAI(snake, Arena);
                     break;

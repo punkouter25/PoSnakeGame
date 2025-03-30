@@ -15,6 +15,8 @@ html, body {
     padding: 0;
     overflow-x: hidden;
     min-height: 100vh;
+    display: flex; /* Use flexbox for body */
+    flex-direction: column; /* Stack children vertically */
 }
 
 .retro-title {
@@ -85,60 +87,132 @@ html, body {
     }
 }
 
-/* Game Legend Styles */
-.game-legend {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border: 1px solid var(--retro-green);
+/* Game Container Styles */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: space-between; /* Push header/footer apart */
+    flex-grow: 1; /* Allow container to grow */
+    width: 100%;
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    padding: 5px; /* Add some padding */
+    box-sizing: border-box;
+    position: relative; /* Needed for absolute positioning of children like joystick */
+    overflow: hidden; /* Prevent accidental scrollbars */
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between; /* Changed from space-between */
+    align-items: center;
+    width: 100%;
     padding: 5px 10px;
-    font-size: 0.7rem;
-    max-height: 150px; /* Limit height */
-    overflow-y: auto; /* Add scroll if needed */
-    z-index: 20; /* Ensure it's above the arena */
-}
-
-.game-legend h4 {
-    margin: 0 0 5px 0;
-    text-align: center;
+    box-sizing: border-box;
     font-size: 0.8rem;
-    text-decoration: underline;
+    flex-shrink: 0; /* Prevent header from shrinking */
+    position: relative; /* Needed for absolute positioned overlays */
+    border-bottom: 2px solid var(--retro-green); /* Add a separator line */
+    margin-bottom: 10px; /* Space below header */
 }
 
-.game-legend ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.game-timer, .game-score {
+    background-color: var(--retro-dark-accent);
+    padding: 5px 10px;
+    border: 1px solid var(--retro-green);
+    box-shadow: 0 0 5px var(--retro-green);
 }
 
-.game-legend li {
+
+.game-arena {
+    border: 3px solid var(--retro-green);
+    box-shadow: 0 0 15px var(--retro-green);
+    position: relative; /* For positioning elements inside */
+    background-color: #050505; /* Slightly lighter than pure black */
+    margin: 10px auto; /* Center horizontally, add vertical margin */
+    flex-shrink: 0; /* Prevent shrinking initially */
+    /* Aspect ratio will be maintained via width/height in style attribute */
+}
+
+
+/* Game Legend Styles Removed */
+
+
+/* Virtual Joystick Styles */
+.virtual-joystick {
+    position: relative; /* Changed from absolute */
+    width: 120px;
+    height: 120px;
+    background-color: rgba(50, 50, 50, 0.5);
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    margin-bottom: 3px;
+    justify-content: center;
+    margin: 10px auto 10px auto; /* Center below legend */
+    flex-shrink: 0; /* Prevent shrinking */
+    z-index: 15;
+    order: 4; /* Ensure it appears after legend */
 }
 
-.legend-color-box {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 5px;
-    border: 1px solid rgba(57, 255, 20, 0.5); /* Faint border */
+.joystick-base {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(80, 80, 80, 0.6);
+    border-radius: 50%;
+    position: relative;
+    border: 2px solid var(--retro-green);
 }
 
-/* Responsive adjustments for legend */
-@media (max-width: 768px) {
-    .game-legend {
-        font-size: 0.6rem;
-        padding: 3px 6px;
-        max-height: 120px;
+.joystick-thumb {
+    width: 50px;
+    height: 50px;
+    background-color: var(--retro-green);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px var(--retro-green);
+    cursor: grab;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) and (orientation: portrait) {
+    .game-container {
+        justify-content: center; /* Center vertically on mobile */
+        padding-bottom: 130px; /* Add padding at bottom to avoid overlap with joystick/legend */
     }
-    .game-legend h4 {
-        font-size: 0.7rem;
+    .game-arena {
+       /* Allow arena to scale based on available height, maintaining aspect ratio */
+       /* Max width prevents it getting too wide on landscape */
+       max-width: 95vw;
+       /* Max height prevents it overflowing vertically, leaving space for joystick/legend */
+       max-height: calc(100vh - 200px); /* Adjusted max height for mobile */
+       /* Calculate width based on height to maintain aspect ratio (assuming square arena from GameService 40x40) */
+       width: min(95vw, calc(100vh - 200px));
+       height: min(95vw, calc(100vh - 200px)); /* Make it square based on limiting dimension */
+       margin: auto; /* Center in the flex container */
+       order: 2; /* Ensure arena is between header and legend */
     }
-    .legend-color-box {
-        width: 10px;
-        height: 10px;
+
+    .game-header {
+        font-size: 0.7rem; /* Smaller header text */
+        padding: 3px 5px;
+        order: 1; /* Header first */
+        justify-content: space-around; /* Space out score/timer */
+    }
+
+    /* Legend CSS Removed */
+
+     .virtual-joystick {
+        width: 100px; /* Slightly smaller joystick */
+        height: 100px;
+        margin-top: 15px; /* Add margin-top */
+        order: 3; /* Joystick after arena */
+        position: fixed; /* Fix position at bottom */
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%); /* Center horizontally */
     }
 }
 
@@ -420,20 +494,193 @@ code {
         font-size: 0.8rem;
         padding: 8px 2px;
     }
-    
+
     .table-header {
         font-size: 0.75rem;
     }
-    
+
     .col-rank, .col-initials, .col-score, .col-date {
         padding: 3px;
     }
-    
+
     .high-scores-container {
         padding: 15px 10px;
     }
-    
+
     .scores-table {
         margin: 15px auto;
     }
+}
+
+/* Game Over Overlay */
+.game-over-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    text-align: center;
+}
+
+.game-over-content {
+    padding: 30px;
+    border: 3px solid var(--retro-green);
+    background-color: var(--retro-dark-accent);
+    box-shadow: 0 0 20px var(--retro-green);
+}
+
+.game-over-content h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--retro-red);
+    text-shadow: 0 0 5px var(--retro-red);
+}
+
+.game-over-content p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+/* Countdown Overlay */
+.countdown-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 40;
+    text-align: center;
+}
+
+.countdown-value {
+    font-size: 8rem;
+    font-weight: bold;
+    color: var(--retro-green);
+    text-shadow: 0 0 15px var(--retro-green);
+    animation: countdown-pulse 1s infinite ease-in-out;
+}
+
+.countdown-text {
+    font-size: 2rem;
+    margin-top: 1rem;
+    color: var(--retro-green);
+}
+
+@keyframes countdown-pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Game Arena Elements */
+.obstacle {
+    position: absolute;
+    background-color: #555; /* Dark gray for obstacles */
+    border: 1px solid #888;
+    box-sizing: border-box;
+}
+
+.food {
+    position: absolute;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 5px yellow;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* For eating animation */
+}
+
+.food-eaten {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.power-up {
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: 0 0 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em; /* Adjust as needed */
+    color: black; /* Default text color */
+}
+
+.power-up.speed {
+    background-color: cyan;
+    box-shadow: 0 0 8px cyan;
+}
+.power-up.speed::after { content: 'S'; }
+
+.power-up.slowdown {
+    background-color: orange;
+    box-shadow: 0 0 8px orange;
+}
+.power-up.slowdown::after { content: 'D'; } /* D for Debuff/Down */
+
+.power-up.points {
+    background-color: magenta;
+    box-shadow: 0 0 8px magenta;
+}
+.power-up.points::after { content: 'P'; }
+
+.snake-segment {
+    position: absolute;
+    border-radius: 20%; /* Slightly rounded segments */
+    box-sizing: border-box;
+    transition: background-color 0.2s; /* Smooth color change if needed */
+}
+
+.snake-segment.head {
+    /* Optional: slightly different style for the head */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 11; /* Ensure head is above body */
+}
+
+.snake-dying {
+    animation: snake-die 0.5s forwards;
+}
+
+@keyframes snake-die {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0.3; transform: scale(0.8); }
+}
+
+/* High Score Submission Form */
+.highscore-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highscore-form label {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.highscore-form input[type="text"] {
+    background-color: var(--retro-dark-accent);
+    color: var(--retro-green);
+    border: 2px solid var(--retro-green);
+    font-family: var(--retro-font);
+    padding: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 80px; /* Fixed width for 3 initials */
+    text-transform: uppercase;
+}
+
+.highscore-form input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--retro-green);
 }
