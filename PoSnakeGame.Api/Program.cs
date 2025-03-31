@@ -20,8 +20,8 @@ var allowedOrigins = new[]
     "https://127.0.0.1:5001",
     "http://127.0.0.1:5297",
     "https://127.0.0.1:7047",
-    "https://zealous-river-059a32e0f.6.azurestaticapps.net", // Example deployed frontend URL
-    "https://posnakegame-web.azurestaticapps.net" // Actual deployed frontend URL
+    "https://ashy-water-0fe4f090f.6.azurestaticapps.net", // Add deployed SWA URL from error
+    "https://posnakegame-web.azurestaticapps.net" // Keep existing actual deployed frontend URL
 };
 
 builder.Services.AddCors(options =>
