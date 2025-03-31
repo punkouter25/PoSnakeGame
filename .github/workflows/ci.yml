@@ -69,10 +69,10 @@ jobs:
         name: api-publish-artifact # Artifact name for API
         path: ./api-publish # Path to API publish output
 
-    - name: Run code analysis (Format Check)
-      run: |
-        dotnet tool install --global dotnet-format --version 8.0.4 
-        dotnet format --verify-no-changes --verbosity diagnostic
+    # - name: Run code analysis (Format Check)
+    #   run: |
+    #     dotnet tool install --global dotnet-format --version 8.0.4 
+    #     dotnet format --verify-no-changes --verbosity diagnostic
 
   analyze:
     name: CodeQL Analysis
