@@ -105,6 +105,9 @@ builder.Services.AddScoped<IUserPreferencesService, LocalStorageUserPreferencesS
 // Configure logging
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 
+// Register DiagnosticsService
+builder.Services.AddScoped<DiagnosticsService>();
+
 // Register a service to initialize URL configurations after the app has started
 // This uses the Decorator pattern to wrap the initialization of services
 builder.Services.AddScoped<ServiceInitializer>();

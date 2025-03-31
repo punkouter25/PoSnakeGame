@@ -1,3 +1,18 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
+@using PoSnakeGame.Wa.Pages // Needed for DiagnosticsModal
 
-@Body
+<main class="main-layout-container"> @* Added a container class if needed for styling *@
+    @Body
+</main>
+
+<DiagnosticsModal @bind-IsVisible="_showDiagnosticsModal" />
+
+@code {
+    private bool _showDiagnosticsModal = true; // Show modal on initial load
+
+    // Optional: Method to handle closing if needed, though the modal handles its own close
+    // private void DiagnosticsClosed()
+    // {
+    //     _showDiagnosticsModal = false;
+    // }
+}

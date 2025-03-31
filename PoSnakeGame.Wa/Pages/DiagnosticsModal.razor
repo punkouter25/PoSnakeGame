@@ -1,0 +1,99 @@
+@using PoSnakeGame.Wa.Services
+@inject DiagnosticsService DiagnosticsService
+
+@if (IsVisible)
+{
+    <div class="diagnostics-modal-overlay">
+        <div class="diagnostics-modal-content">
+            <h4>System Diagnostics</h4>
+            @if (_isLoading)
+            {
+                <div class="loading-spinner">Running checks...</div>
+            }
+            else if (_checks != null)
+            {
+                <ul>
+                    @foreach (var check in _checks)
+                    {
+                        <li class="check-item @GetStatusClass(check.Status)">
+                            <span class="status-icon">@GetStatusIcon(check.Status)</span>
+                            <span class="check-name">@check.Name:</span>
+                            <span class="check-status">@check.Status</span>
+                            @if (!string.IsNullOrEmpty(check.Message))
+                            {
+                                <span class="check-message"> - @check.Message</span>
+                            }
+                        </li>
+                    }
+                </ul>
+                <button class="retro-button" @onclick="CloseModal">Close</button>
+            }
+            else
+            {
+                 <p>Failed to load diagnostic checks.</p>
+                 <button class="retro-button" @onclick="CloseModal">Close</button>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public EventCallback<bool> IsVisibleChanged { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private List<DiagnosticCheck>? _checks;
+    private bool _isLoading = true;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (IsVisible && _checks == null) // Only run checks if visible and not already run
+        {
+            await RunDiagnostics();
+        }
+    }
+
+    private async Task RunDiagnostics()
+    {
+        _isLoading = true;
+        _checks = null; // Clear previous results
+        StateHasChanged(); // Update UI to show loading
+
+        _checks = await DiagnosticsService.RunChecksAsync();
+
+        _isLoading = false;
+        StateHasChanged(); // Update UI with results
+    }
+
+    private async Task CloseModal()
+    {
+        IsVisible = false; // Hide modal
+        
+        // Notify parent components of the visibility change (for two-way binding)
+        if (IsVisibleChanged.HasDelegate)
+        {
+            await IsVisibleChanged.InvokeAsync(false);
+        }
+        
+        // Also invoke the OnClose callback if provided
+        if (OnClose.HasDelegate)
+        {
+            await OnClose.InvokeAsync();
+        }
+        
+        _checks = null; // Reset checks for next time
+        _isLoading = true; // Reset loading state
+    }
+
+    private string GetStatusClass(string status) => status.ToLowerInvariant();
+    private string GetStatusIcon(string status) => status switch
+    {
+        "Connected" => "✔️",
+        "Disconnected" => "❌",
+        "Error" => "⚠️",
+        "Checking" => "⏳",
+        "Pending" => "⚪",
+        "Skipped" => "➖",
+        _ => "?"
+    };
+}

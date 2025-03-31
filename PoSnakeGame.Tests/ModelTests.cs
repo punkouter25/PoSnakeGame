@@ -1,6 +1,5 @@
 using PoSnakeGame.Core.Models;
 using System;
-using System.Drawing;
 using Xunit;
 
 namespace PoSnakeGame.Tests;
@@ -46,7 +45,7 @@ public class ModelTests
     public void Snake_Grow_Increases_Length()
     {
         // Arrange
-        var snake = new Snake(new Position(5, 5), Direction.Right, Color.Green, SnakeType.Human);
+        var snake = new Snake(new Position(5, 5), Direction.Right, "#00FF00", SnakePersonality.Human);
         int initialLength = snake.Length;
         
         // Act
@@ -60,7 +59,7 @@ public class ModelTests
     public void Snake_AddPoints_Increases_Score()
     {
         // Arrange
-        var snake = new Snake(new Position(5, 5), Direction.Right, Color.Green, SnakeType.Human);
+        var snake = new Snake(new Position(5, 5), Direction.Right, "#00FF00", SnakePersonality.Human);
         int initialScore = snake.Score;
         int pointsToAdd = 10;
         
@@ -76,7 +75,7 @@ public class ModelTests
     {
         // Arrange
         var startPosition = new Position(5, 5);
-        var snake = new Snake(startPosition, Direction.Right, Color.Green, SnakeType.Human);
+        var snake = new Snake(startPosition, Direction.Right, "#00FF00", SnakePersonality.Human);
         var newHeadPosition = new Position(6, 5);
         
         // Act
@@ -92,7 +91,7 @@ public class ModelTests
     {
         // Arrange
         var startPosition = new Position(5, 5);
-        var snake = new Snake(startPosition, Direction.Right, Color.Green, SnakeType.Human);
+        var snake = new Snake(startPosition, Direction.Right, "#00FF00", SnakePersonality.Human);
         snake.Grow(); // Length = 2
         
         // Act
@@ -186,7 +185,7 @@ public class ModelTests
     public void Snake_Die_Sets_IsAlive_To_False()
     {
         // Arrange
-        var snake = new Snake(new Position(5, 5), Direction.Right, Color.Green, SnakeType.Human);
+        var snake = new Snake(new Position(5, 5), Direction.Right, "#00FF00", SnakePersonality.Human);
         
         // Act
         snake.Die();

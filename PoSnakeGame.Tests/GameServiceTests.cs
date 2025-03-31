@@ -2,7 +2,6 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using PoSnakeGame.Core.Models;
 using PoSnakeGame.Core.Services;
-using System.Drawing;
 using Xunit;
 
 namespace PoSnakeGame.Tests
@@ -28,8 +27,8 @@ namespace PoSnakeGame.Tests
             // Assert
             Assert.NotNull(_gameService.Arena);
             Assert.Equal(4, _gameService.Snakes.Count); // 1 player + 3 CPU
-            Assert.True(_gameService.Snakes[0].Type == SnakeType.Human); // First snake should be human
-            Assert.All(_gameService.Snakes.Skip(1), snake => Assert.Equal(SnakeType.CPU, snake.Type)); // Rest should be CPU
+            Assert.True(_gameService.Snakes[0].Personality == SnakePersonality.Human); // First snake should be human
+            Assert.All(_gameService.Snakes.Skip(1), snake => Assert.NotEqual(SnakePersonality.Human, snake.Personality)); // Rest should be CPU
             Assert.NotEmpty(_gameService.Arena.Foods); // Should have some food
             Assert.True(_gameService.TimeRemaining > 0); // Time should be set
         }
@@ -153,7 +152,7 @@ namespace PoSnakeGame.Tests
         public void AggressiveAI_ShouldMoveRandomlyForNow()
         {
             // Arrange
-            var snake = new Snake(new Position(5, 5), Direction.Right, Color.Red, SnakeType.CPU) { Personality = "Aggressive" };
+            var snake = new Snake(new Position(5, 5), Direction.Right, "#FF0000", SnakePersonality.Aggressive);
             var arena = new Arena(10, 10);
             var ai = new AggressiveAI(snake, arena);
 
@@ -168,7 +167,7 @@ namespace PoSnakeGame.Tests
         public void CautiousAI_ShouldMoveRandomlyForNow()
         {
             // Arrange
-            var snake = new Snake(new Position(5, 5), Direction.Right, Color.Blue, SnakeType.CPU) { Personality = "Cautious" };
+            var snake = new Snake(new Position(5, 5), Direction.Right, "#0000FF", SnakePersonality.Cautious);
             var arena = new Arena(10, 10);
             var ai = new CautiousAI(snake, arena);
 
@@ -183,7 +182,7 @@ namespace PoSnakeGame.Tests
         public void FoodieAI_ShouldMoveTowardsFood()
         {
             // Arrange
-            var snake = new Snake(new Position(5, 5), Direction.Right, Color.Yellow, SnakeType.CPU) { Personality = "Foodie" };
+            var snake = new Snake(new Position(5, 5), Direction.Right, "#FFFF00", SnakePersonality.Foodie);
             var arena = new Arena(10, 10);
             arena.AddFood(new Position(7, 5)); // Place food to the right of the snake
             var ai = new FoodieAI(snake, arena);
@@ -199,7 +198,7 @@ namespace PoSnakeGame.Tests
         public void RandomAI_ShouldMoveRandomly()
         {
             // Arrange
-            var snake = new Snake(new Position(5, 5), Direction.Right, Color.Purple, SnakeType.CPU) { Personality = "Random" };
+            var snake = new Snake(new Position(5, 5), Direction.Right, "#800080", SnakePersonality.Random);
             var arena = new Arena(10, 10);
             var ai = new RandomAI(snake, arena);
 
@@ -210,28 +209,13 @@ namespace PoSnakeGame.Tests
             Assert.InRange((int)snake.CurrentDirection, 0, 3); // Direction should be one of the valid directions
         }
 
-        [Fact]
-        public void HunterAI_ShouldMoveTowardsPlayerSnake()
-        {
-            // Arrange
-            var playerSnake = new Snake(new Position(7, 5), Direction.Right, Color.Green, SnakeType.Human);
-            var cpuSnake = new Snake(new Position(5, 5), Direction.Right, Color.Orange, SnakeType.CPU) { Personality = "Hunter" };
-            var arena = new Arena(10, 10);
-            arena.Snakes.Add(playerSnake);
-            var ai = new HunterAI(cpuSnake, arena);
-
-            // Act
-            ai.UpdateDirection();
-
-            // Assert
-            Assert.Equal(Direction.Right, cpuSnake.CurrentDirection); // Should move towards the player snake
-        }
+        // HunterAI test removed as the HunterAI class has been removed
 
         [Fact]
         public void SurvivorAI_ShouldMoveRandomlyForNow()
         {
             // Arrange
-            var snake = new Snake(new Position(5, 5), Direction.Right, Color.Cyan, SnakeType.CPU) { Personality = "Survivor" };
+            var snake = new Snake(new Position(5, 5), Direction.Right, "#00FFFF", SnakePersonality.Survivor);
             var arena = new Arena(10, 10);
             var ai = new SurvivorAI(snake, arena);
 
@@ -246,7 +230,7 @@ namespace PoSnakeGame.Tests
         public void SpeedyAI_ShouldMoveRandomly()
         {
             // Arrange
-            var snake = new Snake(new Position(5, 5), Direction.Right, Color.Cyan, SnakeType.CPU) { Personality = "Speedy" };
+            var snake = new Snake(new Position(5, 5), Direction.Right, "#00FFFF", SnakePersonality.Speedy);
             var arena = new Arena(10, 10);
             var ai = new SpeedyAI(snake, arena);
 

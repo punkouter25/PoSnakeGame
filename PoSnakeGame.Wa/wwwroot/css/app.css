@@ -684,3 +684,87 @@ code {
     outline: none;
     box-shadow: 0 0 10px var(--retro-green);
 }
+
+/* Diagnostics Modal Styles */
+.diagnostics-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100; /* High z-index */
+}
+
+.diagnostics-modal-content {
+    background-color: var(--retro-dark-accent);
+    border: 2px solid var(--retro-green);
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px var(--retro-green);
+    min-width: 300px;
+    max-width: 90%;
+    text-align: left;
+}
+
+.diagnostics-modal-content h4 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.diagnostics-modal-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.diagnostics-modal-content li.check-item {
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow message to wrap */
+}
+
+.check-item .status-icon {
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+.check-item .check-name {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.check-item .check-status {
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    margin-right: 5px;
+}
+
+.check-item .check-message {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    flex-basis: 100%; /* Allow message to take full width on new line if needed */
+    padding-left: 20px; /* Indent message slightly */
+}
+
+/* Status colors */
+.check-item.connected .check-status { background-color: var(--retro-green); color: var(--retro-dark); }
+.check-item.disconnected .check-status { background-color: var(--retro-red); color: white; }
+.check-item.error .check-status { background-color: orange; color: var(--retro-dark); }
+.check-item.checking .check-status { background-color: #555; color: white; }
+.check-item.pending .check-status { background-color: #333; color: #aaa; }
+.check-item.skipped .check-status { background-color: #444; color: #bbb; }
+
+.diagnostics-modal-content button {
+    display: block;
+    margin: 15px auto 0 auto; /* Center button */
+}

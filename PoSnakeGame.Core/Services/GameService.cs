@@ -108,7 +108,7 @@ namespace PoSnakeGame.Core.Services
                 { SnakePersonality.Random, "#808080" },      // Gray
                 { SnakePersonality.Foodie, "#FFFF00" },      // Yellow
                 { SnakePersonality.Cautious, "#00FFFF" },    // Cyan
-                { SnakePersonality.Hunter, "#FF0000" },      // Red
+                { SnakePersonality.Hunter, "#FF0000" },      // Red (Color still defined, but personality won't be used)
                 { SnakePersonality.Survivor, "#00BFFF" },    // Deep Sky Blue
                 { SnakePersonality.Speedy, "#FFA500" },      // Orange
                 { SnakePersonality.Aggressive, "#800080" }   // Purple

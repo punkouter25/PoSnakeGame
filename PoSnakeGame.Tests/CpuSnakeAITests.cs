@@ -1,7 +1,6 @@
 using Xunit;
 using PoSnakeGame.Core.Models;
 using PoSnakeGame.Core.Services;
-using System.Drawing;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -22,7 +21,7 @@ namespace PoSnakeGame.Tests
             // Arrange
             var arena = CreateTestArena();
             // Place snake in the middle, plenty of safe options
-            var snake = new Snake(new Position(5, 5), Direction.Right, Color.Purple, SnakeType.CPU) { Personality = "Random" };
+            var snake = new Snake(new Position(5, 5), Direction.Right, "#800080", SnakePersonality.Random);
             arena.Snakes.Add(snake);
             var ai = new RandomAI(snake, arena);
             var initialDirection = snake.CurrentDirection;
@@ -42,7 +41,7 @@ namespace PoSnakeGame.Tests
             // Arrange
             var arena = CreateTestArena();
              // Place snake near top-left corner, only Right is safe initially
-            var snake = new Snake(new Position(1, 1), Direction.Up, Color.Purple, SnakeType.CPU) { Personality = "Random" };
+            var snake = new Snake(new Position(1, 1), Direction.Up, "#800080", SnakePersonality.Random);
              // Add walls/obstacles to force only one safe direction (Right)
             arena.AddObstacle(new Position(1, 0)); // Above
             arena.AddObstacle(new Position(1, 2)); // Below
@@ -65,7 +64,7 @@ namespace PoSnakeGame.Tests
         {
             // Arrange
             var arena = CreateTestArena();
-            var snake = new Snake(new Position(5, 5), Direction.Up, Color.Yellow, SnakeType.CPU) { Personality = "Foodie" };
+            var snake = new Snake(new Position(5, 5), Direction.Up, "#FFFF00", SnakePersonality.Foodie);
             // Place food so distances are unambiguous from safe moves
             arena.AddFood(new Position(5, 8)); // Food below (Dist 3 from head)
             arena.AddFood(new Position(6, 5)); // Food right (Dist 1 from head - NEAREST)
@@ -88,7 +87,7 @@ namespace PoSnakeGame.Tests
         {
             // Arrange
             var arena = CreateTestArena();
-            var snake = new Snake(new Position(5, 5), Direction.Up, Color.Yellow, SnakeType.CPU) { Personality = "Foodie" };
+            var snake = new Snake(new Position(5, 5), Direction.Up, "#FFFF00", SnakePersonality.Foodie);
             arena.AddFood(new Position(5, 7)); // Regular food below (closer)
             arena.AddPowerUp(new PowerUp(new Position(7, 5), PowerUpType.Points, 5f, 50)); // Points power-up right (further)
             arena.Snakes.Add(snake);
@@ -107,7 +106,7 @@ namespace PoSnakeGame.Tests
             // Arrange
             var arena = CreateTestArena();
             // Place snake where 'Right' has more open space
-            var snake = new Snake(new Position(1, 5), Direction.Up, Color.Yellow, SnakeType.CPU) { Personality = "Foodie" };
+            var snake = new Snake(new Position(1, 5), Direction.Up, "#FFFF00", SnakePersonality.Foodie);
             arena.AddObstacle(new Position(1, 4)); // Obstacle above
             arena.AddObstacle(new Position(1, 6)); // Obstacle below
             // Left is wall, Right is open
@@ -126,7 +125,7 @@ namespace PoSnakeGame.Tests
         {
             // Arrange
             var arena = CreateTestArena();
-            var snake = new Snake(new Position(5, 5), Direction.Up, Color.Yellow, SnakeType.CPU) { Personality = "Foodie" };
+            var snake = new Snake(new Position(5, 5), Direction.Up, "#FFFF00", SnakePersonality.Foodie);
             arena.AddFood(new Position(5, 3)); // Food directly above
             arena.AddObstacle(new Position(5, 4)); // Obstacle blocking direct path
             arena.Snakes.Add(snake);
@@ -142,46 +141,7 @@ namespace PoSnakeGame.Tests
             Assert.NotEqual(Direction.Down, snake.CurrentDirection); // Should not reverse
         }
 
-        // === HunterAI Tests ===
-
-        [Fact]
-        public void HunterAI_ShouldMoveTowardsPlayer()
-        {
-            // Arrange
-            var arena = CreateTestArena();
-            var playerSnake = new Snake(new Position(7, 5), Direction.Right, Color.Red, SnakeType.Human);
-            var cpuSnake = new Snake(new Position(5, 5), Direction.Up, Color.Orange, SnakeType.CPU) { Personality = "Hunter" };
-            arena.Snakes.Add(playerSnake);
-            arena.Snakes.Add(cpuSnake);
-            var ai = new HunterAI(cpuSnake, arena);
-
-            // Act
-            ai.UpdateDirection(); // Player predicted at (8,5)
-
-            // Assert
-            // Safe directions: Up (dist 4), Left (dist 4), Right (dist 2)
-            Assert.Equal(Direction.Right, cpuSnake.CurrentDirection); // Should move towards predicted player pos
-        }
-
-        [Fact]
-        public void HunterAI_ShouldFallback_WhenPlayerAbsent()
-        {
-            // Arrange
-            var arena = CreateTestArena();
-            var cpuSnake = new Snake(new Position(5, 5), Direction.Up, Color.Orange, SnakeType.CPU) { Personality = "Hunter" };
-            arena.AddObstacle(new Position(4, 5)); // Block Left
-            arena.AddPowerUp(new PowerUp(new Position(6, 5), PowerUpType.Points, 5f, 50)); // Points power-up Right
-            arena.Snakes.Add(cpuSnake);
-            var ai = new HunterAI(cpuSnake, arena);
-
-            // Act
-            ai.UpdateDirection(); // No player, should fallback
-
-            // Assert
-            // Fallback prioritizes open space + points powerup
-            // Safe: Up (score 30 + dist 100-1 = 129), Right (score 30 + dist 100-0 = 130)
-            Assert.Equal(Direction.Right, cpuSnake.CurrentDirection); // Should move towards powerup/open space
-        }
+        // HunterAI Tests removed as the HunterAI class has been removed
 
         // === AggressiveAI Tests ===
 
@@ -190,9 +150,9 @@ namespace PoSnakeGame.Tests
         {
             // Arrange
             var arena = CreateTestArena();
-            var targetSnakeNear = new Snake(new Position(7, 5), Direction.Left, Color.Blue, SnakeType.CPU); // Dist 2
-            var targetSnakeFar = new Snake(new Position(5, 8), Direction.Up, Color.Green, SnakeType.CPU);   // Dist 3
-            var cpuSnake = new Snake(new Position(5, 5), Direction.Up, Color.Red, SnakeType.CPU) { Personality = "Aggressive" };
+            var targetSnakeNear = new Snake(new Position(7, 5), Direction.Left, "#0000FF", SnakePersonality.Random); // Dist 2
+            var targetSnakeFar = new Snake(new Position(5, 8), Direction.Up, "#00FF00", SnakePersonality.Random);   // Dist 3
+            var cpuSnake = new Snake(new Position(5, 5), Direction.Up, "#FF0000", SnakePersonality.Aggressive);
             arena.Snakes.Add(targetSnakeNear);
             arena.Snakes.Add(targetSnakeFar);
             arena.Snakes.Add(cpuSnake);
@@ -211,7 +171,7 @@ namespace PoSnakeGame.Tests
         {
             // Arrange
             var arena = CreateTestArena();
-            var cpuSnake = new Snake(new Position(5, 5), Direction.Up, Color.Red, SnakeType.CPU) { Personality = "Aggressive" };
+            var cpuSnake = new Snake(new Position(5, 5), Direction.Up, "#FF0000", SnakePersonality.Aggressive);
             arena.AddPowerUp(new PowerUp(new Position(5, 7), PowerUpType.Speed, 5f, 0.5f)); // Powerup below
             arena.Snakes.Add(cpuSnake);
             var ai = new AggressiveAI(cpuSnake, arena);
@@ -239,7 +199,7 @@ namespace PoSnakeGame.Tests
         {
             // Arrange
             var arena = CreateTestArena();
-            var cpuSnake = new Snake(new Position(5, 5), Direction.Right, Color.Red, SnakeType.CPU) { Personality = "Aggressive" };
+            var cpuSnake = new Snake(new Position(5, 5), Direction.Right, "#FF0000", SnakePersonality.Aggressive);
             arena.Snakes.Add(cpuSnake);
             var ai = new AggressiveAI(cpuSnake, arena);
 
@@ -260,8 +220,8 @@ namespace PoSnakeGame.Tests
         {
             // Arrange
             var arena = CreateTestArena();
-            var otherSnake = new Snake(new Position(8, 5), Direction.Left, Color.Green, SnakeType.CPU); // Snake further to the right
-            var cpuSnake = new Snake(new Position(5, 5), Direction.Up, Color.Blue, SnakeType.CPU) { Personality = "Cautious" };
+            var otherSnake = new Snake(new Position(8, 5), Direction.Left, "#00FF00", SnakePersonality.Random); // Snake further to the right
+            var cpuSnake = new Snake(new Position(5, 5), Direction.Up, "#0000FF", SnakePersonality.Cautious);
             arena.AddObstacle(new Position(5, 3)); // Add obstacle to make 'Up' less attractive
             arena.Snakes.Add(otherSnake);
             arena.Snakes.Add(cpuSnake);
@@ -285,9 +245,9 @@ namespace PoSnakeGame.Tests
         {
             // Arrange
             var arena = CreateTestArena();
-            var otherSnake = new Snake(new Position(1, 3), Direction.Right, Color.Green, SnakeType.CPU); // Snake below-left
+            var otherSnake = new Snake(new Position(1, 3), Direction.Right, "#00FF00", SnakePersonality.Random); // Snake below-left
             // Place snake near top-left corner
-            var cpuSnake = new Snake(new Position(1, 1), Direction.Right, Color.Cyan, SnakeType.CPU) { Personality = "Survivor" };
+            var cpuSnake = new Snake(new Position(1, 1), Direction.Right, "#00FFFF", SnakePersonality.Survivor);
             arena.Snakes.Add(otherSnake);
             arena.Snakes.Add(cpuSnake);
             var ai = new SurvivorAI(cpuSnake, arena);
@@ -309,7 +269,7 @@ namespace PoSnakeGame.Tests
         {
             // Arrange
             var arena = CreateTestArena();
-            var snake = new Snake(new Position(5, 5), Direction.Right, Color.Magenta, SnakeType.CPU) { Personality = "Speedy" };
+            var snake = new Snake(new Position(5, 5), Direction.Right, "#FF00FF", SnakePersonality.Speedy);
             arena.Snakes.Add(snake);
             var ai = new SpeedyAI(snake, arena);
             var directions = new List<Direction>();
@@ -344,7 +304,7 @@ namespace PoSnakeGame.Tests
         {
             // Arrange
             var arena = CreateTestArena();
-            var snake = new Snake(new Position(5, 5), Direction.Up, Color.Magenta, SnakeType.CPU) { Personality = "Speedy" };
+            var snake = new Snake(new Position(5, 5), Direction.Up, "#FF00FF", SnakePersonality.Speedy);
             arena.AddFood(new Position(7, 5)); // Food to the right
             arena.Snakes.Add(snake);
             var ai = new SpeedyAI(snake, arena);
