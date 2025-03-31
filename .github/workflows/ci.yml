@@ -167,7 +167,7 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }} # Needed for GitHub integrations
         action: "upload"
         app_location: ${{ env.SWA_APP_DIRECTORY }} # Blazor project path
-        api_location: "" # No managed API for SWA Free tier
+        api_location: "" # Explicitly set to empty as API is deployed separately
         output_location: ${{ env.SWA_OUTPUT_DIRECTORY }} # Blazor build output (relative to app_location)
         # app_build_command: "dotnet publish -c Release -o publish" # Let the action handle the build
         # api_build_command: "" # No API build needed here
