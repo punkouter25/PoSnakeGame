@@ -100,6 +100,42 @@
             }
         }, 10000);
     </script>
+
+    <!-- Define App Insights Initialization function FIRST -->
+     <script type="text/javascript">
+        function initializeAppInsights() {
+            if (window.appInsights) {
+                var appInsightsInstance = new window.appInsights({
+                    config: {
+                        connectionString: "InstrumentationKey=9ebb76f3-d571-4568-b246-5b15cd75807b;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=4816b87d-6c8f-4044-8807-b2c9d66dac27",
+                        /* Add other configuration options here if needed */
+                        // enableAutoRouteTracking: true // Optional: Enable automatic route change tracking for SPAs
+                    }
+                });
+                appInsightsInstance.loadAppInsights();
+                // appInsightsInstance.trackPageView(); // Optional: Track initial page view
+                window.appInsights = appInsightsInstance; // Make instance globally available if needed elsewhere
+                console.log("Application Insights initialized manually.");
+            } else {
+                console.error("Application Insights SDK not loaded.");
+            }
+        }
+    </script>
+    
+    <!-- Manually load App Insights SDK -->
+    <script id="appInsightsSDK" src="https://js.monitor.azure.com/scripts/b/ai.2.min.js" 
+            onerror="console.error('Error loading AppInsights script.')"></script>
+
+    <!-- Attach onload handler after SDK script tag -->
+    <script type="text/javascript">
+        var appInsightsSDKScript = document.getElementById('appInsightsSDK');
+        if (appInsightsSDKScript) {
+            appInsightsSDKScript.addEventListener('load', initializeAppInsights);
+        } else {
+            console.error("Could not find App Insights SDK script tag to attach onload handler.");
+        }
+    </script>
+
 </body>
 
 </html>

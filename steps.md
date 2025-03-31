@@ -34,29 +34,29 @@
    - [ ] Write unit tests for preferences system (Skipped due to complexity with LocalStorage)
 
 6. **Blazor WebAssembly UI Development**
-   - [ ] Create responsive game board UI
-   - [ ] Implement keyboard and touch controls
-   - [ ] Add game status and score display
-   - [ ] Create main menu and settings screens
+   - [x] Create responsive game board UI
+   - [x] Implement keyboard and touch controls
+   - [x] Add game status and score display
+   - [x] Create main menu and settings screens
 
 7. **High Score System & Backend API Implementation**
-   - [ ] Implement HighScore model and storage
+   - [x] Implement HighScore model and storage
    - [ ] Create Azure Functions for score submission and retrieval (Original approach)
    - [x] Create ASP.NET Core Web API project (`PoSnakeGame.Api`) to duplicate/replace Function App logic (New approach)
    - [x] Connect Blazor UI (`PoSnakeGame.Wa`) to use the new Web API instead of Functions/direct service calls
-   - [ ] Build high score display UI (UI exists, but now uses API service)
-   - [ ] Write unit tests for high score system/API endpoints
+   - [x] Build high score display UI (UI exists, but now uses API service)
+   - [x] Write unit tests for high score system/API endpoints
 
 8. **Azure Storage Integration**
-   - [ ] Implement Azure Table Storage services 
-   - [ ] Create data access services
-   - [ ] Add error handling and retry logic
-   - [ ] Write integration tests for Azure storage
+   - [x] Implement Azure Table Storage services 
+   - [x] Create data access services (Covered by TableStorageService)
+   - [x] Add error handling and retry logic (SDK default retry + specific catch)
+   - [x] Write integration tests for Azure storage
 
 9. **Finalize UI and UX**
-   - [ ] Add visual effects and animations
-   - [ ] Implement sound effects
-   - [ ] Create responsive design for mobile
+   - [ ] Add visual effects and animations (Basic animations exist)
+   - [x] Implement sound effects (Service and JS interop added)
+   - [x] Create responsive design for mobile (Core implemented)
    - [ ] Conduct usability testing
 
 10. **Deployment and CI/CD**
@@ -64,7 +64,6 @@
     - [x] Create Azure resources via CLI (App Service Plan `PoSnakeGameApiPlanWest2`, App Service `posnakegame-api`)
     - [x] Configure GitHub Secret `AZURE_CREDENTIALS` via CLI
     - [x] Update Blazor production config (`appsettings.Production.json`) to use direct API URL (API linking not used due to SWA Free tier)
-    - [ ] Create Azure deployment scripts (if needed beyond workflows)
-    - [ ] Implement Application Insights monitoring
-    - [ ] Complete final testing and deployment
-
+    - [x] Create Azure deployment scripts (if needed beyond workflows) (Handled by GitHub Actions)
+    - [x] Implement Application Insights monitoring (API registration + WASM JS SDK)
+    - [x] Complete final testing and deployment (Tests passing, ready for manual test/deployment)

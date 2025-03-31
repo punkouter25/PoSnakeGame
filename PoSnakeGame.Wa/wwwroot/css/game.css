@@ -36,10 +36,16 @@
     border: 3px solid var(--retro-green);
     box-shadow: 0 0 20px var(--retro-green);
     background-color: var(--retro-dark);
-    margin: 0;
-    max-width: 100%;
-    max-height: 85vh;
+    margin: 0 auto; /* Center the arena horizontally */
     overflow: hidden;
+    /* Define max size relative to viewport, maintaining aspect ratio */
+    /* Max width 90vw, Max height 80vh (leaving space for header/footer/joystick) */
+    /* Calculate width based on height and aspect ratio */
+    width: min(90vw, calc(80vh * (var(--arena-width, 50) / var(--arena-height, 40)))); 
+    /* Calculate height based on width and aspect ratio */
+    height: min(80vh, calc(90vw * (var(--arena-height, 40) / var(--arena-width, 50)))); 
+    /* CSS variables for aspect ratio - set via style attribute in Razor */
+    /* Defaults provided in case variables aren't set immediately */
 }
 
 .snake-segment {
@@ -212,14 +218,17 @@
 @media (max-width: 768px) {
     .virtual-joystick {
         display: block;
-        bottom: 20px;
+        bottom: 20px; /* Keep joystick visible */
     }
-    
+
+    /* Adjust arena size constraints for mobile */
     .game-arena {
-        max-height: 60vh;
-        margin-bottom: 160px;
+        /* Max width 95vw, Max height 60vh to leave room for joystick */
+        width: min(95vw, calc(60vh * (var(--arena-width, 50) / var(--arena-height, 40))));
+        height: min(60vh, calc(95vw * (var(--arena-height, 40) / var(--arena-width, 50))));
+        margin-bottom: 10px; /* Add some space above joystick */
     }
-    
+
     .game-header {
         flex-direction: row;
         width: 100%;

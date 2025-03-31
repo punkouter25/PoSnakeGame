@@ -26,12 +26,12 @@
                         </li>
                     }
                 </ul>
-                <button class="retro-button" @onclick="CloseModal">Close</button>
+                @* Close button removed *@
             }
             else
             {
                  <p>Failed to load diagnostic checks.</p>
-                 <button class="retro-button" @onclick="CloseModal">Close</button>
+                 @* Close button removed *@
             }
         </div>
     </div>
@@ -47,7 +47,7 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        if (IsVisible && _checks == null) // Only run checks if visible and not already run
+        if (IsVisible && _checks == null) 
         {
             await RunDiagnostics();
         }
@@ -56,33 +56,42 @@
     private async Task RunDiagnostics()
     {
         _isLoading = true;
-        _checks = null; // Clear previous results
-        StateHasChanged(); // Update UI to show loading
+        _checks = null; 
+        StateHasChanged(); 
 
         _checks = await DiagnosticsService.RunChecksAsync();
 
         _isLoading = false;
-        StateHasChanged(); // Update UI with results
+        StateHasChanged(); 
+
+        _ = AutoCloseModalAfterDelay(2000); 
+    }
+
+    private async Task AutoCloseModalAfterDelay(int delayMilliseconds)
+    {
+        await Task.Delay(delayMilliseconds);
+        if (IsVisible) 
+        {
+            await CloseModal();
+        }
     }
 
     private async Task CloseModal()
     {
-        IsVisible = false; // Hide modal
+        IsVisible = false; 
         
-        // Notify parent components of the visibility change (for two-way binding)
         if (IsVisibleChanged.HasDelegate)
         {
             await IsVisibleChanged.InvokeAsync(false);
         }
         
-        // Also invoke the OnClose callback if provided
         if (OnClose.HasDelegate)
         {
             await OnClose.InvokeAsync();
         }
         
-        _checks = null; // Reset checks for next time
-        _isLoading = true; // Reset loading state
+        _checks = null; 
+        _isLoading = true; 
     }
 
     private string GetStatusClass(string status) => status.ToLowerInvariant();

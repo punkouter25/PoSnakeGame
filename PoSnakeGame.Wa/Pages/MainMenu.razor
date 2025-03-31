@@ -3,43 +3,24 @@
 @using Microsoft.Extensions.Logging
 @using System
 
-<PageTitle>Snake Battle Royale</PageTitle>
+<PageTitle>PoSnakeGame</PageTitle>
 
 <div class="main-menu">
-    <h1 class="retro-title">SNAKE BATTLE ROYALE</h1>
+    <h1 class="retro-title">PoSnakeGame</h1>
     
-    @if (IsLoading)
-    {
-        <div class="loading-spinner">
-            <p>Checking API connectivity...</p>
-        </div>
-    }
-    else
-    {
-        <div class="api-status @(IsConnected ? "connected" : "disconnected")">
-            <p>
-                <span class="status-indicator"></span>
-                API Status: @(IsConnected ? "Connected" : "Not Connected")
-                @if (IsConnected)
-                {
-                    <span> - @HelloWorldMessage</span>
-                }
-            </p>
-        </div>
-    }
     
     <div class="menu-buttons">
         <button class="retro-button" @onclick="StartGame">START GAME</button>
         <button class="retro-button" @onclick="ViewHighScores">HIGH SCORES</button>
         <button class="retro-button" @onclick="ViewStatistics">STATISTICS</button>
-        <button class="retro-button" @onclick="ViewSettings">SETTINGS</button> @* Added Settings button *@
+        <button class="retro-button" @onclick="ViewSettings">SETTINGS</button> 
     </div>
 </div>
 
 @code {
     private string HelloWorldMessage { get; set; } = string.Empty;
-    private bool IsLoading { get; set; } = true;
-    private bool IsConnected { get; set; } = false;
+    private bool IsLoading { get; set; } = false; 
+    // private bool IsConnected { get; set; } = false; // Removed as API status UI is gone
     
     [Inject]
     private NavigationManager NavigationManager { get; set; } = default!;
@@ -52,40 +33,7 @@
     
     protected override async Task OnInitializedAsync()
     {
-        try
-        {
-            // Call the HelloWorld function when the main menu loads to verify connectivity
-            Logger.LogInformation("Checking API connectivity on startup");
-            
-            var response = await HelloWorldService.GetConnectionStatusAsync();
-            
-            if (response != null)
-            {
-                // Accept "API Responding" as a connected status
-                IsConnected = response.Status == "API Responding" || response.Status == "Connected"; 
-                HelloWorldMessage = response.Message;
-                Logger.LogInformation("API connectivity check completed. Connected: {IsConnected} (Status: {Status}), Message: {Message}", 
-                    IsConnected, response.Status, HelloWorldMessage);
-            }
-            else
-            {
-                IsConnected = false;
-                HelloWorldMessage = "Could not connect to API";
-                Logger.LogWarning("Failed to connect to API on startup");
-            }
-        }
-        catch (Exception ex)
-        {
-            IsConnected = false;
-            HelloWorldMessage = "Error connecting to API";
-            Logger.LogError(ex, "Error checking API connectivity on startup: {Error}", ex.Message);
-        }
-        finally
-        {
-            IsLoading = false;
-            StateHasChanged();
-        }
-        
+        // Removed API connectivity check from OnInitializedAsync
         await base.OnInitializedAsync();
     }
     

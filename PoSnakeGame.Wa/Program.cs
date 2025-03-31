@@ -102,6 +102,9 @@ builder.Services.AddBlazoredLocalStorage();
 // Add user preferences service (using Scoped as it interacts with LocalStorage)
 builder.Services.AddScoped<IUserPreferencesService, LocalStorageUserPreferencesService>();
 
+// Add Sound Service (changed to Singleton as GameService is Singleton and IJSRuntime is safe)
+builder.Services.AddSingleton<ISoundService, SoundService>();
+
 // Configure logging
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 

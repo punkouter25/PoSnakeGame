@@ -4,7 +4,7 @@
 @inject IUserPreferencesService UserPreferencesService
 @inject NavigationManager NavigationManager
 
-<PageTitle>Snake Battle Royale - Settings</PageTitle>
+<PageTitle>PoSnakeGame</PageTitle>
 
 <div class="settings-container">
     <h1 class="retro-title">SETTINGS</h1>
@@ -19,16 +19,16 @@
             <div class="form-group">
                 <label for="playerColor">Player Snake Color:</label>
                 <input type="color" id="playerColor" @bind="_preferences.PlayerSnakeColorHex" @bind:event="oninput" />
-                <span class="color-preview" style="background-color: @_preferences.PlayerSnakeColorHex;"></span>
-            </div>
+                 <span class="color-preview" style="background-color: @_preferences.PlayerSnakeColorHex;"></span>
+             </div>
 
-            @* Add more settings here later *@
+            
             @* 
             <div class="form-group">
                 <label for="soundVolume">Sound Volume:</label>
                 <input type="range" id="soundVolume" min="0" max="1" step="0.1" @bind="_preferences.SoundVolume" />
-                <span>@(_preferences.SoundVolume * 100)%</span>
-            </div>
+                 <span>@(_preferences.SoundVolume * 100)%</span>
+             </div>
             *@
 
             <div class="button-group">
@@ -61,23 +61,21 @@
             try
             {
                 await UserPreferencesService.SavePreferencesAsync(_preferences);
-                _statusMessage = "Settings saved successfully!";
-                _statusClass = "success";
-                // Optionally navigate back after a short delay
-                await Task.Delay(1500); 
-                NavigateBack();
-            }
+                 _statusMessage = "Settings saved successfully!";
+                 _statusClass = "success";
+                 await Task.Delay(1500); 
+                 NavigateBack();
+             }
             catch (Exception ex)
             {
                 _statusMessage = $"Error saving settings: {ex.Message}";
                 _statusClass = "error";
             }
         }
-    }
+     }
 
-    private void NavigateBack()
-    {
-        // Navigate back to the main menu or previous page
-        NavigationManager.NavigateTo("/"); 
-    }
+     private void NavigateBack()
+     {
+         NavigationManager.NavigateTo("/"); 
+     }
 }

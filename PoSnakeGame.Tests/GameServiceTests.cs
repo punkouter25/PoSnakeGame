@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Moq;
+using PoSnakeGame.Core.Interfaces; // Added for ISoundService
 using PoSnakeGame.Core.Models;
 using PoSnakeGame.Core.Services;
 using Xunit;
@@ -9,13 +10,23 @@ namespace PoSnakeGame.Tests
     public class GameServiceTests
     {
         private readonly Mock<ILogger<GameService>> _loggerMock;
+        private readonly Mock<ISoundService> _soundServiceMock; // Added mock for sound service
         private readonly GameService _gameService;
 
         public GameServiceTests()
         {
-            // Setup mock logger
+            // Setup mock logger and sound service
             _loggerMock = new Mock<ILogger<GameService>>();
-            _gameService = new GameService(_loggerMock.Object) { Arena = new Arena(20, 20) };
+            _soundServiceMock = new Mock<ISoundService>(); // Initialize sound service mock
+
+            // Pass mocks to the GameService constructor
+            _gameService = new GameService(_loggerMock.Object, _soundServiceMock.Object) 
+            { 
+                Arena = new Arena(20, 20) // Initialize Arena separately if needed for tests
+            };
+            
+            // Set a dummy UI invoker for tests that might trigger UI updates
+             _gameService.SetUiThreadInvoker(action => action());
         }
 
         [Fact]

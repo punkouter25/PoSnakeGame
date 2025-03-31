@@ -1,11 +1,11 @@
 @page "/highscores"
 @using PoSnakeGame.Core.Models
-@using PoSnakeGame.Wa.Services // Add this for HighScoreService
+@using PoSnakeGame.Wa.Services 
 @using PoSnakeGame.Core.Interfaces
-@inject HighScoreService HighScoreService // Inject the new service
+@inject HighScoreService HighScoreService 
 @inject IUserPreferencesService UserPreferencesService
 
-<PageTitle>Snake Battle Royale - High Scores</PageTitle>
+<PageTitle>PoSnakeGame</PageTitle>
 
 <div class="high-scores-container">
     <h1 class="retro-title">HIGH SCORES</h1>
@@ -58,12 +58,11 @@
     {
         try
         {
-            // Use the new service to get scores from the API
             _highScores = await HighScoreService.GetHighScoresAsync(); 
-            var userPrefs = await UserPreferencesService.LoadPreferencesAsync(); // Corrected method name
+            var userPrefs = await UserPreferencesService.LoadPreferencesAsync(); 
             // TODO: Add Initials property to UserPreferences and uncomment below
             // _playerInitials = userPrefs.Initials; 
-            _playerInitials = "TMP"; // Temporary placeholder
+            _playerInitials = "TMP"; 
         }
         catch (Exception ex)
         {

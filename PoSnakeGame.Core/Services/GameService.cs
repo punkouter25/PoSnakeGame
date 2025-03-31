@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using PoSnakeGame.Core.Models;
-// Note: Removed System.Drawing as Color is now a string
+using PoSnakeGame.Core.Interfaces; // ISoundService is now here
 
 namespace PoSnakeGame.Core.Services
 {
@@ -14,6 +12,7 @@ namespace PoSnakeGame.Core.Services
     public class GameService
     {
         private readonly ILogger<GameService> _logger;
+        private readonly ISoundService _soundService; // Inject sound service
 
         // Game state
         public required Arena Arena { get; set; }
@@ -71,9 +70,11 @@ namespace PoSnakeGame.Core.Services
             }
         }
 
-        public GameService(ILogger<GameService> logger)
+        // Inject ISoundService
+        public GameService(ILogger<GameService> logger, ISoundService soundService) 
         {
             _logger = logger;
+            _soundService = soundService; // Store injected service
             _logger.LogInformation("GameService created");
         }
 
@@ -190,6 +191,8 @@ namespace PoSnakeGame.Core.Services
             {
                 _countdownTimer = 0f;
                 _logger.LogInformation("Countdown timer reset during game resume");
+                // Play countdown start sound?
+                // _ = _soundService.PlaySoundAsync("countdown.wav"); 
             }
 
             // Initial game state notification
@@ -223,6 +226,9 @@ namespace PoSnakeGame.Core.Services
             IsGameRunning = false;
             IsGameOver = true;
             _logger.LogInformation("Game over. Final countdown state: Active={IsActive}, Value={Value}", IsCountdownActive, CountdownValue);
+            
+            // Play game over sound
+            _ = _soundService.PlaySoundAsync("gameover.wav"); 
 
             if (OnGameOver != null)
             {
@@ -245,11 +251,16 @@ namespace PoSnakeGame.Core.Services
                     _countdownTimer = 0f;
                     CountdownValue--;
                     _logger.LogInformation("Countdown decremented to {Value}", CountdownValue);
+                    
+                    // Play countdown tick sound
+                    _ = _soundService.PlaySoundAsync("tick.wav", 0.8); 
 
                     if (CountdownValue <= 0)
                     {
                         IsCountdownActive = false;
                         _logger.LogInformation("Countdown completed. Game starting properly now.");
+                        // Play countdown finish sound?
+                        // _ = _soundService.PlaySoundAsync("start.wav"); 
 
                         // Notify of countdown end
                         if (OnCountdownChanged != null)
@@ -325,7 +336,7 @@ namespace PoSnakeGame.Core.Services
         private void MoveSnakes()
         {
             // Debug information to help with test debugging
-            Console.WriteLine($"Moving {Snakes.Count} snakes, {Snakes.Count(s => s.IsAlive)} are alive");
+            // Console.WriteLine($"Moving {Snakes.Count} snakes, {Snakes.Count(s => s.IsAlive)} are alive");
 
             foreach (var snake in Snakes.Where(s => s.IsAlive))
             {
@@ -349,8 +360,8 @@ namespace PoSnakeGame.Core.Services
                 snake.Move(newHead);
 
                 // Debug information for the snake's movement
-                Console.WriteLine($"Snake moved to {newHead.X},{newHead.Y}, Direction: {snake.CurrentDirection}");
-                _logger.LogDebug("Snake moved to {Position}", newHead);
+                // Console.WriteLine($"Snake moved to {newHead.X},{newHead.Y}, Direction: {snake.CurrentDirection}");
+                // _logger.LogDebug("Snake moved to {Position}", newHead);
             }
         }
 
@@ -364,7 +375,7 @@ namespace PoSnakeGame.Core.Services
             Arena.Snakes = Snakes;
 
             // Debug information about the current state
-            Console.WriteLine($"Updating direction for CPU snake with personality: {snake.Personality}, at position ({snake.Segments[0].X}, {snake.Segments[0].Y})");
+            // Console.WriteLine($"Updating direction for CPU snake with personality: {snake.Personality}, at position ({snake.Segments[0].X}, {snake.Segments[0].Y})");
             
             // Using Factory Method pattern to create the appropriate AI implementation
             switch (snake.Personality) // Switch on the enum
@@ -395,7 +406,7 @@ namespace PoSnakeGame.Core.Services
 
             ai?.UpdateDirection();
             
-            Console.WriteLine($"CPU snake direction updated to: {snake.CurrentDirection}");
+            // Console.WriteLine($"CPU snake direction updated to: {snake.CurrentDirection}");
         }
 
         private int CalculateManhattanDistance(Position p1, Position p2)
@@ -450,12 +461,12 @@ namespace PoSnakeGame.Core.Services
                 var head = snake.Segments[0];
 
                 // Debug info for wall collisions
-                Console.WriteLine($"Checking wall collision for snake at {head.X},{head.Y}, arena size: {Arena.Width}x{Arena.Height}");
+                // Console.WriteLine($"Checking wall collision for snake at {head.X},{head.Y}, arena size: {Arena.Width}x{Arena.Height}");
                 
                 // Check wall collision
                 if (Arena.IsOutOfBounds(head))
                 {
-                    Console.WriteLine($"Snake hit wall at {head.X},{head.Y}");
+                    // Console.WriteLine($"Snake hit wall at {head.X},{head.Y}");
                     _logger.LogInformation("Snake hit wall at {Position}", head);
                     HandleSnakeCollision(snake);
                     continue;
@@ -464,7 +475,7 @@ namespace PoSnakeGame.Core.Services
                 // Check obstacle collision
                 if (Arena.HasCollision(head))
                 {
-                    Console.WriteLine($"Snake hit obstacle at {head.X},{head.Y}");
+                    // Console.WriteLine($"Snake hit obstacle at {head.X},{head.Y}");
                     _logger.LogInformation("Snake hit obstacle at {Position}", head);
                     HandleSnakeCollision(snake);
                     continue;
@@ -473,7 +484,7 @@ namespace PoSnakeGame.Core.Services
                 // Check self collision (skip the head)
                 if (snake.Segments.Skip(1).Any(segment => segment.Equals(head)))
                 {
-                    Console.WriteLine($"Snake hit itself at {head.X},{head.Y}");
+                    // Console.WriteLine($"Snake hit itself at {head.X},{head.Y}");
                     _logger.LogInformation("Snake hit itself at {Position}", head);
                     HandleSnakeCollision(snake);
                     continue;
@@ -484,12 +495,15 @@ namespace PoSnakeGame.Core.Services
                 {
                     if (otherSnake.Segments.Any(segment => segment.Equals(head)))
                     {
-                        Console.WriteLine($"Snake hit another snake at {head.X},{head.Y}");
+                        // Console.WriteLine($"Snake hit another snake at {head.X},{head.Y}");
                         _logger.LogInformation("Snake hit another snake at {Position}", head);
                         HandleSnakeCollision(snake);
-                        break;
+                        break; // Exit inner loop once collision is handled for this snake
                     }
                 }
+                
+                // If snake died in the previous check, skip food/powerup checks
+                if (!snake.IsAlive) continue; 
 
                 // Check food consumption
                 var foodIndex = Arena.Foods.FindIndex(f => f.Equals(head));
@@ -500,7 +514,7 @@ namespace PoSnakeGame.Core.Services
                     // Instead of immediately removing food, mark it as fading
                     if (!FadingFoods.Contains(food))
                     {
-                        Console.WriteLine($"Snake ate food at {head.X},{head.Y}");
+                        // Console.WriteLine($"Snake ate food at {head.X},{head.Y}");
                         
                         // Add to fading foods list
                         FadingFoods.Add(food);
@@ -514,6 +528,9 @@ namespace PoSnakeGame.Core.Services
                         snake.AddPoints(10);
                         
                         _logger.LogInformation("Snake ate food at {Position}", head);
+                        
+                        // Play eat sound
+                        _ = _soundService.PlaySoundAsync("eat.wav", 0.7); 
                         
                         // Spawn new food to maintain target count
                         SpawnFood();
@@ -531,6 +548,9 @@ namespace PoSnakeGame.Core.Services
                     ApplyPowerUp(snake, powerUp);
 
                     _logger.LogInformation("Snake consumed power-up at {Position}", head);
+                    
+                    // Play power-up sound
+                    _ = _soundService.PlaySoundAsync("powerup.wav", 0.9); 
                 }
             }
 
@@ -546,7 +566,11 @@ namespace PoSnakeGame.Core.Services
         {
             // Mark snake as dead
             snake.Die();
-            Console.WriteLine($"Snake {snake.Personality} died due to collision"); // Use Personality enum
+            // Console.WriteLine($"Snake {snake.Personality} died due to collision"); // Use Personality enum
+            _logger.LogInformation("Snake {Personality} died due to collision", snake.Personality);
+
+            // Play death sound
+            _ = _soundService.PlaySoundAsync("death.wav", 0.6); 
 
             // Add to dying snakes for animation
             if (!DyingSnakes.Contains(snake))
@@ -582,6 +606,7 @@ namespace PoSnakeGame.Core.Services
                     _logger.LogWarning("Unknown power-up type: {Type}", powerUp.Type);
                     break;
             }
+            // Note: Sound is played in CheckCollisions after ApplyPowerUp is called
         }
 
         private void SpawnFood()

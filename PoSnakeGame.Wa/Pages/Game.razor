@@ -9,11 +9,10 @@
 @inject HighScoreService HighScoreService // Inject the new service
 @inject IUserPreferencesService UserPreferencesService
 @inject IJSRuntime JSRuntime
-@implements IDisposable
+@implements IAsyncDisposable // Changed from IDisposable
 
-<PageTitle>Snake Battle Royale - Game</PageTitle>
+<PageTitle>PoSnakeGame</PageTitle>
 
-@* Define the legend data here for easy access in markup *@
 @{
     var personalityLegend = new Dictionary<SnakePersonality, string>
     {
@@ -32,7 +31,6 @@
     <div class="game-header">
         <div class="game-timer">Time Left: @TimeRemaining.ToString("0.0")s</div>
         <div class="game-score">Score: @PlayerScore</div>
-        @* Legend completely removed from header *@
     </div>
 
     @if (GameService.IsGameOver)
@@ -62,75 +60,67 @@
         </div>
     }
     
-    <div class="game-arena" style="width: @(ArenaWidth * CellSize)px; height: @(ArenaHeight * CellSize)px">
+    <div class="game-arena" @ref="gameArenaRef" style="--arena-width: @ArenaWidth; --arena-height: @ArenaHeight;">
         @if (GameService.Arena != null)
         {
-            @* Render obstacles *@
             @foreach (var obstacle in GameService.Arena.Obstacles)
             {
-                <div class="obstacle" style="width: @(CellSize)px; height: @(CellSize)px; 
-                                            left: @(obstacle.X * CellSize)px; top: @(obstacle.Y * CellSize)px;"></div>
+                <div class="obstacle" style="width: @(_dynamicCellSize)px; height: @(_dynamicCellSize)px; 
+                                            left: @(obstacle.X * _dynamicCellSize)px; top: @(obstacle.Y * _dynamicCellSize)px;"></div>
             }
 
-            @* Render foods *@
             @foreach (var food in GameService.Arena.Foods)
             {
-                <div class="food" style="width: @(CellSize)px; height: @(CellSize)px; 
-                                        left: @(food.X * CellSize)px; top: @(food.Y * CellSize)px;"></div>
+                <div class="food" style="width: @(_dynamicCellSize)px; height: @(_dynamicCellSize)px; 
+                                        left: @(food.X * _dynamicCellSize)px; top: @(food.Y * _dynamicCellSize)px;"></div>
             }
 
-            @* Render fading foods (being eaten) *@
             @foreach (var food in GameService.FadingFoods)
             {
-                <div class="food food-eaten" style="width: @(CellSize)px; height: @(CellSize)px; 
-                                        left: @(food.X * CellSize)px; top: @(food.Y * CellSize)px;"></div>
+                <div class="food food-eaten" style="width: @(_dynamicCellSize)px; height: @(_dynamicCellSize)px; 
+                                        left: @(food.X * _dynamicCellSize)px; top: @(food.Y * _dynamicCellSize)px;"></div>
             }
 
-            @* Render power-ups *@
             @foreach (var powerUp in GameService.Arena.PowerUps)
             {
                 <div class="power-up @powerUp.Type.ToString().ToLowerInvariant()" 
-                     style="width: @(CellSize)px; height: @(CellSize)px; 
-                            left: @(powerUp.Position.X * CellSize)px; top: @(powerUp.Position.Y * CellSize)px;"></div>
+                     style="width: @(_dynamicCellSize)px; height: @(_dynamicCellSize)px; 
+                            left: @(powerUp.Position.X * _dynamicCellSize)px; top: @(powerUp.Position.Y * _dynamicCellSize)px;"></div>
             }
 
-            @* Render snakes *@
             @foreach (var snake in GameService.Snakes.Where(s => s.IsAlive))
             {
                 @foreach (var segment in snake.Segments)
                 {
-                    var calculatedSize = CellSize * snake.SizeMultiplier;
-                    var offset = (calculatedSize - CellSize) / 2;
+                    var calculatedSize = _dynamicCellSize * snake.SizeMultiplier;
+                    var offset = (calculatedSize - _dynamicCellSize) / 2;
                     
                     <div class="snake-segment @(segment == snake.Segments[0] ? "head" : "")"
                          style="width: @(calculatedSize)px; height: @(calculatedSize)px;
-                                left: @(segment.X * CellSize - offset)px; top: @(segment.Y * CellSize - offset)px;
-                                background-color: @snake.Color; /* Use hex color string */
+                                left: @(segment.X * _dynamicCellSize - offset)px; top: @(segment.Y * _dynamicCellSize - offset)px;
+                                background-color: @snake.Color; 
                                 z-index: @(snake.Personality == SnakePersonality.Human ? 10 : 5);">
                     </div>
                 }
             }
             
-            @* Render dying snakes with animation *@
             @foreach (var snake in GameService.DyingSnakes)
             {
                 @foreach (var segment in snake.Segments)
                 {
-                    var calculatedSize = CellSize * snake.SizeMultiplier;
-                    var offset = (calculatedSize - CellSize) / 2;
+                    var calculatedSize = _dynamicCellSize * snake.SizeMultiplier;
+                    var offset = (calculatedSize - _dynamicCellSize) / 2;
                     
                     <div class="snake-segment @(segment == snake.Segments[0] ? "head" : "") snake-dying"
                          style="width: @(calculatedSize)px; height: @(calculatedSize)px;
-                                left: @(segment.X * CellSize - offset)px; top: @(segment.Y * CellSize - offset)px;
-                                background-color: @snake.Color; /* Use hex color string */
+                                left: @(segment.X * _dynamicCellSize - offset)px; top: @(segment.Y * _dynamicCellSize - offset)px;
+                                background-color: @snake.Color; 
                                 z-index: @(snake.Personality == SnakePersonality.Human ? 9 : 4);">
                     </div>
                 }
             }
         }
     </div>
-
-    @* Legend removed *@
 
     @if (IsMobileDevice)
     {
@@ -144,14 +134,16 @@
 
 @code {
     private ElementReference gameContainerRef;
+    private ElementReference gameArenaRef; // Reference for the arena div
     private ElementReference joystickRef;
     private ElementReference joystickThumbRef;
-    private DotNetObjectReference<Game>? objRef;
+    private DotNetObjectReference<Game>? objRef; // For joystick
+    private DotNetObjectReference<Game>? arenaResizeObjRef; // For resize listener
     private bool _showingHighScoreSubmission;
     
     private int ArenaWidth => GameService.Arena?.Width ?? 50;
     private int ArenaHeight => GameService.Arena?.Height ?? 40; // Match GameService default
-    private int CellSize => IsMobileDevice ? 10 : 16; // Increase cell size for better visibility
+    private double _dynamicCellSize = 16.0; // Default cell size, will be updated dynamically
     private float TimeRemaining => GameService.TimeRemaining;
     private int PlayerScore => GameService.Snakes.FirstOrDefault(s => s.Personality == SnakePersonality.Human)?.Score ?? 0; // Use Personality enum
     private bool IsMobileDevice = false;
@@ -233,22 +225,37 @@
         {
             // Detect if we're on a mobile device
             IsMobileDevice = await JSRuntime.InvokeAsync<bool>("isMobileDevice");
-            
+
             // Set focus to the game container for keyboard input
             await JSRuntime.InvokeVoidAsync("focusElement", gameContainerRef);
-            
+
             // Initialize virtual joystick if on mobile
             if (IsMobileDevice)
             {
                 objRef = DotNetObjectReference.Create(this);
                 await JSRuntime.InvokeVoidAsync("initVirtualJoystick", joystickRef, joystickThumbRef, objRef);
             }
+
+            // Initialize arena resize listener
+            arenaResizeObjRef = DotNetObjectReference.Create(this);
+            await JSRuntime.InvokeVoidAsync("initArenaResizeListener", gameArenaRef, arenaResizeObjRef, ArenaWidth, ArenaHeight);
+
+            // Start the game engine (handles game loop)
+            GameEngine.Start(); 
             
-            // Start the game
-            GameEngine.Start();
-            
-            // Ensure the game is running
-            GameService.StartGame();
+            // Start the game logic (initializes state, countdown etc.)
+            GameService.StartGame(); 
+        }
+    }
+    
+    [JSInvokable]
+    public void UpdateDynamicCellSize(double newSize)
+    {
+        // Check if the change is significant enough to warrant a re-render
+        if (Math.Abs(_dynamicCellSize - newSize) > 0.1) 
+        {
+            _dynamicCellSize = newSize;
+            InvokeAsync(StateHasChanged); // Trigger UI update
         }
     }
 
@@ -337,7 +344,8 @@
         // No need to handle focus events since we removed pause/resume functionality
     }
 
-    public void Dispose()
+    // Changed from Dispose to DisposeAsync
+    public async ValueTask DisposeAsync() 
     {
         // Clean up event handlers
         GameService.OnGameStateChanged -= StateHasChanged;
@@ -345,9 +353,29 @@
         GameService.OnCountdownChanged -= StateHasChanged;
         
         // Stop the game engine
-        GameEngine.Stop();
+        GameEngine.Stop(); // Consider if await StopAsync() is needed here
         
-        // Dispose the DotNetObjectReference
+        // Dispose JS interop references
         objRef?.Dispose();
+        arenaResizeObjRef?.Dispose();
+
+        // Call JS cleanup functions (use try/catch in case JS context is lost)
+        try 
+        {
+            await JSRuntime.InvokeVoidAsync("disposeArenaResizeListener");
+            if (IsMobileDevice)
+            {
+                // Assuming disposeVirtualJoystick exists and takes the element
+                await JSRuntime.InvokeVoidAsync("disposeVirtualJoystick", joystickRef); 
+            }
+        }
+        catch (JSDisconnectedException)
+        {
+            // Ignore if JS context is already gone
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error during JS cleanup: {ex.Message}");
+        }
     }
 }
