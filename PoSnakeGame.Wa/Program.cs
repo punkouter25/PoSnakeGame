@@ -106,6 +106,7 @@ builder.Services.AddScoped<IUserPreferencesService, LocalStorageUserPreferencesS
 builder.Services.AddSingleton<ISoundService, SoundService>();
 
 // Configure logging
+builder.Logging.SetMinimumLevel(LogLevel.Debug); // Set minimum level to Debug for more verbose output
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 
 // Register DiagnosticsService

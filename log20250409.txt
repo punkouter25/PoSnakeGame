@@ -1,0 +1,259 @@
+2025-04-09 18:35:01.087 -04:00 [INF] ----- PoSnakeGame.Api Starting Up -----
+2025-04-09 18:35:01.154 -04:00 [INF] Log file path: C:\Users\punko\OneDrive\Documents\PoSnakeGame\PoSnakeGame.Api\..\log.txt
+2025-04-09 18:35:01.157 -04:00 [INF] Environment: Development
+2025-04-09 18:35:01.158 -04:00 [INF] Configuring CORS. Allowed Origins: http://localhost:5000, http://localhost:5001, https://localhost:5000, https://localhost:5001, http://localhost:5297, https://localhost:7047, http://127.0.0.1:5000, http://127.0.0.1:5001, https://127.0.0.1:5000, https://127.0.0.1:5001, http://127.0.0.1:5297, https://127.0.0.1:7047, https://ashy-water-0fe4f090f.6.azurestaticapps.net, https://posnakegame-web.azurestaticapps.net
+2025-04-09 18:35:01.366 -04:00 [INF] Configuring Table Storage services...
+2025-04-09 18:35:01.374 -04:00 [INF] TableStorageConfig loaded: HighScoresTable=HighScores, GameStatsTable=GameStatistics, IsUsingLocalStorage=true
+2025-04-09 18:35:01.565 -04:00 [INF] Registering TableServiceClient. IsUsingLocalStorage: true
+2025-04-09 18:35:01.567 -04:00 [INF] Table Storage services configured.
+2025-04-09 18:35:01.787 -04:00 [INF] Development environment detected. Enabling Swagger UI and Developer Exception Page.
+2025-04-09 18:35:01.793 -04:00 [INF] HTTPS redirection enabled.
+2025-04-09 18:35:01.794 -04:00 [INF] CORS policy 'AllowSpecificOrigins' applied.
+2025-04-09 18:35:01.854 -04:00 [INF] Controller endpoints mapped.
+2025-04-09 18:35:01.856 -04:00 [INF] ----- PoSnakeGame.Api Application Build Complete - Running... -----
+2025-04-09 18:35:01.866 -04:00 [INF] CORS policy 'AllowSpecificOrigins' configured.
+2025-04-09 18:35:01.901 -04:00 [INF] Now listening on: http://localhost:5289
+2025-04-09 18:35:01.903 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-09 18:35:01.904 -04:00 [INF] Hosting environment: Development
+2025-04-09 18:35:01.905 -04:00 [INF] Content root path: C:\Users\punko\OneDrive\Documents\PoSnakeGame\PoSnakeGame.Api
+2025-04-09 18:35:17.807 -04:00 [WRN] Failed to determine the https port for redirect.
+2025-04-09 18:42:08.155 -04:00 [INF] Application is shutting down...
+2025-04-09 18:42:46.960 -04:00 [INF] ----- PoSnakeGame.Api Starting Up -----
+2025-04-09 18:42:47.033 -04:00 [INF] Log file path: C:\Users\punko\OneDrive\Documents\PoSnakeGame\PoSnakeGame.Api\..\log.txt
+2025-04-09 18:42:47.035 -04:00 [INF] Environment: Development
+2025-04-09 18:42:47.036 -04:00 [INF] Configuring CORS. Allowed Origins: http://localhost:5000, http://localhost:5001, https://localhost:5000, https://localhost:5001, http://localhost:5297, https://localhost:7047, http://127.0.0.1:5000, http://127.0.0.1:5001, https://127.0.0.1:5000, https://127.0.0.1:5001, http://127.0.0.1:5297, https://127.0.0.1:7047, https://ashy-water-0fe4f090f.6.azurestaticapps.net, https://posnakegame-web.azurestaticapps.net
+2025-04-09 18:42:47.043 -04:00 [INF] Configuring Table Storage services...
+2025-04-09 18:42:47.047 -04:00 [INF] TableStorageConfig loaded: HighScoresTable=HighScores, GameStatsTable=GameStatistics, IsUsingLocalStorage=true
+2025-04-09 18:42:47.051 -04:00 [INF] Registering TableServiceClient. IsUsingLocalStorage: true
+2025-04-09 18:42:47.053 -04:00 [INF] Table Storage services configured.
+2025-04-09 18:42:47.081 -04:00 [INF] Development environment detected. Enabling Swagger UI and Developer Exception Page.
+2025-04-09 18:42:47.088 -04:00 [INF] HTTPS redirection enabled.
+2025-04-09 18:42:47.088 -04:00 [INF] CORS policy 'AllowSpecificOrigins' applied.
+2025-04-09 18:42:47.118 -04:00 [INF] Controller endpoints mapped.
+2025-04-09 18:42:47.118 -04:00 [INF] ----- PoSnakeGame.Api Application Build Complete - Running... -----
+2025-04-09 18:42:47.124 -04:00 [INF] CORS policy 'AllowSpecificOrigins' configured.
+2025-04-09 18:42:47.150 -04:00 [INF] Now listening on: http://localhost:5289
+2025-04-09 18:42:47.152 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-09 18:42:47.153 -04:00 [INF] Hosting environment: Development
+2025-04-09 18:42:47.154 -04:00 [INF] Content root path: C:\Users\punko\OneDrive\Documents\PoSnakeGame\PoSnakeGame.Api
+2025-04-09 18:42:52.529 -04:00 [WRN] Failed to determine the https port for redirect.
+2025-04-09 18:43:06.495 -04:00 [INF] Table Storage Service initialized. HighScores table 'HighScores' ensured.
+2025-04-09 18:43:06.526 -04:00 [INF] HighScoresController instantiated.
+2025-04-09 18:43:06.598 -04:00 [INF] Getting top 10 high scores via service.
+2025-04-09 18:43:06.606 -04:00 [INF] Getting top 10 scores
+2025-04-09 18:43:06.642 -04:00 [INF] Retrieved 0 scores before sorting.
+2025-04-09 18:43:06.644 -04:00 [INF] Retrieved 0 high scores.
+2025-04-09 18:43:36.939 -04:00 [INF] StatisticsController instantiated.
+2025-04-09 18:43:36.942 -04:00 [INF] Getting game statistics.
+2025-04-09 18:43:36.957 -04:00 [INF] Request [686573c3-ece0-4318-bbcc-a176cd40dd6b] POST http://127.0.0.1:10002/devstoreaccount1/Tables?$format=REDACTED
+x-ms-version:REDACTED
+DataServiceVersion:REDACTED
+Accept:application/json;odata=minimalmetadata
+Prefer:REDACTED
+Content-Type:application/json;odata=nometadata
+x-ms-client-request-id:686573c3-ece0-4318-bbcc-a176cd40dd6b
+x-ms-return-client-request-id:true
+User-Agent:azsdk-net-Data.Tables/12.10.0 (.NET 9.0.3; Microsoft Windows 10.0.26100)
+x-ms-date:REDACTED
+Authorization:REDACTED
+client assembly: Azure.Data.Tables
+2025-04-09 18:43:37.030 -04:00 [INF] Response [686573c3-ece0-4318-bbcc-a176cd40dd6b] 409 Conflict (00.0s)
+Server:Azurite-Table/3.34.0
+x-ms-error-code:REDACTED
+x-ms-request-id:b112b00d-524c-47d4-9664-f79dd8194264
+x-ms-version:REDACTED
+Date:Wed, 09 Apr 2025 22:43:36 GMT
+Connection:keep-alive
+Keep-Alive:REDACTED
+Transfer-Encoding:chunked
+Content-Type:application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+
+2025-04-09 18:43:37.036 -04:00 [INF] Request [31ca03bb-0576-48e0-a022-67271b579d23] POST http://127.0.0.1:10002/devstoreaccount1/Tables?$format=REDACTED
+x-ms-version:REDACTED
+DataServiceVersion:REDACTED
+Accept:application/json;odata=minimalmetadata
+Prefer:REDACTED
+Content-Type:application/json;odata=nometadata
+x-ms-client-request-id:31ca03bb-0576-48e0-a022-67271b579d23
+x-ms-return-client-request-id:true
+User-Agent:azsdk-net-Data.Tables/12.10.0 (.NET 9.0.3; Microsoft Windows 10.0.26100)
+x-ms-date:REDACTED
+Authorization:REDACTED
+client assembly: Azure.Data.Tables
+2025-04-09 18:43:37.055 -04:00 [INF] Response [31ca03bb-0576-48e0-a022-67271b579d23] 204 No Content (00.0s)
+Server:Azurite-Table/3.34.0
+x-ms-client-request-id:31ca03bb-0576-48e0-a022-67271b579d23
+x-ms-request-id:5d0e6884-a9c6-4b39-91a8-ef802f0e1306
+x-ms-version:REDACTED
+Date:Wed, 09 Apr 2025 22:43:37 GMT
+preference-applied:REDACTED
+Connection:keep-alive
+Keep-Alive:REDACTED
+Content-Type:application/json;odata=minimalmetadata
+
+2025-04-09 18:43:37.064 -04:00 [INF] Request [5f96b173-bf2d-4908-80de-2382d42d3a30] GET http://127.0.0.1:10002/devstoreaccount1/GameStatistics(PartitionKey='GameCount',RowKey='total')?$format=REDACTED
+x-ms-version:REDACTED
+DataServiceVersion:REDACTED
+Accept:application/json;odata=minimalmetadata
+x-ms-client-request-id:5f96b173-bf2d-4908-80de-2382d42d3a30
+x-ms-return-client-request-id:true
+User-Agent:azsdk-net-Data.Tables/12.10.0 (.NET 9.0.3; Microsoft Windows 10.0.26100)
+x-ms-date:REDACTED
+Authorization:REDACTED
+client assembly: Azure.Data.Tables
+2025-04-09 18:43:37.071 -04:00 [WRN] Error response [5f96b173-bf2d-4908-80de-2382d42d3a30] 404 Not Found (00.0s)
+Server:Azurite-Table/3.34.0
+x-ms-error-code:REDACTED
+x-ms-request-id:5f3837bb-a247-4ae6-956d-340c420afb43
+x-ms-version:REDACTED
+Date:Wed, 09 Apr 2025 22:43:37 GMT
+Connection:keep-alive
+Keep-Alive:REDACTED
+Transfer-Encoding:chunked
+Content-Type:application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+
+2025-04-09 18:43:37.073 -04:00 [WRN] Statistic entity not found: PK=GameCount, RK=total. Returning 0.
+2025-04-09 18:43:37.079 -04:00 [INF] Request [85918441-0b0b-4a92-9912-98e16aec084f] GET http://127.0.0.1:10002/devstoreaccount1/HighScores()?$format=REDACTED
+x-ms-version:REDACTED
+DataServiceVersion:REDACTED
+Accept:application/json;odata=minimalmetadata
+x-ms-client-request-id:85918441-0b0b-4a92-9912-98e16aec084f
+x-ms-return-client-request-id:true
+User-Agent:azsdk-net-Data.Tables/12.10.0 (.NET 9.0.3; Microsoft Windows 10.0.26100)
+x-ms-date:REDACTED
+Authorization:REDACTED
+client assembly: Azure.Data.Tables
+2025-04-09 18:43:37.082 -04:00 [INF] Response [85918441-0b0b-4a92-9912-98e16aec084f] 200 OK (00.0s)
+Server:Azurite-Table/3.34.0
+x-ms-client-request-id:85918441-0b0b-4a92-9912-98e16aec084f
+x-ms-request-id:2dd6fafd-8e00-42f1-b4a4-38e6115cdaf5
+x-ms-version:REDACTED
+Date:Wed, 09 Apr 2025 22:43:37 GMT
+Connection:keep-alive
+Keep-Alive:REDACTED
+Transfer-Encoding:chunked
+Content-Type:application/json;odata=minimalmetadata
+
+2025-04-09 18:43:37.085 -04:00 [INF] Request [ceed9974-bf17-43df-ab4d-32eb245603a3] GET http://127.0.0.1:10002/devstoreaccount1/GameStatistics(PartitionKey='FoodEaten',RowKey='total')?$format=REDACTED
+x-ms-version:REDACTED
+DataServiceVersion:REDACTED
+Accept:application/json;odata=minimalmetadata
+x-ms-client-request-id:ceed9974-bf17-43df-ab4d-32eb245603a3
+x-ms-return-client-request-id:true
+User-Agent:azsdk-net-Data.Tables/12.10.0 (.NET 9.0.3; Microsoft Windows 10.0.26100)
+x-ms-date:REDACTED
+Authorization:REDACTED
+client assembly: Azure.Data.Tables
+2025-04-09 18:43:37.089 -04:00 [WRN] Error response [ceed9974-bf17-43df-ab4d-32eb245603a3] 404 Not Found (00.0s)
+Server:Azurite-Table/3.34.0
+x-ms-error-code:REDACTED
+x-ms-request-id:cf8a0111-b2fa-4bd0-a9c3-08d9a3f9dacc
+x-ms-version:REDACTED
+Date:Wed, 09 Apr 2025 22:43:37 GMT
+Connection:keep-alive
+Keep-Alive:REDACTED
+Transfer-Encoding:chunked
+Content-Type:application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+
+2025-04-09 18:43:37.090 -04:00 [WRN] Statistic entity not found: PK=FoodEaten, RK=total. Returning 0.
+2025-04-09 18:43:37.090 -04:00 [INF] Request [bab6a3a3-a5a2-48e6-b92f-1b25b5860add] GET http://127.0.0.1:10002/devstoreaccount1/GameStatistics(PartitionKey='LongestSnake',RowKey='record')?$format=REDACTED
+x-ms-version:REDACTED
+DataServiceVersion:REDACTED
+Accept:application/json;odata=minimalmetadata
+x-ms-client-request-id:bab6a3a3-a5a2-48e6-b92f-1b25b5860add
+x-ms-return-client-request-id:true
+User-Agent:azsdk-net-Data.Tables/12.10.0 (.NET 9.0.3; Microsoft Windows 10.0.26100)
+x-ms-date:REDACTED
+Authorization:REDACTED
+client assembly: Azure.Data.Tables
+2025-04-09 18:43:37.097 -04:00 [WRN] Error response [bab6a3a3-a5a2-48e6-b92f-1b25b5860add] 404 Not Found (00.0s)
+Server:Azurite-Table/3.34.0
+x-ms-error-code:REDACTED
+x-ms-request-id:ecb9ca16-81db-4723-ab29-a3bd9d0286f0
+x-ms-version:REDACTED
+Date:Wed, 09 Apr 2025 22:43:37 GMT
+Connection:keep-alive
+Keep-Alive:REDACTED
+Transfer-Encoding:chunked
+Content-Type:application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+
+2025-04-09 18:43:37.098 -04:00 [WRN] Statistic entity not found: PK=LongestSnake, RK=record. Returning 0.
+2025-04-09 18:43:37.099 -04:00 [INF] Request [bf5a77ee-c019-43f7-9951-4950b6403765] GET http://127.0.0.1:10002/devstoreaccount1/GameStatistics(PartitionKey='PlayTime',RowKey='total')?$format=REDACTED
+x-ms-version:REDACTED
+DataServiceVersion:REDACTED
+Accept:application/json;odata=minimalmetadata
+x-ms-client-request-id:bf5a77ee-c019-43f7-9951-4950b6403765
+x-ms-return-client-request-id:true
+User-Agent:azsdk-net-Data.Tables/12.10.0 (.NET 9.0.3; Microsoft Windows 10.0.26100)
+x-ms-date:REDACTED
+Authorization:REDACTED
+client assembly: Azure.Data.Tables
+2025-04-09 18:43:37.111 -04:00 [WRN] Error response [bf5a77ee-c019-43f7-9951-4950b6403765] 404 Not Found (00.0s)
+Server:Azurite-Table/3.34.0
+x-ms-error-code:REDACTED
+x-ms-request-id:024a6b45-5d76-4095-b5ab-2c60c6cd6928
+x-ms-version:REDACTED
+Date:Wed, 09 Apr 2025 22:43:37 GMT
+Connection:keep-alive
+Keep-Alive:REDACTED
+Transfer-Encoding:chunked
+Content-Type:application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+
+2025-04-09 18:43:37.114 -04:00 [WRN] Statistic entity not found: PK=PlayTime, RK=total. Returning 0.
+2025-04-09 18:43:37.114 -04:00 [INF] Successfully retrieved game statistics.
+2025-04-09 18:45:47.368 -04:00 [INF] ----- PoSnakeGame.Api Starting Up -----
+2025-04-09 18:45:47.428 -04:00 [INF] Log file path: C:\Users\punko\OneDrive\Documents\PoSnakeGame\PoSnakeGame.Api\..\log.txt
+2025-04-09 18:45:47.429 -04:00 [INF] Environment: Development
+2025-04-09 18:45:47.430 -04:00 [INF] Configuring CORS. Allowed Origins: http://localhost:5000, http://localhost:5001, https://localhost:5000, https://localhost:5001, http://localhost:5297, https://localhost:7047, http://127.0.0.1:5000, http://127.0.0.1:5001, https://127.0.0.1:5000, https://127.0.0.1:5001, http://127.0.0.1:5297, https://127.0.0.1:7047, https://ashy-water-0fe4f090f.6.azurestaticapps.net, https://posnakegame-web.azurestaticapps.net
+2025-04-09 18:45:47.436 -04:00 [INF] Configuring Table Storage services...
+2025-04-09 18:45:47.439 -04:00 [INF] TableStorageConfig loaded: HighScoresTable=HighScores, GameStatsTable=GameStatistics, IsUsingLocalStorage=true
+2025-04-09 18:45:47.443 -04:00 [INF] Registering TableServiceClient. IsUsingLocalStorage: true
+2025-04-09 18:45:47.445 -04:00 [INF] Table Storage services configured.
+2025-04-09 18:45:47.465 -04:00 [INF] Development environment detected. Enabling Swagger UI and Developer Exception Page.
+2025-04-09 18:45:47.470 -04:00 [INF] HTTPS redirection enabled.
+2025-04-09 18:45:47.471 -04:00 [INF] CORS policy 'AllowSpecificOrigins' applied.
+2025-04-09 18:45:47.500 -04:00 [INF] Controller endpoints mapped.
+2025-04-09 18:45:47.501 -04:00 [INF] ----- PoSnakeGame.Api Application Build Complete - Running... -----
+2025-04-09 18:45:47.507 -04:00 [INF] CORS policy 'AllowSpecificOrigins' configured.
+2025-04-09 18:45:47.557 -04:00 [INF] Now listening on: https://localhost:7193
+2025-04-09 18:45:47.560 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-09 18:45:47.561 -04:00 [INF] Hosting environment: Development
+2025-04-09 18:45:47.561 -04:00 [INF] Content root path: C:\Users\punko\OneDrive\Documents\PoSnakeGame\PoSnakeGame.Api
+2025-04-09 18:47:14.257 -04:00 [INF] Table Storage Service initialized. HighScores table 'HighScores' ensured.
+2025-04-09 18:47:14.259 -04:00 [INF] HelloWorldController instantiated.
+2025-04-09 18:47:14.261 -04:00 [INF] Processing request for HelloWorld status.
+2025-04-09 18:47:14.263 -04:00 [INF] Checking if table 'HighScores' exists.
+2025-04-09 18:47:14.274 -04:00 [INF] Table 'HighScores' found.
+2025-04-09 18:47:14.275 -04:00 [INF] Table Storage check result: Connected to Azure Table Storage (HighScores table exists)
+2025-04-09 18:47:14.282 -04:00 [INF] HelloWorldController responding with: {"Message":"Hello from PoSnakeGame ASP.NET Core API!","Timestamp":"2025-04-09T22:47:14.2769891Z","Status":"API Responding","TableStorageStatus":"Connected to Azure Table Storage (HighScores table exists)","RequestMethod":"GET","SecurityLevel":"Open - No Authorization Required"}
+2025-04-09 18:47:14.286 -04:00 [INF] Request method: GET, Headers: Accept:*/*, Host:localhost:7193, User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0, Accept-Encoding:gzip, deflate, br, zstd, Accept-Language:en-US,en;q=0.9, Origin:http://localhost:5297, Referer:http://localhost:5297/, sec-ch-ua-platform:"Windows", sec-ch-ua:"Microsoft Edge";v="135", "Not-A.Brand";v="8", "Chromium";v="135", sec-ch-ua-mobile:?0, sec-fetch-site:cross-site, sec-fetch-mode:cors, sec-fetch-dest:empty, priority:u=1, i
+2025-04-09 18:47:14.349 -04:00 [INF] Attempting to check Table Storage connection.
+2025-04-09 18:47:14.352 -04:00 [INF] Checking if table 'HighScores' exists.
+2025-04-09 18:47:14.355 -04:00 [INF] Table 'HighScores' found.
+2025-04-09 18:47:14.356 -04:00 [INF] Table Storage connection check successful. Table 'HighScores' exists: true
+2025-04-09 18:47:32.334 -04:00 [INF] HighScoresController instantiated.
+2025-04-09 18:47:32.336 -04:00 [INF] Getting top 10 high scores via service.
+2025-04-09 18:47:32.338 -04:00 [INF] Getting top 10 scores
+2025-04-09 18:47:32.358 -04:00 [INF] Retrieved 0 scores before sorting.
+2025-04-09 18:47:32.361 -04:00 [INF] Retrieved 0 high scores.
+2025-04-09 18:47:51.717 -04:00 [INF] HighScoresController instantiated.
+2025-04-09 18:47:51.757 -04:00 [INF] Checking if score 60 is a high score via service.
+2025-04-09 18:47:51.759 -04:00 [INF] Getting top 10 scores
+2025-04-09 18:47:51.788 -04:00 [INF] Retrieved 0 scores before sorting.
+2025-04-09 18:47:51.834 -04:00 [INF] Score 60 qualifies as high score (no scores exist yet).
+2025-04-09 18:47:51.835 -04:00 [INF] Service determined score 60 qualifies as high score: True
+2025-04-09 18:47:53.294 -04:00 [INF] HighScoresController instantiated.
+2025-04-09 18:47:53.320 -04:00 [INF] Attempting to save high score for KKJ with score 60.
+2025-04-09 18:47:53.323 -04:00 [INF] Saving high score for KKJ with score 60
+2025-04-09 18:47:53.343 -04:00 [INF] Successfully saved high score with RowKey 183812d3-c267-49d4-9f14-6f26c4e0a8df
+2025-04-09 18:47:53.344 -04:00 [INF] Successfully called SaveHighScoreAsync for KKJ.
+2025-04-09 18:47:53.369 -04:00 [INF] HighScoresController instantiated.
+2025-04-09 18:47:53.370 -04:00 [INF] Getting top 10 high scores via service.
+2025-04-09 18:47:53.371 -04:00 [INF] Getting top 10 scores
+2025-04-09 18:47:53.378 -04:00 [INF] Retrieved 1 scores before sorting.
+2025-04-09 18:47:53.379 -04:00 [INF] Retrieved 1 high scores.
+2025-04-09 18:47:58.301 -04:00 [INF] HighScoresController instantiated.
+2025-04-09 18:47:58.311 -04:00 [INF] Getting top 10 high scores via service.
+2025-04-09 18:47:58.313 -04:00 [INF] Getting top 10 scores
+2025-04-09 18:47:58.317 -04:00 [INF] Retrieved 1 scores before sorting.
+2025-04-09 18:47:58.318 -04:00 [INF] Retrieved 1 high scores.

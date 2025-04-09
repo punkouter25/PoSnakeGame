@@ -59,7 +59,8 @@ namespace PoSnakeGame.Api.Controllers
 
             // Debug log before returning
             _logger.LogInformation($"HelloWorldController responding with: {JsonSerializer.Serialize(result)}");
-            _logger.LogInformation($"Request method: {HttpContext.Request.Method}, Headers: {string.Join(", ", HttpContext.Request.Headers.Select(h => $"{h.Key}:{string.Join(",", h.Value)}"))}");
+            // Explicitly convert header values to array to resolve string.Join ambiguity in .NET 9+
+            _logger.LogInformation($"Request method: {HttpContext.Request.Method}, Headers: {string.Join(", ", HttpContext.Request.Headers.Select(h => $"{h.Key}:{string.Join(",", h.Value.ToArray())}"))}");
 
             // For OPTIONS requests, ASP.NET Core handles CORS preflight automatically
             // if UseCors is configured correctly. We just return OK.
