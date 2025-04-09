@@ -9,7 +9,7 @@ on:
 
 env:
   # Shared Variables
-  DOTNET_VERSION: '8.0.x'
+  DOTNET_VERSION: '9.0.x'
   # API Variables
   API_PROJECT_PATH: 'PoSnakeGame.Api/PoSnakeGame.Api.csproj'
   AZURE_API_WEBAPP_NAME: posnakegame-api   # Name of the Azure App Service for API
@@ -32,7 +32,7 @@ jobs:
         submodules: true # Checkout submodules if any
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
@@ -92,7 +92,7 @@ jobs:
         languages: csharp
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
@@ -155,7 +155,7 @@ jobs:
         submodules: true
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
