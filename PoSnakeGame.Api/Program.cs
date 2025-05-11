@@ -8,21 +8,37 @@ using Serilog.Events; // Add for LogEventLevel
 
 // --- Serilog File Logging Setup ---
 // Configure Serilog logger *before* creating the builder
-// Place log.txt in the solution root (one level up from API project)
+// Place log.txt in the solution root for easier access and debugging
 var logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "log.txt"); 
+
+// Always create a new log file on startup (not append to existing)
+if (File.Exists(logFilePath))
+{
+    try
+    {
+        File.Delete(logFilePath);
+    }
+    catch
+    {
+        // If file is locked or cannot be deleted, use a timestamp in the name
+        logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "..", $"log-{DateTime.Now:yyyyMMdd-HHmmss}.txt");
+    }
+}
+
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning) // Reduce noise specifically from ASP.NET Core
     .Enrich.FromLogContext()
     .WriteTo.Console() // Requires Serilog.Sinks.Console package
     .WriteTo.File(logFilePath, 
-                  rollingInterval: RollingInterval.Day, // Requires Serilog.Sinks.File package (already added via Serilog.Extensions.Logging.File)
-                  outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}") // Log to file, roll daily
+                  rollingInterval: RollingInterval.Infinite, // Don't roll the file by time period
+                  outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}") // Single log file
     .CreateLogger();
 
 try
 {
     Log.Information("----- PoSnakeGame.Api Starting Up -----");
+    Log.Information("Log file created at: {LogPath}", logFilePath);
 
     var builder = WebApplication.CreateBuilder(args);
 
@@ -31,9 +47,7 @@ try
 
     // --- Get Logger Instance (using Serilog's static Log class for early logging) ---
     var logger = Log.ForContext<Program>(); // Use Serilog's static Log class
-    logger.Information("Log file path: {LogPath}", logFilePath);
     logger.Information("Environment: {Environment}", builder.Environment.EnvironmentName);
-
 
     // --- CORS Configuration ---
     var allowedOrigins = new[]
@@ -72,6 +86,9 @@ try
     // Add services to the container.
     // builder.Services.AddApplicationInsightsTelemetry(); // Serilog can sink to AppInsights if needed later
     builder.Services.AddControllers(); // Add support for API controllers
+
+    // Add Razor Pages support for serving the Blazor WebAssembly app
+    builder.Services.AddRazorPages();
 
     // --- Configure and Register TableStorageConfig ---
     logger.Information("Configuring Table Storage services...");
@@ -122,28 +139,40 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
         app.UseDeveloperExceptionPage(); // More detailed errors in dev
+        app.UseWebAssemblyDebugging(); // Add WebAssembly debugging support
     }
     else
     {
         // Add production error handling middleware if needed
-        // app.UseExceptionHandler("/Error");
+        app.UseExceptionHandler("/Error");
         app.UseHsts(); // Enforce HTTPS in production
     }
 
     app.UseHttpsRedirection();
     logger.Information("HTTPS redirection enabled.");
 
+    // Serve static files and use Blazor framework files
+    app.UseBlazorFrameworkFiles(); // Serve Blazor framework files
+    app.UseStaticFiles(); // Serve static files from wwwroot
+    logger.Information("Static files and Blazor framework files middleware configured.");
+
     // --- Apply CORS Policy ---
     // IMPORTANT: Place UseCors before UseAuthorization
     app.UseCors("AllowSpecificOrigins");
     logger.Information("CORS policy 'AllowSpecificOrigins' applied.");
+
+    // Routing setup
+    app.UseRouting();
 
     // Add authorization middleware if needed in the future
     // app.UseAuthorization();
 
     // --- Map Controllers ---
     app.MapControllers(); // Map attribute-routed API controllers
-    logger.Information("Controller endpoints mapped.");
+    app.MapRazorPages(); // Map Razor Pages (needed for Blazor hosting)
+    app.MapFallbackToFile("index.html"); // Serve index.html for routes not matched by controllers or pages
+    
+    logger.Information("Controller endpoints and fallback route mapped.");
 
     logger.Information("----- PoSnakeGame.Api Application Build Complete - Running... -----");
     app.Run();

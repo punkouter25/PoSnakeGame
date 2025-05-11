@@ -10,13 +10,9 @@ on:
 env:
   # Shared Variables
   DOTNET_VERSION: '9.0.x'
-  # API Variables
+  # API Variables (now includes embedded Blazor WASM)
   API_PROJECT_PATH: 'PoSnakeGame.Api/PoSnakeGame.Api.csproj'
   AZURE_API_WEBAPP_NAME: posnakegame-api   # Name of the Azure App Service for API
-  # Frontend Variables
-  AZURE_SWA_NAME: posnakegame-staticwebapp # Name of the Azure Static Web App
-  SWA_APP_DIRECTORY: PoSnakeGame.Wa        # Location of Blazor WASM app
-  SWA_OUTPUT_DIRECTORY: wwwroot            # Output location for Blazor WASM build
 
 jobs:
   build:
@@ -57,7 +53,7 @@ jobs:
       uses: codecov/codecov-action@v3
       # Add with: token: ${{ secrets.CODECOV_TOKEN }} if needed
 
-    - name: Publish API Project
+    - name: Publish API Project (with embedded Blazor WASM)
       id: publish_api # Give the step an ID
       run: dotnet publish ${{ env.API_PROJECT_PATH }} --configuration Release --no-build --output ./api-publish
       # outputs:
@@ -104,7 +100,7 @@ jobs:
       uses: github/codeql-action/analyze@v2
 
   deploy_api:
-    name: Deploy API to Azure App Service
+    name: Deploy API with embedded Blazor WebAssembly
     needs: build # Depends on the build job succeeding
     runs-on: ubuntu-latest
     # Only run on push to master branch
@@ -140,34 +136,3 @@ jobs:
         az cache purge
         az account clear
       if: always() # Ensure logout runs even if deployment fails
-
-  deploy_frontend:
-    name: Deploy Frontend to Azure Static Web App
-    needs: build # Depends on the build job succeeding
-    runs-on: ubuntu-latest
-    # Only run on push to master branch
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        submodules: true
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
-    - name: Build and Deploy Static Web App
-      id: builddeploy
-      uses: Azure/static-web-apps-deploy@v1
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.posnakegame_staticwebapp_SPN }} # Use the SWA specific token
-        repo_token: ${{ secrets.GITHUB_TOKEN }} # Needed for GitHub integrations
-        action: "upload"
-        app_location: ${{ env.SWA_APP_DIRECTORY }} # Blazor project path
-        api_location: "" # Explicitly set to empty as API is deployed separately
-        output_location: ${{ env.SWA_OUTPUT_DIRECTORY }} # Blazor build output (relative to app_location)
-        # app_build_command: "dotnet publish -c Release -o publish" # Let the action handle the build
-        # api_build_command: "" # No API build needed here
