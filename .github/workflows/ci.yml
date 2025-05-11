@@ -53,86 +53,21 @@ jobs:
       uses: codecov/codecov-action@v3
       # Add with: token: ${{ secrets.CODECOV_TOKEN }} if needed
 
-    - name: Publish API Project (with embedded Blazor WASM)
-      id: publish_api # Give the step an ID
+    - name: Publish Client Project (Blazor WASM)
+      run: dotnet publish ${{ env.CLIENT_PROJECT_PATH }} --configuration Release --no-build --output ./client-publish
+
+    - name: Publish API Project
       run: dotnet publish ${{ env.API_PROJECT_PATH }} --configuration Release --no-build --output ./api-publish
-      # outputs:
-      #   publish_path: ./api-publish # Define output path
 
-    - name: Upload API Artifact
-      uses: actions/upload-artifact@v4
+    - name: Deploy to Azure Static Web Apps
+      uses: azure/static-web-apps-deploy@v1
       with:
-        name: api-publish-artifact # Artifact name for API
-        path: ./api-publish # Path to API publish output
-
-    # - name: Run code analysis (Format Check)
-    #   run: |
-    #     dotnet tool install --global dotnet-format --version 8.0.4 
-    #     dotnet format --verify-no-changes --verbosity diagnostic
-
-  analyze:
-    name: CodeQL Analysis
-    runs-on: ubuntu-latest
-    permissions:
-      security-events: write
-      actions: read
-      contents: read
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: csharp
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
-    - name: Autobuild
-      # This step automatically attempts to build the code
-      uses: github/codeql-action/autobuild@v2
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
-
-  deploy_api:
-    name: Deploy API with embedded Blazor WebAssembly
-    needs: build # Depends on the build job succeeding
-    runs-on: ubuntu-latest
-    # Only run on push to master branch
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-
-    # Removed environment block as 'production' environment is not configured in repo settings
-    # environment:
-    #   name: production 
-    #   url: ${{ steps.deploy_to_webapp.outputs.webapp-url }}
-
-    steps:
-    - name: Download API Artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: api-publish-artifact # Match artifact name from build job
-        path: ./api-publish # Download to this path
-
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }} # Requires AZURE_CREDENTIALS secret
-
-    - name: Deploy to Azure App Service
-      id: deploy_to_webapp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: ${{ env.AZURE_API_WEBAPP_NAME }}
-        package: './api-publish' # Deploy the downloaded artifact
-
-    - name: Logout from Azure
-      run: |
-        az logout
-        az cache purge
-        az account clear
-      if: always() # Ensure logout runs even if deployment fails
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+        action: "upload"
+        app_location: "/client-publish/wwwroot" # Folder containing the client-side code
+        api_location: "/api-publish" # Folder containing the API code
+        output_location: "" # Output location of the client-side code - leave empty for Blazor WASM
+        # Skip the api_build_command and app_build_command as we are publishing separately
+        api_build_command: "" 
+        app_build_command: ""
