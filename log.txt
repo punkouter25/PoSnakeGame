@@ -1,20 +1,19 @@
-2025-05-11 17:35:16.187 -04:00 [INF] ----- PoSnakeGame.Api Starting Up -----
-2025-05-11 17:35:16.206 -04:00 [INF] Log file created at: C:\Users\punko\Downloads\PoSnakeGame\PoSnakeGame.Api\..\log.txt
-2025-05-11 17:35:16.256 -04:00 [INF] Environment: Development
-2025-05-11 17:35:16.256 -04:00 [INF] Configuring CORS. Allowed Origins: http://localhost:5000, http://localhost:5001, https://localhost:5000, https://localhost:5001, http://localhost:5297, https://localhost:7047, http://127.0.0.1:5000, http://127.0.0.1:5001, https://127.0.0.1:5000, https://127.0.0.1:5001, http://127.0.0.1:5297, https://127.0.0.1:7047, https://ashy-water-0fe4f090f.6.azurestaticapps.net, https://posnakegame-web.azurestaticapps.net
-2025-05-11 17:35:16.273 -04:00 [INF] Configuring Table Storage services...
-2025-05-11 17:35:16.276 -04:00 [INF] TableStorageConfig loaded: HighScoresTable=HighScores, GameStatsTable=GameStatistics, IsUsingLocalStorage=true
-2025-05-11 17:35:16.279 -04:00 [INF] Registering TableServiceClient. IsUsingLocalStorage: true
-2025-05-11 17:35:16.280 -04:00 [INF] Table Storage services configured.
-2025-05-11 17:35:16.299 -04:00 [INF] Development environment detected. Enabling Swagger UI and Developer Exception Page.
-2025-05-11 17:35:16.304 -04:00 [INF] HTTPS redirection enabled.
-2025-05-11 17:35:16.306 -04:00 [INF] Static files and Blazor framework files middleware configured.
-2025-05-11 17:35:16.306 -04:00 [INF] CORS policy 'AllowSpecificOrigins' applied.
-2025-05-11 17:35:16.343 -04:00 [INF] Controller endpoints and fallback route mapped.
-2025-05-11 17:35:16.344 -04:00 [INF] ----- PoSnakeGame.Api Application Build Complete - Running... -----
-2025-05-11 17:35:16.362 -04:00 [INF] CORS policy 'AllowSpecificOrigins' configured.
-2025-05-11 17:35:16.407 -04:00 [INF] Now listening on: https://localhost:7193
-2025-05-11 17:35:16.416 -04:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-05-11 17:35:16.416 -04:00 [INF] Hosting environment: Development
-2025-05-11 17:35:16.418 -04:00 [INF] Content root path: C:\Users\punko\Downloads\PoSnakeGame\PoSnakeGame.Api
-2025-05-11 17:36:00.318 -04:00 [INF] Application is shutting down...
+2025-05-11 18:21:37.663 -04:00 [INF] ----- PoSnakeGame.Api Starting Up -----
+2025-05-11 18:21:37.689 -04:00 [INF] Log file created at: C:\Users\punko\Downloads\PoSnakeGame\PoSnakeGame.Api\..\log.txt
+2025-05-11 18:21:37.761 -04:00 [INF] Environment: Development
+2025-05-11 18:21:37.762 -04:00 [INF] Configuring CORS. Allowed Origins: http://localhost:5000, http://localhost:5001, https://localhost:5000, https://localhost:5001, http://localhost:5297, https://localhost:7047, http://127.0.0.1:5000, http://127.0.0.1:5001, https://127.0.0.1:5000, https://127.0.0.1:5001, http://127.0.0.1:5297, https://127.0.0.1:7047, https://ashy-water-0fe4f090f.6.azurestaticapps.net, https://posnakegame-web.azurestaticapps.net
+2025-05-11 18:21:37.778 -04:00 [INF] Configuring Table Storage services...
+2025-05-11 18:21:37.783 -04:00 [INF] TableStorageConfig loaded: HighScoresTable=HighScores, GameStatsTable=GameStatistics, IsUsingLocalStorage=true
+2025-05-11 18:21:37.785 -04:00 [INF] Registering TableServiceClient. IsUsingLocalStorage: true
+2025-05-11 18:21:37.787 -04:00 [INF] Table Storage services configured.
+2025-05-11 18:21:37.814 -04:00 [INF] Development environment detected. Enabling Swagger UI and Developer Exception Page.
+2025-05-11 18:21:37.819 -04:00 [INF] HTTPS redirection enabled.
+2025-05-11 18:21:37.821 -04:00 [INF] Static files and Blazor framework files middleware configured.
+2025-05-11 18:21:37.822 -04:00 [INF] CORS policy 'AllowSpecificOrigins' applied.
+2025-05-11 18:21:39.001 -04:00 [INF] Controller endpoints and fallback route mapped.
+2025-05-11 18:21:39.002 -04:00 [INF] ----- PoSnakeGame.Api Application Build Complete - Running... -----
+2025-05-11 18:21:39.049 -04:00 [INF] CORS policy 'AllowSpecificOrigins' configured.
+2025-05-11 18:21:39.116 -04:00 [INF] Now listening on: https://localhost:7193
+2025-05-11 18:21:39.118 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-11 18:21:39.119 -04:00 [INF] Hosting environment: Development
+2025-05-11 18:21:39.120 -04:00 [INF] Content root path: C:\Users\punko\Downloads\PoSnakeGame\PoSnakeGame.Api
