@@ -178,9 +178,7 @@
             _showingHighScoreSubmission = true;
         }
         StateHasChanged();
-    }
-
-    private async void OnHighScoreSubmitted(string initials)
+    }    private async void OnHighScoreSubmitted(string initials)
     {
         if (!string.IsNullOrEmpty(initials))
         {
@@ -203,13 +201,28 @@
                     FoodEaten = 0 // TODO: Track food eaten per game if desired for stats
                 };
 
-                // Save the high score using the new service
-                await HighScoreService.SaveHighScoreAsync(highScore);
+                try
+                {
+                    // Save the high score using the service - this now has retry logic and better error handling
+                    await HighScoreService.SaveHighScoreAsync(highScore);
+                    Console.WriteLine("High score saved successfully");
+                }
+                catch (Exception ex)
+                {
+                    // Log the error but continue to high scores screen
+                    Console.Error.WriteLine($"Error saving high score to API: {ex.Message}");
+                }
+                
+                // Always navigate to high scores, even if saving failed
+                // The user experience is better if they can continue playing
+                // We'll let them view the current high scores regardless of save status
                 NavigateToHighScores();
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine($"Error saving high score: {ex.Message}");
+                Console.Error.WriteLine($"Error in high score submission workflow: {ex.Message}");
+                _showingHighScoreSubmission = false;
+                StateHasChanged();
             }
         }
         else

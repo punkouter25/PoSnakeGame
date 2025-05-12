@@ -42,12 +42,29 @@ builder.Services.AddSingleton(tableConfig);
 builder.Services.AddSingleton<GameService>();
 builder.Services.AddSingleton<GameEngine>();
 
-// Configure API base URL differently when hosted in API vs standalone
-// When hosted in the API project, we use a relative URL
+// Configure API base URL based on environment
 Console.WriteLine($"Base Address: {builder.HostEnvironment.BaseAddress}");
-string apiBaseUrl = builder.HostEnvironment.IsDevelopment() 
-    ? "http://localhost:5289/api/" // Use absolute URL in development
-    : "/api/"; // When hosted, use relative URL
+
+// Read API base URL from configuration, with appropriate fallbacks
+string apiBaseUrl;
+if (builder.Configuration["ApiBaseUrl"] != null)
+{
+    // Use configuration if available
+    apiBaseUrl = builder.Configuration["ApiBaseUrl"];
+    Console.WriteLine($"Using API Base URL from config: {apiBaseUrl}");
+}
+else if (builder.HostEnvironment.IsDevelopment()) 
+{
+    // Development fallback
+    apiBaseUrl = "http://localhost:5289/api/";
+    Console.WriteLine($"Using development API Base URL: {apiBaseUrl}");
+}
+else 
+{
+    // Production fallback - using the Azure API endpoint
+    apiBaseUrl = "https://posnakegame-api.azurewebsites.net/api/";
+    Console.WriteLine($"Using production API Base URL: {apiBaseUrl}");
+}
 
 // The service endpoints will be configured using the relative API path
 builder.Services.AddScoped(sp =>
