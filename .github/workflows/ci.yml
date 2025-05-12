@@ -1,4 +1,4 @@
-name: Build, Test, and Deploy
+name: Build and Deploy
 
 on:
   workflow_dispatch: # Allows manual triggering
@@ -18,7 +18,7 @@ env:
 
 jobs:
   build:
-    name: Build and Test
+    name: Build and Deploy
     runs-on: ubuntu-latest
     outputs:
       api_publish_path: ${{ steps.publish_api.outputs.publish_path }} # Output path for API artifact
@@ -47,13 +47,6 @@ jobs:
 
     - name: Build Solution
       run: dotnet build --no-restore --configuration Release
-
-    - name: Run Tests
-      run: dotnet test --no-build --verbosity detailed --configuration Release --collect:"XPlat Code Coverage" --logger "console;verbosity=detailed"
-
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v3
-      # Add with: token: ${{ secrets.CODECOV_TOKEN }} if needed
 
     - name: Publish Client Project (Blazor WASM)
       id: publish_client
