@@ -1,0 +1,84 @@
+@page "/diag"
+@using PoSnakeGame.Wa.Services
+@inject DiagnosticsService DiagnosticsService
+
+<PageTitle>PoSnakeGame - Diagnostics</PageTitle>
+
+<div class="diag-page">
+    <h2>System Diagnostics</h2>
+    
+    @if (_isLoading)
+    {
+        <div class="loading-spinner">Running diagnostics checks...</div>
+    }
+    else if (_checks != null)
+    {
+        <div class="diag-results">
+            <ul>
+                @foreach (var check in _checks)
+                {
+                    <li class="check-item @GetStatusClass(check.Status)">
+                        <span class="status-icon">@GetStatusIcon(check.Status)</span>
+                        <span class="check-name">@check.Name:</span>
+                        <span class="check-status">@check.Status</span>
+                        @if (!string.IsNullOrEmpty(check.Message))
+                        {
+                            <span class="check-message"> - @check.Message</span>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+        
+        <div class="diag-actions">
+            <button class="btn btn-primary" @onclick="RunDiagnostics">Run Again</button>
+            <a href="/" class="btn btn-secondary">Return to Home</a>
+        </div>
+    }
+    else
+    {
+        <p>Failed to load diagnostic checks.</p>
+        <div class="diag-actions">
+            <button class="btn btn-primary" @onclick="RunDiagnostics">Try Again</button>
+            <a href="/" class="btn btn-secondary">Return to Home</a>
+        </div>
+    }
+</div>
+
+@code {
+    private List<DiagnosticCheck>? _checks;
+    private bool _isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RunDiagnostics();
+    }
+
+    private async Task RunDiagnostics()
+    {
+        _isLoading = true;
+        _checks = null; 
+        StateHasChanged(); 
+
+        // Add a small delay to ensure UI updates before running checks
+        await Task.Delay(100);
+
+        _checks = await DiagnosticsService.RunChecksAsync();
+
+        _isLoading = false;
+        StateHasChanged(); 
+    }
+
+    private string GetStatusClass(string status) => status.ToLowerInvariant();
+    
+    private string GetStatusIcon(string status) => status switch
+    {
+        "Connected" => "✔️",
+        "Disconnected" => "❌",
+        "Error" => "⚠️",
+        "Checking" => "⏳",
+        "Pending" => "⚪",
+        "Skipped" => "➖",
+        _ => "?"
+    };
+}

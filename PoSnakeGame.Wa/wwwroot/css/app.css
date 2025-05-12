@@ -710,6 +710,39 @@ code {
     text-align: left;
 }
 
+/* Dedicated Diagnostics Page Styles */
+.diag-page {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--retro-dark-accent);
+    border: 2px solid var(--retro-green);
+    border-radius: 5px;
+    box-shadow: 0 0 20px var(--retro-green);
+    text-align: left;
+}
+
+.diag-page h2 {
+    color: var(--retro-green);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.diag-results {
+    margin-bottom: 1.5rem;
+}
+
+.diag-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.diag-actions .btn {
+    padding: 0.5rem 1.5rem;
+}
+
 .diagnostics-modal-content h4 {
     text-align: center;
     margin-top: 0;

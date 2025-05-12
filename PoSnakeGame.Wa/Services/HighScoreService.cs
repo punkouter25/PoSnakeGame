@@ -97,9 +97,7 @@ namespace PoSnakeGame.Wa.Services
                     highScore.Initials, _httpClient.BaseAddress, ex.Message);
                 throw; // Rethrow the exception to be handled by the caller
             }
-        }
-
-        /// <summary>
+        }        /// <summary>
         /// Checks if a given score qualifies as a high score via the API.
         /// </summary>
         /// <param name="score">The score to check.</param>
@@ -108,9 +106,18 @@ namespace PoSnakeGame.Wa.Services
         {
             try
             {
-                // Remove BaseAddress from log message
-                _logger.LogInformation("Checking if score {Score} is a high score via API.",
-                    score);
+                // First check if there are any high scores at all
+                var highScores = await GetHighScoresAsync();
+                
+                // If there are no high scores yet, any score should qualify
+                if (highScores.Count == 0)
+                {
+                    _logger.LogInformation("No existing high scores found. Score {Score} automatically qualifies.", score);
+                    return true;
+                }
+                
+                // Otherwise check with the API
+                _logger.LogInformation("Checking if score {Score} is a high score via API.", score);
                 // Relative path includes the score
                 var isHighScore = await _httpClient.GetFromJsonAsync<bool>($"highscores/check/{score}");
                 return isHighScore;
@@ -120,8 +127,10 @@ namespace PoSnakeGame.Wa.Services
                 // Separate exception logging from context logging to avoid formatting issues
                 _logger.LogError(ex, "An exception occurred while checking if score is a high score via API.");
                 _logger.LogInformation("Context for the above error: Score={Score}", score);
-                // Default to false in case of error, or rethrow depending on desired behavior
-                return false;
+                
+                // In case of error, let's be lenient and assume it might be a high score
+                // This ensures users can still submit their scores even if the API check fails
+                return true;
             }
         }
     }
