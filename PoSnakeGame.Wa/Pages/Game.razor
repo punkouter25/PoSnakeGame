@@ -264,22 +264,18 @@
         // Handle keyboard input for snake direction
         switch (e.Key)
         {
-            case "ArrowUp":
             case "w":
             case "W":
                 GameService.ChangeHumanSnakeDirection(Direction.Up);
                 break;
-            case "ArrowDown":
             case "s":
             case "S":
                 GameService.ChangeHumanSnakeDirection(Direction.Down);
                 break;
-            case "ArrowLeft":
             case "a":
             case "A":
                 GameService.ChangeHumanSnakeDirection(Direction.Left);
                 break;
-            case "ArrowRight":
             case "d":
             case "D":
                 GameService.ChangeHumanSnakeDirection(Direction.Right);

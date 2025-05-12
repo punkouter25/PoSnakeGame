@@ -85,7 +85,8 @@ try
 
     // Add services to the container.
     // builder.Services.AddApplicationInsightsTelemetry(); // Serilog can sink to AppInsights if needed later
-    builder.Services.AddControllers(); // Add support for API controllers
+    builder.Services.AddControllers()
+        .AddApplicationPart(typeof(Program).Assembly); // Explicitly add this assembly as application part
 
     // Add Razor Pages support for serving the Blazor WebAssembly app
     builder.Services.AddRazorPages();
@@ -168,9 +169,14 @@ try
     // app.UseAuthorization();
 
     // --- Map Controllers ---
-    app.MapControllers(); // Map attribute-routed API controllers
-    app.MapRazorPages(); // Map Razor Pages (needed for Blazor hosting)
-    app.MapFallbackToFile("index.html"); // Serve index.html for routes not matched by controllers or pages
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllers(); // Map attribute-routed API controllers
+        endpoints.MapRazorPages(); // Map Razor Pages (needed for Blazor hosting)
+        
+        // Serve the WebAssembly app from the root URL
+        endpoints.MapFallbackToFile("index.html");
+    });
     
     logger.Information("Controller endpoints and fallback route mapped.");
 

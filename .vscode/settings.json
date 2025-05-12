@@ -4,5 +4,19 @@
     "azureFunctions.projectRuntime": "~4",
     "debug.internalConsoleOptions": "neverOpen",
     "azureFunctions.preDeployTask": "publish (functions)",
-    "azureFunctions.projectSubpath": "PoSnakeGame.Functions"
+    "azureFunctions.projectSubpath": "PoSnakeGame.Functions",
+    "mcp": {
+        "servers": {
+            "github": {
+                "command": "npx",
+                "args": [
+                    "-y",
+                    "@modelcontextprotocol/server-github"
+                ],
+                "env": {
+                    "GITHUB_PERSONAL_ACCESS_TOKEN": "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"
+                }
+            }
+        }
+    }
 }

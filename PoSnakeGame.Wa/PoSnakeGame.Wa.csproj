@@ -4,7 +4,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <StaticWebAssetBasePath>blazor</StaticWebAssetBasePath>
+    <!-- Disable static web asset compression to avoid duplicate file issues -->
+    <StaticWebAssetsCacheEnableCompression>false</StaticWebAssetsCacheEnableCompression>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.3" />
     <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="9.0.0" />
+  </ItemGroup>
+
+  <!-- Fixed handling of static web assets -->
+  <ItemGroup>
+    <Content Update="wwwroot\icon-192.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

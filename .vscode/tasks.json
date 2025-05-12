@@ -2,6 +2,22 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Build Solution",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/PoSnakeGame.sln",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
       "label": "Run API",
       "command": "dotnet",
       "type": "process",
@@ -9,8 +25,8 @@
         "run",
         "--project",
         "${workspaceFolder}/PoSnakeGame.Api/PoSnakeGame.Api.csproj",
-        "--launch-profile", // Add this argument
-        "https"             // Specify the 'https' profile from launchSettings.json
+        "--launch-profile",
+        "https"
       ],
       "problemMatcher": "$msCompile",
       "presentation": {
@@ -22,51 +38,8 @@
         "clear": true
       },
       "group": {
-        "kind": "build",
-        "isDefault": false
-      }
-    },
-    {
-      "label": "Run WebAssembly",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "run",
-        "--project",
-        "${workspaceFolder}/PoSnakeGame.Wa/PoSnakeGame.Wa.csproj"
-      ],
-      "problemMatcher": "$msCompile",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "dedicated",
-        "showReuseMessage": false,
-        "clear": true
-      },
-      "group": {
-        "kind": "build",
-        "isDefault": false
-      }
-    },
-    {
-      "label": "Run All",
-      "dependsOn": [
-        "Run API",
-        "Run WebAssembly"
-      ],
-      "problemMatcher": [], // No problem matcher for the compound task
-      "group": {
-        "kind": "build",
-        "isDefault": true // Make this the default build task
-      },
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared", // Use a shared panel for the compound task output
-        "showReuseMessage": false,
-        "clear": false // Don't clear the panel for the compound task
+        "kind": "test",
+        "isDefault": true
       }
     }
   ]

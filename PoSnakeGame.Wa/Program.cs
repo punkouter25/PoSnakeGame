@@ -45,7 +45,9 @@ builder.Services.AddSingleton<GameEngine>();
 // Configure API base URL differently when hosted in API vs standalone
 // When hosted in the API project, we use a relative URL
 Console.WriteLine($"Base Address: {builder.HostEnvironment.BaseAddress}");
-string apiBaseUrl = "/api/"; // When hosted, use relative URL
+string apiBaseUrl = builder.HostEnvironment.IsDevelopment() 
+    ? "http://localhost:5289/api/" // Use absolute URL in development
+    : "/api/"; // When hosted, use relative URL
 
 // The service endpoints will be configured using the relative API path
 builder.Services.AddScoped(sp =>

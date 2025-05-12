@@ -32,8 +32,8 @@ namespace PoSnakeGame.Core.Services
         private const float SnakeDyingTime = 0.5f; // Match CSS animation time
 
         // Game configuration
-        private readonly int _arenaWidth = 40;  // Reduced from 50 to make snake more visible
-        private readonly int _arenaHeight = 40; // Reduced from 100 to make arena more square and visible
+        private readonly int _arenaWidth = 48;  // Increased by 20% as requested
+        private readonly int _arenaHeight = 32; // Reduced by 20% as requested
         private readonly int _initialFoodCount = 20;  // Reduced from 100 to avoid overcrowding
         private readonly int _targetFoodCount = 10;   // Reduced from 20 to avoid overcrowding
         private readonly Random _random = new();

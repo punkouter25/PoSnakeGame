@@ -4,13 +4,15 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Don't disable static web assets - we need these for Blazor integration -->
+    <StaticWebAssetsCacheEnableCompression>false</StaticWebAssetsCacheEnableCompression>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Data.Tables" Version="12.10.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.23.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.14" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Azure" Version="1.11.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
@@ -19,8 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PoSnakeGame.Core\PoSnakeGame.Core.csproj" />
-    <ProjectReference Include="..\PoSnakeGame.Infrastructure\PoSnakeGame.Infrastructure.csproj" />
     <ProjectReference Include="..\PoSnakeGame.Wa\PoSnakeGame.Wa.csproj" />
   </ItemGroup>
 
