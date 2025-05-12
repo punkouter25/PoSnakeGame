@@ -12,6 +12,8 @@ env:
   DOTNET_VERSION: '9.0.x'
   # API Variables (now includes embedded Blazor WASM)
   API_PROJECT_PATH: 'PoSnakeGame.Api/PoSnakeGame.Api.csproj'
+  # Client Variables
+  CLIENT_PROJECT_PATH: 'PoSnakeGame.Wa/PoSnakeGame.Wa.csproj'
   AZURE_API_WEBAPP_NAME: posnakegame-api   # Name of the Azure App Service for API
 
 jobs:
@@ -46,27 +48,29 @@ jobs:
     - name: Build Solution
       run: dotnet build --no-restore --configuration Release
 
-    # - name: Run Tests
-    #   run: dotnet test --no-build --verbosity detailed --configuration Release --collect:"XPlat Code Coverage" --logger "console;verbosity=detailed"
+    - name: Run Tests
+      run: dotnet test --no-build --verbosity detailed --configuration Release --collect:"XPlat Code Coverage" --logger "console;verbosity=detailed"
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       # Add with: token: ${{ secrets.CODECOV_TOKEN }} if needed
 
     - name: Publish Client Project (Blazor WASM)
+      id: publish_client
       run: dotnet publish ${{ env.CLIENT_PROJECT_PATH }} --configuration Release --no-build --output ./client-publish
 
     - name: Publish API Project
+      id: publish_api
       run: dotnet publish ${{ env.API_PROJECT_PATH }} --configuration Release --no-build --output ./api-publish
-
+      
     - name: Deploy to Azure Static Web Apps
       uses: azure/static-web-apps-deploy@v1
       with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_HAPPY_FLOWER_01E0EB50F }}
         repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
         action: "upload"
-        app_location: "/client-publish/wwwroot" # Folder containing the client-side code
-        api_location: "/api-publish" # Folder containing the API code
+        app_location: "client-publish/wwwroot" # Folder containing the client-side code
+        api_location: "api-publish" # Folder containing the API code
         output_location: "" # Output location of the client-side code - leave empty for Blazor WASM
         # Skip the api_build_command and app_build_command as we are publishing separately
         api_build_command: "" 
